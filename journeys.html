@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journeys — Safari Golf Tour</title>
+  <meta name="description" content="Seven golf and safari journeys across Africa, travelled and priced: Kenya, Tanzania, South Africa, Victoria Falls and Chobe, Mauritius and Kruger, Uganda, and the flagship Grand Crossing." />
+  <meta name="theme-color" content="#0e1f18" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+
+    <!-- List view -->
+    <div id="list-view">
+      <section class="hero hero-short">
+        <div class="hero-media"><img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=78" alt="A links course under a moody sky" fetchpriority="high" /></div>
+        <div class="container hero-inner">
+          <p class="eyebrow">Journeys</p>
+          <h1>Seven journeys, travelled and priced.</h1>
+          <p class="lead">Each one is a starting point we shape around your golf, your wildlife list and your dates. Prices are per person sharing, ground only.</p>
+        </div>
+      </section>
+
+      <section class="section section-cream">
+        <div class="container">
+          <form class="filters" id="filters" aria-label="Filter journeys">
+            <label class="field"><span>Region</span>
+              <select name="region">
+                <option value="">All regions</option>
+                <option value="East Africa">East Africa</option>
+                <option value="Southern Africa">Southern Africa</option>
+                <option value="Indian Ocean & Southern Africa">Indian Ocean &amp; Southern Africa</option>
+                <option value="East & Southern Africa">East &amp; Southern Africa</option>
+              </select>
+            </label>
+            <label class="field"><span>Length</span>
+              <select name="duration">
+                <option value="">Any length</option>
+                <option value="short">Up to 6 nights</option>
+                <option value="medium">7 – 9 nights</option>
+                <option value="long">10+ nights</option>
+              </select>
+            </label>
+            <label class="field"><span>Budget</span>
+              <select name="budget">
+                <option value="">Any budget</option>
+                <option value="5000">Under US$5,000</option>
+                <option value="7500">Under US$7,500</option>
+                <option value="10000">Under US$10,000</option>
+              </select>
+            </label>
+            <label class="field"><span>Sort</span>
+              <select name="sort">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price, low to high</option>
+                <option value="price-desc">Price, high to low</option>
+                <option value="nights">Length</option>
+                <option value="rounds">Most golf</option>
+              </select>
+            </label>
+            <button type="reset" class="btn btn-outline btn-sm">Clear</button>
+          </form>
+          <p class="results-count" id="results-count" aria-live="polite"></p>
+          <div class="journey-grid three" id="journey-grid"></div>
+          <p class="empty" id="empty-state" hidden>Nothing matches those filters. Clear them, or tell us what you're after and we'll build it.</p>
+        </div>
+      </section>
+
+      <section class="section section-ink">
+        <div class="container">
+          <div class="section-head center reveal">
+            <p class="eyebrow">Tailor-made</p>
+            <h2>None of them quite right? Good.</h2>
+            <p class="lead">Most of our guests travel on a journey that started as one of these and ended up entirely their own. Tell us your dates and your wish list.</p>
+            <div class="actions" style="justify-content:center"><a class="btn btn-gold" href="contact.html">Design your safari</a></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Detail view -->
+    <div id="detail-view" hidden></div>
+  </main>
+
+  <script src="js/packages.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/pages/journeys.js"></script>
+</body>
+</html>
