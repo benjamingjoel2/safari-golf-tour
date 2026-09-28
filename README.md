@@ -8,15 +8,22 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Home: hero, trust strip, pillars, flagship journey, selected journeys, guest words, what we arrange, hosted departures, destinations, philosophy, field notes, enquiry form |
-| `journeys.html` | All journeys with region / length / budget filters and sorting. `journeys.html#<id>` opens the full itinerary for one journey |
-| `destinations.html` | Six destinations with courses, reserves and the journeys that visit. `destinations.html#<id>` jumps to one |
+| `index.html` | Home: hero, trust strip, pillars, flagship journey, three ways to travel, selected journeys, guest words, what we arrange, hosted departures, destinations, philosophy, encounters, journal notes, enquiry form |
+| `journeys.html` | All journeys with region / length / budget filters and sorting. `journeys.html#<id>` opens the full itinerary, with courses and stays linked |
+| `departures.html` | Hosted departures by date for 2027 and 2028, with places left and a reserve link |
+| `destinations.html` | Six destinations with courses, reserves and the journeys that visit. `#<id>` jumps to one |
+| `courses.html` | Every course we play, filterable by country. `#<id>` jumps to one |
+| `stays.html` | Camps, lodges, resorts and hotels, filterable by destination and type. `#<id>` jumps to one |
+| `encounters.html` | Seven arranged encounters and the journeys they belong to. `#<id>` jumps to one |
+| `journal.html` | Field notes. `journal.html#<slug>` opens an article |
 | `about.html` | Our story, stats, how it works (`#how`), what we believe |
-| `contact.html` | Design-your-safari brief (`?journey=<id>` preselects a journey), contact details, FAQ (`#faq`) |
+| `contact.html` | Design-your-safari brief (`?journey=<id>` or `?departure=<id>` preselects), contact details, FAQ (`#faq`) |
+| `terms.html`, `privacy.html` | Legal drafts for review |
 
 ## Structure
 
-- `js/packages.js` — all content data: journeys (with courses, stays and day-by-day itineraries), destinations, guest quotes, photo ids and site config (`SGT.CONFIG`). Edit this to change content.
+- `js/packages.js` — journeys (with courses, stays and day-by-day itineraries), destinations, guest quotes, photo ids and site config (`SGT.CONFIG`).
+- `js/content.js` — courses, stays, hosted departures, encounters and journal articles, plus lookups. Edit these two files to change content; every page renders from them.
 - `js/site.js` — shared chrome injected on every page: header, overlay menu, footer, floating chat button, reveal-on-scroll, enquiry-form handling.
 - `js/pages/*.js` — per-page rendering.
 - `css/styles.css` — the design system.
@@ -49,6 +56,8 @@ Both forms validate client-side and, with no backend yet, store submissions in t
 
 ## Adding a journey
 
-Append an object to `JOURNEYS` in `js/packages.js`. It appears automatically in the journeys grid, the footer, the enquiry selects and the "also consider" list. Fields: `id`, `name`, `strap`, `tagline`, `countries`, `region` (must match a value in the journeys filter), `nights`, `rounds`, `gameDrives`, `priceFrom`, `tier` (`signature` or `flagship`), `bestMonths`, `photo` (a key of `PHOTO`), `route`, `intro`, `highlights`, `courses`, `stays`, `itinerary`.
+Append an object to `JOURNEYS` in `js/packages.js`. It appears automatically in the journeys grid, the footer, the enquiry selects and the "also consider" list. Fields: `id`, `name`, `strap`, `tagline`, `countries`, `region` (must match a value in the journeys filter), `nights`, `rounds`, `gameDrives`, `priceFrom`, `tier` (`signature` or `flagship`), `bestMonths`, `photo` (a key of `PHOTO`), `route`, `intro`, `highlights`, `courses`, `stays`, `itinerary`. Course and stay names are matched to `COURSES` and `STAYS` in `js/content.js` to link them.
+
+Hosted departures, courses, stays, encounters and journal articles are plain arrays in `js/content.js` and follow the same pattern.
 
 To use your own photography, add a new key to `PHOTO` or change `SGT.img()` to return your own URLs.

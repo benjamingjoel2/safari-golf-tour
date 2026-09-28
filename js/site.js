@@ -10,10 +10,16 @@
   var NAV = [
     { href: "index.html", label: "Home", num: "01" },
     { href: "journeys.html", label: "Journeys", num: "02" },
-    { href: "destinations.html", label: "Destinations", num: "03" },
-    { href: "about.html", label: "Our Story", num: "04" },
-    { href: "contact.html", label: "Design your safari", num: "05" }
+    { href: "departures.html", label: "Hosted departures", num: "03" },
+    { href: "destinations.html", label: "Destinations", num: "04" },
+    { href: "courses.html", label: "Courses", num: "05" },
+    { href: "stays.html", label: "Stays", num: "06" },
+    { href: "encounters.html", label: "Encounters", num: "07" },
+    { href: "journal.html", label: "Journal", num: "08" },
+    { href: "about.html", label: "Our Story", num: "09" },
+    { href: "contact.html", label: "Design your safari", num: "10" }
   ];
+  var HEADER_NAV = ["journeys.html", "departures.html", "destinations.html", "courses.html", "about.html"];
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -66,7 +72,7 @@
         "</a>" +
         '<div class="header-actions">' +
           '<nav class="header-nav" aria-label="Primary">' +
-            NAV.slice(0, 4).map(function (n) {
+            NAV.filter(function (n) { return HEADER_NAV.indexOf(n.href) !== -1; }).map(function (n) {
               return '<a href="' + n.href + '"' + (n.href === page ? ' aria-current="page"' : "") + ">" + esc(n.label) + "</a>";
             }).join("") +
           "</nav>" +
@@ -139,14 +145,23 @@
   var footerHtml =
     '<footer class="site-footer">' +
       '<div class="container">' +
-        '<div class="footer-grid">' +
+        '<div class="footer-grid five">' +
           '<div class="footer-brand">' +
             '<a class="brand" href="index.html">' + mark + '<span><span class="brand-name">' + esc(C.brand) + '</span><span class="brand-sub">Golf &amp; Safari · Africa</span></span></a>' +
             '<p style="margin-top:18px">Safari first, golf woven through. Golf and safari journeys across seven African countries, built one guest at a time by people who have played and slept their way across all of it.</p>' +
             (socialHtml ? '<div class="socials">' + socialHtml + "</div>" : "") +
           "</div>" +
+          "<div><h4>The experience</h4><ul>" +
+            '<li><a href="encounters.html">Encounters</a></li>' +
+            '<li><a href="courses.html">The courses</a></li>' +
+            '<li><a href="stays.html">Where you stay</a></li>' +
+            '<li><a href="departures.html">Hosted departures</a></li>' +
+            '<li><a href="journal.html#a-day-in-two-halves">Why a golf safari</a></li>' +
+            '<li><a href="journal.html#packing-clubs-for-africa">Travelling with clubs</a></li>' +
+          "</ul></div>" +
           "<div><h4>Journeys</h4><ul>" +
             S.JOURNEYS.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '">' + esc(j.name) + "</a></li>"; }).join("") +
+            '<li><a href="journeys.html">All journeys</a></li>' +
           "</ul></div>" +
           "<div><h4>Destinations</h4><ul>" +
             S.DESTINATIONS.map(function (d) { return '<li><a href="destinations.html#' + esc(d.id) + '">' + esc(d.name) + "</a></li>"; }).join("") +
@@ -154,8 +169,11 @@
           "<div><h4>" + esc(C.brand) + "</h4><ul>" +
             '<li><a href="about.html">Our story</a></li>' +
             '<li><a href="about.html#how">How it works</a></li>' +
+            '<li><a href="journal.html">The Journal</a></li>' +
             '<li><a href="contact.html">Design your safari</a></li>' +
             '<li><a href="contact.html#faq">Good to know</a></li>' +
+            '<li><a href="terms.html">Terms &amp; conditions</a></li>' +
+            '<li><a href="privacy.html">Privacy policy</a></li>' +
             (C.email ? '<li><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a></li>" : "") +
           "</ul></div>" +
         "</div>" +
@@ -187,6 +205,23 @@
     });
     var pre = new URLSearchParams(location.search).get("journey");
     if (pre && S.journey(pre)) select.value = pre;
+  };
+
+  S.populateDepartureSelect = function (select) {
+    if (!select || !S.DEPARTURES) return;
+    S.DEPARTURES.slice().sort(function (a, b) { return a.start < b.start ? -1 : 1; }).forEach(function (d) {
+      var j = S.journey(d.journey);
+      var o = document.createElement("option");
+      o.value = d.id;
+      o.textContent = S.formatDate(d.start) + " · " + j.name + (d.left === 0 ? " (waitlist)" : "");
+      select.appendChild(o);
+    });
+    var pre = new URLSearchParams(location.search).get("departure");
+    if (pre && S.departure(pre)) {
+      select.value = pre;
+      var js = select.form && select.form.elements.journey;
+      if (js) js.value = S.departure(pre).journey;
+    }
   };
 
   S.bindEnquiryForm = function (form, success) {
