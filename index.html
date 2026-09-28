@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Safari Golf Tour</title>
+  <meta name="description" content="Tailor-made golf and safari packages across Kenya, Tanzania, South Africa, Botswana, Zimbabwe, Uganda and Mauritius. Championship courses by day, Big Five game drives by dawn and dusk." />
+  <meta name="theme-color" content="#1f3d2b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231f3d2b'/%3E%3Cpath d='M15 8v16M15 8l8 3-8 3' stroke='%23e9c46a' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#packages">Skip to packages</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Safari Golf Tour home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32"><circle cx="16" cy="16" r="16" fill="currentColor" opacity=".12"/><path d="M15 8v16M15 8l8 3-8 3" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="brand-text">Safari Golf Tour</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="#packages">Packages</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-primary btn-sm" href="#enquire">Plan my trip</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice">
+          <circle cx="960" cy="60" r="64" fill="var(--hero-sun)"/>
+          <path d="M0 150 Q200 110 400 140 T800 130 T1200 150 V260 H0Z" fill="var(--hero-ground-far)"/>
+          <path d="M0 200 Q300 170 600 195 T1200 190 V260 H0Z" fill="var(--hero-ground)"/>
+          <!-- acacia -->
+          <g fill="var(--hero-silhouette)">
+            <rect x="238" y="80" width="10" height="120"/>
+            <path d="M160 90 Q243 0 330 90 Z"/>
+            <path d="M190 70 Q243 10 300 70 Z"/>
+          </g>
+          <!-- giraffe -->
+          <g fill="var(--hero-silhouette)">
+            <rect x="700" y="140" width="6" height="60"/>
+            <rect x="730" y="140" width="6" height="60"/>
+            <rect x="698" y="125" width="42" height="20" rx="6"/>
+            <rect x="734" y="65" width="6" height="65" transform="rotate(-12 737 97)"/>
+            <ellipse cx="752" cy="61" rx="10" ry="6"/>
+          </g>
+          <!-- flagstick -->
+          <g>
+            <rect x="1040" y="120" width="3" height="80" fill="var(--hero-silhouette)"/>
+            <path d="M1043 120 L1075 130 L1043 140 Z" fill="var(--hero-flag)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Golf + Safari packages · East & Southern Africa</p>
+        <h1>Tee off at dawn.<br/>Track lions by dusk.</h1>
+        <p class="lead">Hand-built itineraries pairing Africa's championship courses with its greatest wildlife reserves. Flights, transfers, green fees, caddies and guides all arranged by one team.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#packages">Browse packages</a>
+          <a class="btn btn-ghost" href="#enquire">Talk to a planner</a>
+        </div>
+        <ul class="hero-stats" aria-label="At a glance">
+          <li><strong>7</strong><span>countries</span></li>
+          <li><strong>20+</strong><span>courses</span></li>
+          <li><strong>12</strong><span>reserves &amp; parks</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="container strip-inner">
+        <div><h3>Play, then explore</h3><p>Every package alternates rounds with game drives so you never choose between the two.</p></div>
+        <div><h3>Small groups</h3><p>Maximum of eight golfers per departure, or fully private for couples and societies.</p></div>
+        <div><h3>One point of contact</h3><p>A dedicated planner from first enquiry to the final airport transfer.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Packages</p>
+          <h2>Choose your Africa</h2>
+          <p class="section-intro">Prices are per person sharing, in US dollars, and include accommodation, green fees, park fees, internal flights and transfers. International flights are quoted separately.</p>
+        </div>
+
+        <form class="filters" id="filters" aria-label="Filter packages">
+          <label>
+            <span>Region</span>
+            <select name="region">
+              <option value="">All regions</option>
+              <option value="East Africa">East Africa</option>
+              <option value="Southern Africa">Southern Africa</option>
+              <option value="Indian Ocean & Southern Africa">Indian Ocean &amp; Southern Africa</option>
+            </select>
+          </label>
+          <label>
+            <span>Duration</span>
+            <select name="duration">
+              <option value="">Any length</option>
+              <option value="short">Up to 6 nights</option>
+              <option value="medium">7 – 9 nights</option>
+              <option value="long">10+ nights</option>
+            </select>
+          </label>
+          <label>
+            <span>Budget</span>
+            <select name="budget">
+              <option value="">Any budget</option>
+              <option value="5000">Under $5,000</option>
+              <option value="7500">Under $7,500</option>
+              <option value="10000">Under $10,000</option>
+            </select>
+          </label>
+          <label>
+            <span>Sort by</span>
+            <select name="sort">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price, low to high</option>
+              <option value="price-desc">Price, high to low</option>
+              <option value="nights">Duration</option>
+              <option value="rounds">Most golf</option>
+            </select>
+          </label>
+          <button type="reset" class="btn btn-ghost btn-sm">Clear</button>
+        </form>
+
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+        <div class="package-grid" id="package-grid"></div>
+        <p class="empty" id="empty-state" hidden>No packages match those filters. Clear them, or tell us what you're after and we'll build one.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2>From first call to first tee</h2>
+        </div>
+        <ol class="steps">
+          <li><span class="step-num">1</span><h3>Tell us your handicap and your bucket list</h3><p>A 20-minute call covers dates, group size, golf ability and which animals you most want to see.</p></li>
+          <li><span class="step-num">2</span><h3>We draft the itinerary</h3><p>Within three working days you receive a day-by-day plan with lodges, courses and a firm price.</p></li>
+          <li><span class="step-num">3</span><h3>Refine and confirm</h3><p>Swap a course, add a beach extension, upgrade a lodge. A 25% deposit secures every booking.</p></li>
+          <li><span class="step-num">4</span><h3>Travel with support</h3><p>Your planner and a local host are on WhatsApp throughout, from airport pickup to the last game drive.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Destinations</p>
+          <h2>Courses and reserves we work with</h2>
+        </div>
+        <div class="two-col">
+          <div>
+            <h3>Signature courses</h3>
+            <ul class="pill-list">
+              <li>Fancourt The Links, South Africa</li>
+              <li>Leopard Creek, South Africa</li>
+              <li>Pearl Valley, South Africa</li>
+              <li>Skukuza Golf Club, Kruger</li>
+              <li>Karen Country Club, Kenya</li>
+              <li>Muthaiga Golf Club, Kenya</li>
+              <li>Vipingo Ridge, Kenya</li>
+              <li>Kilimanjaro Golf &amp; Wildlife Estate, Tanzania</li>
+              <li>Elephant Hills, Victoria Falls</li>
+              <li>Entebbe Golf Club, Uganda</li>
+              <li>Heritage Le Château, Mauritius</li>
+              <li>Ile aux Cerfs, Mauritius</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Parks and reserves</h3>
+            <ul class="pill-list">
+              <li>Maasai Mara, Kenya</li>
+              <li>Serengeti, Tanzania</li>
+              <li>Ngorongoro Crater, Tanzania</li>
+              <li>Sabi Sand, South Africa</li>
+              <li>Kruger National Park, South Africa</li>
+              <li>Chobe, Botswana</li>
+              <li>Okavango Delta, Botswana</li>
+              <li>Victoria Falls, Zimbabwe</li>
+              <li>Bwindi Impenetrable Forest, Uganda</li>
+              <li>Amboseli, Kenya</li>
+              <li>Tarangire, Tanzania</li>
+              <li>Hwange, Zimbabwe</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Guests</p>
+          <h2>What golfers say</h2>
+        </div>
+        <div class="quotes">
+          <blockquote>
+            <p>“We played The Links on Tuesday and watched a leopard drag an impala up a tree on Thursday. Nothing else I've booked comes close.”</p>
+            <footer>Margaret, 14 handicap · South Africa Signature</footer>
+          </blockquote>
+          <blockquote>
+            <p>“The logistics were flawless. Clubs were waiting at every course, and the Mara camp had our tee times pinned to the notice board.”</p>
+            <footer>David &amp; Priya · Kenya Classic</footer>
+          </blockquote>
+          <blockquote>
+            <p>“Our society of eight had a private guide and a private minibus for the whole trip. Elephant Hills with warthogs on the fairway is one for the stories.”</p>
+            <footer>Rob, society captain · Victoria Falls &amp; Chobe</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Good to know</h2>
+        </div>
+        <details>
+          <summary>Do I need to bring my own clubs?</summary>
+          <p>Bring them if you can. Every course we use has quality rental sets, and we can arrange a set to travel with you between courses so you never carry them on internal flights.</p>
+        </details>
+        <details>
+          <summary>What handicap do I need?</summary>
+          <p>Most clubs ask for a handicap certificate of 28 or better for men and 36 for women. Beginners are welcome on our shorter packages, and non-golfing partners can join the safari and spa days at a reduced rate.</p>
+        </details>
+        <details>
+          <summary>When is the best time to travel?</summary>
+          <p>The dry season from June to October is best for both game viewing and golf across most of the region. Kenya and Tanzania are also excellent from January to March. Each package lists its best months.</p>
+        </details>
+        <details>
+          <summary>Are the prices all-inclusive?</summary>
+          <p>Prices include accommodation, most meals, green fees, caddies where customary, park and conservancy fees, game drives, internal flights and all transfers. They exclude international flights, visas, travel insurance, drinks at some lodges and gratuities.</p>
+        </details>
+        <details>
+          <summary>Can you build a custom itinerary?</summary>
+          <p>Yes. Every package on this page is a starting point. Tell us your dates and wish list through the form below and we'll tailor it.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="enquire">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">Enquire</p>
+          <h2>Plan my trip</h2>
+          <p class="section-intro">Tell us a little about your group and we'll reply within one working day.</p>
+        </div>
+        <form class="enquiry" id="enquiry-form" novalidate>
+          <div class="field-row">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+          </div>
+          <div class="field-row">
+            <label>
+              <span>Package of interest</span>
+              <select name="package" id="enquiry-package">
+                <option value="">Not sure yet</option>
+              </select>
+            </label>
+            <label>
+              <span>Number of golfers</span>
+              <input type="number" name="golfers" min="1" max="16" value="2" />
+            </label>
+          </div>
+          <div class="field-row">
+            <label>
+              <span>Preferred month</span>
+              <input type="month" name="month" />
+            </label>
+            <label>
+              <span>Handicap (approx.)</span>
+              <input type="text" name="handicap" placeholder="e.g. 18" />
+            </label>
+          </div>
+          <label>
+            <span>Anything else</span>
+            <textarea name="notes" rows="4" placeholder="Non-golfing partners, must-see animals, lodges you love…"></textarea>
+          </label>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit">Send enquiry</button>
+          <p class="form-note">We'll only use your details to reply to this enquiry.</p>
+        </form>
+        <div class="form-success" id="form-success" hidden>
+          <h3>Thank you, we've got it.</h3>
+          <p>A planner will be in touch within one working day. In the meantime, keep browsing the packages above.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="brand-text">Safari Golf Tour</p>
+        <p>Golf and safari packages across East and Southern Africa.</p>
+      </div>
+      <div>
+        <p><a href="#packages">Packages</a></p>
+        <p><a href="#how-it-works">How it works</a></p>
+        <p><a href="#faq">FAQ</a></p>
+        <p><a href="#enquire">Enquire</a></p>
+      </div>
+      <div>
+        <p>Prices shown are indicative, per person sharing, and subject to availability and exchange rates at time of booking.</p>
+        <p>© <span id="year"></span> Safari Golf Tour</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Package detail modal -->
+  <div class="modal" id="package-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" type="button" aria-label="Close" data-close>&times;</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/packages.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
