@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design your safari — Safari Golf Tour</title>
+  <meta name="description" content="Tell us your dates, your group and your wish list. A Safari Golf Tour planner replies within one working day with a day-by-day golf and safari itinerary." />
+  <meta name="theme-color" content="#0e1f18" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <section class="hero hero-short">
+      <div class="hero-media"><img src="https://images.unsplash.com/photo-1578326457399-3b34dbbf23b8?auto=format&fit=crop&w=2000&q=78" alt="A zebra in black and white" fetchpriority="high" /></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Design your safari</p>
+        <h1>Tell us what you want to remember.</h1>
+        <p class="lead">Two minutes, no obligation. We'll draft a day-by-day journey around your golf, your wildlife list and your budget, checked by a named planner before it reaches you.</p>
+      </div>
+    </section>
+
+    <section class="section enquire" id="enquire">
+      <div class="container contact-grid">
+        <div class="contact-meta reveal">
+          <div class="block">
+            <h4>Speak to a planner</h4>
+            <p id="contact-email"></p>
+            <p id="contact-phone"></p>
+            <p>Replies within one working day. Calls by appointment, in your time zone.</p>
+          </div>
+          <div class="block">
+            <h4>Offices</h4>
+            <p id="contact-offices"></p>
+          </div>
+          <div class="block">
+            <h4>What happens next</h4>
+            <p>A twenty-minute call, then a day-by-day draft with camps, courses and a firm price within three working days.</p>
+          </div>
+        </div>
+
+        <div>
+          <form class="form reveal reveal-delay-1" id="enquiry-form" novalidate style="margin:0;max-width:none">
+            <div class="form-row">
+              <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+              <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span>Phone (optional)</span><input type="tel" name="phone" autocomplete="tel" /></label>
+              <label class="field"><span>Country of residence</span><input type="text" name="country" autocomplete="country-name" /></label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span>Journey of interest</span><select name="journey" id="enquiry-journey"><option value="">Not sure yet, help me choose</option></select></label>
+              <label class="field"><span>Preferred month</span><input type="month" name="month" /></label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span>Golfers</span><input type="number" name="golfers" min="1" max="16" value="2" /></label>
+              <label class="field"><span>Non-golfers</span><input type="number" name="nonGolfers" min="0" max="16" value="0" /></label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span>Nights, roughly</span>
+                <select name="nights">
+                  <option value="">Flexible</option>
+                  <option value="5-7">5 – 7</option>
+                  <option value="8-10">8 – 10</option>
+                  <option value="11-14">11 – 14</option>
+                  <option value="15+">15 or more</option>
+                </select>
+              </label>
+              <label class="field"><span>Budget per person</span>
+                <select name="budget">
+                  <option value="">Tell me what it costs</option>
+                  <option value="4000-6000">US$4,000 – 6,000</option>
+                  <option value="6000-9000">US$6,000 – 9,000</option>
+                  <option value="9000-15000">US$9,000 – 15,000</option>
+                  <option value="15000+">US$15,000 and up</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span>Handicap, roughly</span><input type="text" name="handicap" placeholder="e.g. 18" /></label>
+              <label class="field"><span>How did you hear about us?</span>
+                <select name="source">
+                  <option value="">Choose</option>
+                  <option>A friend or club member</option>
+                  <option>Search</option>
+                  <option>Social media</option>
+                  <option>Press or podcast</option>
+                  <option>Travelled with you before</option>
+                </select>
+              </label>
+            </div>
+            <label class="field"><span>The trip in your own words</span><textarea name="notes" placeholder="Must-see animals, courses on the list, camps you love, the pace you like…"></textarea></label>
+            <p class="form-error" role="alert" hidden></p>
+            <button class="btn btn-gold" type="submit">Send my brief</button>
+            <p class="form-note">We only use your details to reply to this enquiry.</p>
+          </form>
+          <div class="form-success" id="enquiry-success" hidden>
+            <h3>Thank you, we have it.</h3>
+            <p>A planner will be in touch within one working day, and a day-by-day draft will follow within three.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream" id="faq">
+      <div class="container narrow">
+        <div class="section-head reveal">
+          <p class="eyebrow">Good to know</p>
+          <h2>Questions we're asked most.</h2>
+        </div>
+        <details><summary>Do I need to bring my own clubs?</summary><p>Bring them if you can. Every course we use has quality rental sets, and we can arrange a single set to travel with you between courses so you never carry them on internal flights.</p></details>
+        <details><summary>What handicap do I need?</summary><p>Most clubs ask for a certificate of 28 or better for men and 36 for women. Beginners are welcome on the shorter journeys, and non-golfing partners join the safari and spa days at a reduced rate.</p></details>
+        <details><summary>When is the best time to travel?</summary><p>The dry season from June to October is best for game viewing and golf across most of the region. Kenya and Tanzania are also excellent from January to March. Each journey lists its best months.</p></details>
+        <details><summary>What is included in the price?</summary><p>Accommodation, most meals, green fees and caddies where customary, park and conservancy fees, game drives, internal flights and all transfers. International flights, visas, travel insurance, drinks at some lodges and gratuities are excluded.</p></details>
+        <details><summary>How much does a golf safari cost?</summary><p>Journeys start at around US$3,600 per person sharing for a five-night short break and run to US$18,500 and above for a fourteen-night, three-country crossing. Most guests travel between US$6,000 and US$9,000.</p></details>
+        <details><summary>Can non-golfers come?</summary><p>Yes, and they usually have the better week. Every golf morning has a safari, spa or vineyard alternative, and the group meets again for lunch.</p></details>
+        <details><summary>Is my money protected?</summary><p>Deposits are held in a client trust account and every journey is covered by our travel-operator bond. We'll send the details with your first draft.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/packages.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/pages/contact.js"></script>
+</body>
+</html>
