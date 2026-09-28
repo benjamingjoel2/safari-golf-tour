@@ -13,6 +13,7 @@
   offices.textContent = C.offices.join(" · ");
 
   S.populateJourneySelect(document.getElementById("enquiry-journey"));
+  S.populateDepartureSelect(document.getElementById("enquiry-departure"));
   S.bindEnquiryForm(document.getElementById("enquiry-form"), document.getElementById("enquiry-success"));
   S.observeReveals();
 })();

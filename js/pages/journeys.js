@@ -81,14 +81,15 @@
           "<aside>" +
             '<div class="sticky">' +
               '<div class="aside-block"><h4>Courses</h4><ul>' +
-                j.courses.map(function (c) { return "<li>" + esc(c.name) + " · Par " + c.par + "<small>" + esc(c.note) + "</small></li>"; }).join("") +
+                j.courses.map(function (c) { var m = S.courseByName(c.name); var label = m ? '<a href="courses.html#' + esc(m.id) + '" style="color:inherit">' + esc(c.name) + "</a>" : esc(c.name); return "<li>" + label + " · Par " + c.par + "<small>" + esc(c.note) + "</small></li>"; }).join("") +
               "</ul></div>" +
               '<div class="aside-block"><h4>Where you stay</h4><ul>' +
-                j.stays.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") +
+                j.stays.map(function (s) { var m = S.stayByName(s); return "<li>" + (m ? '<a href="stays.html#' + esc(m.id) + '" style="color:inherit">' + esc(s) + "</a>" : esc(s)) + "</li>"; }).join("") +
               "</ul></div>" +
               '<div class="aside-block"><h4>Best months</h4><p style="margin:0">' + esc(j.bestMonths) + "</p></div>" +
               '<div class="aside-block"><h4>Included</h4><p style="margin:0;font-size:0.95rem;color:var(--text-dark-muted)">Accommodation, most meals, green fees and caddies where customary, park and conservancy fees, game drives, internal flights and all transfers. International flights, visas, insurance and gratuities are excluded.</p></div>' +
               '<div class="actions"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '">Enquire about this journey</a></div>' +
+              (S.DEPARTURES.some(function (d) { return d.journey === j.id; }) ? '<p style="margin:14px 0 0;font-size:0.9rem;color:var(--text-dark-muted)">Also available as a <a href="departures.html" style="color:var(--gold-2)">hosted departure</a>.</p>' : "") +
             "</div>" +
           "</aside>" +
         "</div>" +

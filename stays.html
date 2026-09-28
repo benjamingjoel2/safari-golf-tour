@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stays — Safari Golf Tour</title>
+  <meta name="description" content="Where you stay on a golf safari: owner-run camps in private conservancies, golf resorts, country houses and grand hotels, chosen for their guides first and their pillows second." />
+  <meta name="theme-color" content="#0e1f18" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <section class="hero hero-short">
+      <div class="hero-media"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=78" alt="A thatched lodge with a pool and loungers" fetchpriority="high" /></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Stays</p>
+        <h1>Chosen for their guides first, their pillows second.</h1>
+        <p class="lead">Owner-run camps in private conservancies, golf resorts with the course at the door, and a few grand old hotels. We have slept in every one.</p>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container">
+        <form class="filters" id="filters" aria-label="Filter stays">
+          <label class="field"><span>Destination</span>
+            <select name="destination" id="dest-filter"><option value="">All destinations</option></select>
+          </label>
+          <label class="field"><span>Type</span>
+            <select name="type" id="type-filter"><option value="">All types</option></select>
+          </label>
+          <button type="reset" class="btn btn-outline btn-sm">Clear</button>
+        </form>
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+        <div class="journey-grid three" id="stay-grid"></div>
+      </div>
+    </section>
+
+    <section class="bleed center">
+      <div class="bleed-media"><img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=2000&q=78" alt="A bed on a terrace above a lake at dawn" loading="lazy" /></div>
+      <div class="container">
+        <div class="bleed-inner reveal">
+          <p class="eyebrow">The rule</p>
+          <h2>Private conservancies, not public gates.</h2>
+          <p class="lead">Every safari night on our journeys is in a private conservancy or concession. Fewer vehicles, off-road tracking, night drives, and walks. The parks are for passing through.</p>
+          <a class="btn btn-gold" href="journeys.html">See the journeys</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/packages.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/pages/stays.js"></script>
+</body>
+</html>

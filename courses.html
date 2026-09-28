@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Courses — Safari Golf Tour</title>
+  <meta name="description" content="The championship courses we play across Africa: Fancourt, Leopard Creek, Pearl Valley, Karen, Muthaiga, Kilimanjaro, Elephant Hills, Heritage, Ile aux Cerfs and more." />
+  <meta name="theme-color" content="#0e1f18" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <section class="hero hero-short">
+      <div class="hero-media"><img src="https://images.unsplash.com/photo-1500932334442-8761ee4810a7?auto=format&fit=crop&w=2000&q=78" alt="A green and its bunkers from the air" fetchpriority="high" /></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Courses</p>
+        <h1>Only courses worth the flight.</h1>
+        <p class="lead">Every course below has been played by us in the last two seasons. If we would not fly for it, we do not sell it.</p>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container">
+        <form class="filters" id="filters" aria-label="Filter courses">
+          <label class="field"><span>Country</span>
+            <select name="country" id="country-filter"><option value="">All countries</option></select>
+          </label>
+          <label class="field"><span>Sort</span>
+            <select name="sort">
+              <option value="country">By country</option>
+              <option value="name">A to Z</option>
+              <option value="par">Par</option>
+            </select>
+          </label>
+          <button type="reset" class="btn btn-outline btn-sm">Clear</button>
+        </form>
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+        <div class="journey-grid three" id="course-grid"></div>
+      </div>
+    </section>
+
+    <section class="bleed right">
+      <div class="bleed-media"><img src="https://images.unsplash.com/photo-1530028828-25e8270793c5?auto=format&fit=crop&w=2000&q=78" alt="Irons in a golf bag" loading="lazy" /></div>
+      <div class="container">
+        <div class="bleed-inner reveal">
+          <p class="eyebrow">Clubs and handicaps</p>
+          <h2>Your clubs travel ahead of you.</h2>
+          <p class="lead">Light aircraft cannot take a club case, so we move your clubs by road between courses while you fly into the bush. Handicap certificates are lodged before you arrive.</p>
+          <a class="btn btn-gold" href="journal.html#packing-clubs-for-africa">How it works</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/packages.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/pages/courses.js"></script>
+</body>
+</html>
