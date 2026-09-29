@@ -27,29 +27,29 @@
 
   /* ---------- Courses ---------- */
   S.COURSES = [
-    { id: "karen", name: "Karen Country Club", country: "Kenya", destination: "kenya", designer: "Remington & Bernard (1937)", par: 72, holes: 18, photo: "fairway", note: "Tree-lined parkland on the edge of the Ngong Hills, twenty minutes from Nairobi's hotels. The most complete club in East Africa." },
-    { id: "muthaiga", name: "Muthaiga Golf Club", country: "Kenya", destination: "kenya", designer: "Founded 1913", par: 72, holes: 18, photo: "golfSwing2", note: "Kenya's home of golf and host of the Kenya Open. Tight, mature and unforgiving off the tee." },
-    { id: "windsor", name: "Windsor Golf Hotel & Country Club", country: "Kenya", destination: "kenya", designer: "Tom Macaulay", par: 72, holes: 18, photo: "aerialGreen", note: "Championship layout through indigenous forest on the north side of Nairobi, ideal for a farewell round before an evening flight." },
-    { id: "vipingo", name: "Vipingo Ridge", country: "Kenya", destination: "kenya", designer: "David Jones", par: 72, holes: 18, photo: "golfSwing3", note: "PGA-accredited Baobab Course on a ridge above the Indian Ocean, north of Mombasa. The coast extension." },
-    { id: "rift-valley", name: "Great Rift Valley Lodge", country: "Kenya", destination: "kenya", designer: "Sam Lacey", par: 72, holes: 18, photo: "acaciaDusk", note: "High above Lake Naivasha with the Rift Valley below every hole. Zebra and giraffe on the fairways." },
-    { id: "kili", name: "Kilimanjaro Golf & Wildlife Estate", country: "Tanzania", destination: "tanzania", designer: "David Jones", par: 72, holes: 18, photo: "kilimanjaro", note: "Between Meru and Kilimanjaro on a private wildlife estate. Play among zebra and wildebeest with the mountain behind the green." },
-    { id: "sea-cliff", name: "Sea Cliff Resort, Zanzibar", country: "Tanzania", destination: "tanzania", designer: "Peter Matkovich", par: 36, holes: 9, photo: "beach", note: "Nine ocean-side holes on the north-west coast of Zanzibar. The beach extension after the Serengeti." },
-    { id: "fancourt-links", name: "Fancourt The Links", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 73, holes: 18, photo: "links", note: "South Africa's number one and the Presidents Cup venue. A links built on a flat field, with dunes, wind and a firm, fast surface. Caddies included." },
-    { id: "fancourt-montagu", name: "Fancourt Montagu", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "golfSwing", note: "Parkland masterpiece in the Outeniqua foothills, refined by David McLay Kidd. The gentler of Fancourt's championship pair." },
-    { id: "fancourt-outeniqua", name: "Fancourt Outeniqua", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "golfBall", note: "Wide fairways and water on ten holes. The warm-up round on arrival at Fancourt." },
-    { id: "pearl-valley", name: "Pearl Valley", country: "South Africa", destination: "south-africa", designer: "Jack Nicklaus", par: 72, holes: 18, photo: "vineyard", note: "Nicklaus signature course among the Paarl vineyards with the Simonsberg behind. Host of the South African Open." },
-    { id: "leopard-creek", name: "Leopard Creek", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "clubBall", note: "On the Crocodile River bordering Kruger. Hippos and crocodiles line the 13th, elephants cross the far bank. Access by invitation, which we arrange." },
-    { id: "skukuza", name: "Skukuza Golf Club", country: "South Africa", destination: "south-africa", designer: "Kruger National Park", par: 72, holes: 9, photo: "irons", note: "Unfenced nine holes inside Kruger National Park, played twice. The rough really is wild, and a ranger walks the round." },
-    { id: "arabella", name: "Arabella", country: "South Africa", destination: "south-africa", designer: "Peter Matkovich", par: 72, holes: 18, photo: "fairway", note: "On the Bot River lagoon an hour from Cape Town. The finish along the water is one of the best in the country." },
-    { id: "erinvale", name: "Erinvale", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "aerialGreen", note: "Somerset West, at the foot of the Helderberg. World Cup of Golf venue and a fine Winelands alternative." },
-    { id: "elephant-hills", name: "Elephant Hills", country: "Zimbabwe", destination: "victoria-falls", designer: "Gary Player", par: 72, holes: 18, photo: "golfSwing3", note: "The only course in the world where you can see a natural wonder's spray from the tee. Warthogs on the fairways, the Zambezi beside the back nine." },
-    { id: "borrowdale", name: "Borrowdale Brooke", country: "Zimbabwe", destination: "victoria-falls", designer: "Peter Matkovich", par: 72, holes: 18, photo: "golfBall", note: "Harare's championship course, for guests routing through the capital." },
-    { id: "heritage-chateau", name: "Heritage Le Château", country: "Mauritius", destination: "mauritius", designer: "Peter Matkovich", par: 72, holes: 18, photo: "resortPool", note: "Host of the AfrAsia Bank Mauritius Open on the DP World Tour. Sea views from every hole on the Bel Ombre estate." },
-    { id: "heritage-reserve", name: "Heritage La Réserve", country: "Mauritius", destination: "mauritius", designer: "Peter Matkovich & Louis Oosthuizen", par: 72, holes: 18, photo: "golfSwing2", note: "Opened 2023 in the hills above Le Château. Already ranked among the island's best." },
-    { id: "ile-aux-cerfs", name: "Ile aux Cerfs", country: "Mauritius", destination: "mauritius", designer: "Bernhard Langer", par: 72, holes: 18, photo: "beach", note: "Reached by boat from the east coast, with the lagoon in play on nine holes. Lunch on the island afterwards." },
-    { id: "anahita", name: "Anahita", country: "Mauritius", destination: "mauritius", designer: "Ernie Els", par: 72, holes: 18, photo: "deckSea", note: "Six holes along the ocean on the east coast. A quieter alternative to Ile aux Cerfs across the water." },
-    { id: "entebbe", name: "Entebbe Golf Club", country: "Uganda", destination: "uganda", designer: "Founded 1901", par: 71, holes: 18, photo: "fairway", note: "East Africa's oldest course, on the shore of Lake Victoria a short walk from the hotel. Marabou storks patrol the fairways." },
-    { id: "uganda-gc", name: "Uganda Golf Club", country: "Uganda", destination: "uganda", designer: "Kampala, founded 1908", par: 72, holes: 18, photo: "clubBall", note: "Host of the Uganda Open in the centre of Kampala. Optional round for those with a night in the capital." }
+    { id: "karen", name: "Karen Country Club", country: "Kenya", destination: "kenya", designer: "Remington & Bernard (1937)", par: 72, holes: 18, photo: "g_greenTrees", note: "Tree-lined parkland on the edge of the Ngong Hills, twenty minutes from Nairobi's hotels. The most complete club in East Africa." },
+    { id: "muthaiga", name: "Muthaiga Golf Club", country: "Kenya", destination: "kenya", designer: "Founded 1913", par: 72, holes: 18, photo: "g_savannaCourse", note: "Kenya's home of golf and host of the Kenya Open. Tight, mature and unforgiving off the tee." },
+    { id: "windsor", name: "Windsor Golf Hotel & Country Club", country: "Kenya", destination: "kenya", designer: "Tom Macaulay", par: 72, holes: 18, photo: "g_aerialRolling", note: "Championship layout through indigenous forest on the north side of Nairobi, ideal for a farewell round before an evening flight." },
+    { id: "vipingo", name: "Vipingo Ridge", country: "Kenya", destination: "kenya", designer: "David Jones", par: 72, holes: 18, photo: "g_seaCourse", note: "PGA-accredited Baobab Course on a ridge above the Indian Ocean, north of Mombasa. The coast extension." },
+    { id: "rift-valley", name: "Great Rift Valley Lodge", country: "Kenya", destination: "kenya", designer: "Sam Lacey", par: 72, holes: 18, photo: "g_mtnCourse2", note: "High above Lake Naivasha with the Rift Valley below every hole. Zebra and giraffe on the fairways." },
+    { id: "kili", name: "Kilimanjaro Golf & Wildlife Estate", country: "Tanzania", destination: "tanzania", designer: "David Jones", par: 72, holes: 18, photo: "g_mtnWalk", note: "Between Meru and Kilimanjaro on a private wildlife estate. Play among zebra and wildebeest with the mountain behind the green." },
+    { id: "sea-cliff", name: "Sea Cliff Resort, Zanzibar", country: "Tanzania", destination: "tanzania", designer: "Peter Matkovich", par: 36, holes: 9, photo: "g_palmsWater", note: "Nine ocean-side holes on the north-west coast of Zanzibar. The beach extension after the Serengeti." },
+    { id: "fancourt-links", name: "Fancourt The Links", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 73, holes: 18, photo: "g_linksGold", note: "South Africa's number one and the Presidents Cup venue. A links built on a flat field, with dunes, wind and a firm, fast surface. Caddies included." },
+    { id: "fancourt-montagu", name: "Fancourt Montagu", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "g_dawnBunkers", note: "Parkland masterpiece in the Outeniqua foothills, refined by David McLay Kidd. The gentler of Fancourt's championship pair." },
+    { id: "fancourt-outeniqua", name: "Fancourt Outeniqua", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "g_aerialPond", note: "Wide fairways and water on ten holes. The warm-up round on arrival at Fancourt." },
+    { id: "pearl-valley", name: "Pearl Valley", country: "South Africa", destination: "south-africa", designer: "Jack Nicklaus", par: 72, holes: 18, photo: "g_mountainsRoses", note: "Nicklaus signature course among the Paarl vineyards with the Simonsberg behind. Host of the South African Open." },
+    { id: "leopard-creek", name: "Leopard Creek", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "g_bigTree", note: "On the Crocodile River bordering Kruger. Hippos and crocodiles line the 13th, elephants cross the far bank. Access by invitation, which we arrange." },
+    { id: "skukuza", name: "Skukuza Golf Club", country: "South Africa", destination: "south-africa", designer: "Kruger National Park", par: 72, holes: 9, photo: "g_flagMist", note: "Unfenced nine holes inside Kruger National Park, played twice. The rough really is wild, and a ranger walks the round." },
+    { id: "arabella", name: "Arabella", country: "South Africa", destination: "south-africa", designer: "Peter Matkovich", par: 72, holes: 18, photo: "g_aerial4", note: "On the Bot River lagoon an hour from Cape Town. The finish along the water is one of the best in the country." },
+    { id: "erinvale", name: "Erinvale", country: "South Africa", destination: "south-africa", designer: "Gary Player", par: 72, holes: 18, photo: "g_alpine", note: "Somerset West, at the foot of the Helderberg. World Cup of Golf venue and a fine Winelands alternative." },
+    { id: "elephant-hills", name: "Elephant Hills", country: "Zimbabwe", destination: "victoria-falls", designer: "Gary Player", par: 72, holes: 18, photo: "g_sunrise2", note: "The only course in the world where you can see a natural wonder's spray from the tee. Warthogs on the fairways, the Zambezi beside the back nine." },
+    { id: "borrowdale", name: "Borrowdale Brooke", country: "Zimbabwe", destination: "victoria-falls", designer: "Peter Matkovich", par: 72, holes: 18, photo: "g_greenSunrise", note: "Harare's championship course, for guests routing through the capital." },
+    { id: "heritage-chateau", name: "Heritage Le Château", country: "Mauritius", destination: "mauritius", designer: "Peter Matkovich", par: 72, holes: 18, photo: "g_aerialGreen2", note: "Host of the AfrAsia Bank Mauritius Open on the DP World Tour. Sea views from every hole on the Bel Ombre estate." },
+    { id: "heritage-reserve", name: "Heritage La Réserve", country: "Mauritius", destination: "mauritius", designer: "Peter Matkovich & Louis Oosthuizen", par: 72, holes: 18, photo: "g_mtnCourse1", note: "Opened 2023 in the hills above Le Château. Already ranked among the island's best." },
+    { id: "ile-aux-cerfs", name: "Ile aux Cerfs", country: "Mauritius", destination: "mauritius", designer: "Bernhard Langer", par: 72, holes: 18, photo: "g_aerialBunkers", note: "Reached by boat from the east coast, with the lagoon in play on nine holes. Lunch on the island afterwards." },
+    { id: "anahita", name: "Anahita", country: "Mauritius", destination: "mauritius", designer: "Ernie Els", par: 72, holes: 18, photo: "g_aerial3", note: "Six holes along the ocean on the east coast. A quieter alternative to Ile aux Cerfs across the water." },
+    { id: "entebbe", name: "Entebbe Golf Club", country: "Uganda", destination: "uganda", designer: "Founded 1901", par: 71, holes: 18, photo: "g_sunrise1", note: "East Africa's oldest course, on the shore of Lake Victoria a short walk from the hotel. Marabou storks patrol the fairways." },
+    { id: "uganda-gc", name: "Uganda Golf Club", country: "Uganda", destination: "uganda", designer: "Kampala, founded 1908", par: 72, holes: 18, photo: "g_aerial2", note: "Host of the Uganda Open in the centre of Kampala. Optional round for those with a night in the capital." }
   ];
 
   /* ---------- Stays ---------- */
@@ -85,7 +85,7 @@
 
   /* ---------- Encounters ---------- */
   S.ENCOUNTERS = [
-    { id: "play-with-a-pro", name: "Play with a touring professional", where: "Fancourt · Heritage · Karen", photo: "golfSwing3", text: "Eighteen holes with a PGA or Ladies European Tour professional as your fourth, followed by lunch and a short-game clinic. Available on hosted departures and, with notice, on tailor-made journeys.", journeys: ["south-africa-signature", "mauritius-kruger", "kenya-classic"] },
+    { id: "play-with-a-pro", name: "Play with a touring professional", where: "Fancourt · Heritage · Karen", photo: "g_drive", text: "Eighteen holes with a PGA or Ladies European Tour professional as your fourth, followed by lunch and a short-game clinic. Available on hosted departures and, with notice, on tailor-made journeys.", journeys: ["south-africa-signature", "mauritius-kruger", "kenya-classic"] },
     { id: "gorillas", name: "An hour with the mountain gorillas", where: "Bwindi Impenetrable Forest", photo: "highlands", text: "A morning trek with rangers to a habituated family, then one hour in their company. Permits are limited and secured months ahead; we hold an allocation for our guests.", journeys: ["uganda-short-break"] },
     { id: "balloon", name: "Dawn over the Mara by balloon", where: "Maasai Mara", photo: "balloon", text: "Lift-off before sunrise, an hour drifting over the herds, and a champagne breakfast on the plains where you land. The most photographed morning of any journey.", journeys: ["kenya-classic", "grand-crossing"] },
     { id: "leopard-tracking", name: "Tracking leopard with a specialist", where: "Sabi Sand", photo: "leopard", text: "A private vehicle with one of the reserve's senior trackers for a full day, following one animal from morning kill to evening tree. The Sabi Sand is the only place this is reliable.", journeys: ["south-africa-signature", "grand-crossing"] },
@@ -101,7 +101,7 @@
       category: "Golf · South Africa",
       title: "The Links after the refurbishment",
       date: "September 2026",
-      photo: "links",
+      photo: "g_dawnBunkers",
       standfirst: "Fancourt's flagship reopened with new bunkering and a firmer, faster surface. It plays two shots harder into the wind and is better for it.",
       body: [
         "We played the Links three times in the fortnight after it reopened, twice into a south-easter and once in the flat calm that George gives you perhaps one morning in ten. The work is subtle from the tee and obvious from the fairway: the bunkers have been rebuilt with revetted faces and deeper floors, the greens are firmer, and the run-offs that used to hold a ball now feed it away.",
@@ -153,7 +153,7 @@
       category: "Why a golf safari",
       title: "A day in two halves",
       date: "May 2026",
-      photo: "acaciaDusk",
+      photo: "g_duskPair",
       standfirst: "How we build a golf-safari day so that neither half feels like the price of the other.",
       body: [
         "The oldest objection to a golf safari is that it must be a compromise: too little golf for the golfer, too little bush for the non-golfer. It is a fair objection to a badly built day, and most of the golf-and-safari packages we see are badly built, with the round bolted onto a rest day and the game drive squeezed into the hour before dinner.",
@@ -166,7 +166,7 @@
       category: "Golf · Mauritius",
       title: "Mauritius after the Open: why October is the month",
       date: "April 2026",
-      photo: "resortPool",
+      photo: "g_seaCourse",
       standfirst: "The DP World Tour leaves Heritage in December. Play it in October, when the courses are tournament-ready and the island is dry.",
       body: [
         "Le Château is prepared for the AfrAsia Bank Mauritius Open from September, so from October the greens are at tournament speed and the rough is up. It is the best month to see the course as the professionals do. It is also the last month before the summer humidity arrives and the afternoon showers become reliable.",
