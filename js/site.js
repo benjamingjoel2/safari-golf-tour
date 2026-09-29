@@ -255,16 +255,44 @@
     });
   };
 
-  /* ---------- Reveal ---------- */
+  /* ---------- Reveal ----------
+   * Elements with .reveal fade in when they enter the viewport. Three layers keep this
+   * from ever leaving content hidden: IntersectionObserver, a scroll-position fallback,
+   * and a timer that reveals everything if the observer has not reported at all.
+   */
+  var ioReported = false;
+  function revealAll() {
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { el.classList.add("in"); });
+  }
+  function revealByPosition() {
+    var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.96 && r.bottom > 0) el.classList.add("in");
+    });
+  }
   S.observeReveals = function () {
     var els = document.querySelectorAll(".reveal:not(.in)");
-    if (!("IntersectionObserver" in window)) { els.forEach(function (el) { el.classList.add("in"); }); return; }
+    if (!("IntersectionObserver" in window)) { revealAll(); return; }
     var io = new IntersectionObserver(function (entries) {
+      ioReported = true;
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     els.forEach(function (el) { io.observe(el); });
+    revealByPosition();
   };
+  var ticking = false;
+  function onScrollReveal() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { revealByPosition(); ticking = false; });
+  }
+  window.addEventListener("scroll", onScrollReveal, { passive: true });
+  window.addEventListener("resize", onScrollReveal);
+  window.addEventListener("load", function () { revealByPosition(); });
+  setTimeout(function () { if (!ioReported) revealAll(); }, 1500);
+  setTimeout(revealByPosition, 300);
   S.observeReveals();
 })();
