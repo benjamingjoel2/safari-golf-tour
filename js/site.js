@@ -42,7 +42,7 @@
     return (
       '<a class="jcard reveal" href="journeys.html#' + esc(j.id) + '">' +
         '<div class="jcard-media">' +
-          '<img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" loading="lazy" width="900" height="560" />' +
+          '<img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" width="900" height="560" />' +
           (j.tier === "flagship" ? '<span class="tag">Flagship</span>' : "") +
         "</div>" +
         '<div class="jcard-body">' +

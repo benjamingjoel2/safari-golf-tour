@@ -8,7 +8,7 @@
   S.articleCard = function (a) {
     return (
       '<a class="jcard reveal" href="journal.html#' + esc(a.slug) + '">' +
-        '<div class="jcard-media"><img src="' + S.img(a.photo, 900, 560) + '" alt="' + esc(a.title) + '" loading="lazy" width="900" height="560" /></div>' +
+        '<div class="jcard-media"><img src="' + S.img(a.photo, 900, 560) + '" alt="' + esc(a.title) + '" width="900" height="560" /></div>' +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + esc(a.category) + " · " + esc(a.date) + "</p>" +
           "<h3>" + esc(a.title) + "</h3>" +

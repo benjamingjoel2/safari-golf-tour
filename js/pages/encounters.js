@@ -11,7 +11,7 @@
     return (
       '<section class="dest-section" id="' + esc(e.id) + '">' +
         '<div class="container split' + (i % 2 ? " reverse" : "") + '">' +
-          '<div class="split-media reveal"><img src="' + S.img(e.photo, 1100, 1375) + '" alt="' + esc(e.name) + '" loading="lazy" width="1100" height="1375" /><span class="frame"></span></div>' +
+          '<div class="split-media reveal"><img src="' + S.img(e.photo, 1100, 1375) + '" alt="' + esc(e.name) + '" width="1100" height="1375" /><span class="frame"></span></div>' +
           '<div class="reveal reveal-delay-1">' +
             '<p class="eyebrow">0' + (i + 1) + " · " + esc(e.where) + "</p>" +
             "<h2>" + esc(e.name) + "</h2>" +

@@ -28,7 +28,7 @@
     var js = journeysFor(s);
     return (
       '<article class="jcard reveal" id="' + esc(s.id) + '">' +
-        '<div class="jcard-media"><img src="' + S.img(s.photo, 900, 560) + '" alt="' + esc(s.name) + '" loading="lazy" width="900" height="560" /></div>' +
+        '<div class="jcard-media"><img src="' + S.img(s.photo, 900, 560) + '" alt="' + esc(s.name) + '" width="900" height="560" /></div>' +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + esc(d ? d.name : "") + " · " + esc(s.type) + "</p>" +
           "<h3>" + esc(s.name) + "</h3>" +

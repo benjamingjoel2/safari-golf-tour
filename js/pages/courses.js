@@ -23,7 +23,7 @@
     var js = journeysFor(c);
     return (
       '<article class="jcard reveal" id="' + esc(c.id) + '">' +
-        '<div class="jcard-media"><img src="' + S.img(c.photo, 900, 560) + '" alt="' + esc(c.name) + '" loading="lazy" width="900" height="560" /></div>' +
+        '<div class="jcard-media"><img src="' + S.img(c.photo, 900, 560) + '" alt="' + esc(c.name) + '" width="900" height="560" /></div>' +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + esc(c.country) + " · Par " + c.par + " · " + c.holes + " holes</p>" +
           "<h3>" + esc(c.name) + "</h3>" +
