@@ -13,7 +13,7 @@
       '<section class="dest-section" id="' + esc(d.id) + '">' +
         '<div class="container split' + (i % 2 ? " reverse" : "") + '">' +
           '<div class="split-media reveal">' +
-            '<img src="' + S.img(d.photo, 1100, 1375) + '" alt="' + esc(d.name) + '" loading="lazy" width="1100" height="1375" />' +
+            '<img src="' + S.img(d.photo, 1100, 1375) + '" alt="' + esc(d.name) + '" width="1100" height="1375" />' +
             '<span class="frame"></span>' +
           "</div>" +
           '<div class="reveal reveal-delay-1">' +

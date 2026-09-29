@@ -12,7 +12,7 @@
   dest.innerHTML = S.DESTINATIONS.map(function (d, i) {
     return (
       '<a class="dest reveal' + (i % 3 ? " reveal-delay-" + (i % 3) : "") + '" href="destinations.html#' + S.esc(d.id) + '">' +
-        '<img src="' + S.img(d.photo, 800, 1000) + '" alt="' + S.esc(d.name) + '" loading="lazy" width="800" height="1000" />' +
+        '<img src="' + S.img(d.photo, 800, 1000) + '" alt="' + S.esc(d.name) + '" width="800" height="1000" />' +
         '<div class="dest-text"><p class="eyebrow">' + d.courses.length + " courses · " + d.parks.length + ' reserves</p><h3>' + S.esc(d.name) + "</h3><p>" + S.esc(d.strap) + "</p></div>" +
       "</a>"
     );
@@ -22,7 +22,7 @@
   document.getElementById("home-encounters").innerHTML = S.ENCOUNTERS.slice(0, 3).map(function (e, i) {
     return (
       '<a class="dest reveal' + (i ? " reveal-delay-" + i : "") + '" href="encounters.html#' + S.esc(e.id) + '">' +
-        '<img src="' + S.img(e.photo, 800, 1000) + '" alt="' + S.esc(e.name) + '" loading="lazy" width="800" height="1000" />' +
+        '<img src="' + S.img(e.photo, 800, 1000) + '" alt="' + S.esc(e.name) + '" width="800" height="1000" />' +
         '<div class="dest-text"><p class="eyebrow">' + S.esc(e.where) + '</p><h3 style="font-size:1.5rem">' + S.esc(e.name) + "</h3></div>" +
       "</a>"
     );
