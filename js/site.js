@@ -9,17 +9,19 @@
 
   var NAV = [
     { href: "index.html", label: "Home", num: "01" },
-    { href: "journeys.html", label: "Journeys", num: "02" },
-    { href: "departures.html", label: "Hosted departures", num: "03" },
-    { href: "destinations.html", label: "Destinations", num: "04" },
-    { href: "courses.html", label: "Courses", num: "05" },
-    { href: "stays.html", label: "Stays", num: "06" },
-    { href: "encounters.html", label: "Encounters", num: "07" },
-    { href: "journal.html", label: "Journal", num: "08" },
-    { href: "about.html", label: "Our Story", num: "09" },
-    { href: "contact.html", label: "Design your safari", num: "10" }
+    { href: "countries.html", label: "Countries", num: "02" },
+    { href: "courses.html", label: "Golf courses", num: "03" },
+    { href: "parks.html", label: "National parks", num: "04" },
+    { href: "build.html", label: "Trip builder", num: "05" },
+    { href: "journeys.html", label: "Journeys", num: "06" },
+    { href: "departures.html", label: "Hosted departures", num: "07" },
+    { href: "stays.html", label: "Stays", num: "08" },
+    { href: "encounters.html", label: "Encounters", num: "09" },
+    { href: "journal.html", label: "Journal", num: "10" },
+    { href: "about.html", label: "Our Story", num: "11" },
+    { href: "contact.html", label: "Design your safari", num: "12" }
   ];
-  var HEADER_NAV = ["journeys.html", "departures.html", "destinations.html", "courses.html", "about.html"];
+  var HEADER_NAV = ["countries.html", "courses.html", "parks.html", "journeys.html", "about.html"];
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -76,7 +78,7 @@
               return '<a href="' + n.href + '"' + (n.href === page ? ' aria-current="page"' : "") + ">" + esc(n.label) + "</a>";
             }).join("") +
           "</nav>" +
-          '<a class="btn btn-gold btn-sm header-cta" href="contact.html">Design your safari</a>' +
+          '<a class="btn btn-gold btn-sm header-cta" href="build.html">Build your trip</a>' +
           '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span><span></span><span></span></button>' +
         "</div>" +
       "</div>" +
@@ -156,6 +158,7 @@
             '<li><a href="courses.html">The courses</a></li>' +
             '<li><a href="stays.html">Where you stay</a></li>' +
             '<li><a href="departures.html">Hosted departures</a></li>' +
+            '<li><a href="build.html">Trip builder</a></li>' +
             '<li><a href="journal.html#a-day-in-two-halves">Why a golf safari</a></li>' +
             '<li><a href="journal.html#packing-clubs-for-africa">Travelling with clubs</a></li>' +
           "</ul></div>" +
@@ -163,8 +166,9 @@
             S.JOURNEYS.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '">' + esc(j.name) + "</a></li>"; }).join("") +
             '<li><a href="journeys.html">All journeys</a></li>' +
           "</ul></div>" +
-          "<div><h4>Destinations</h4><ul>" +
-            S.DESTINATIONS.map(function (d) { return '<li><a href="destinations.html#' + esc(d.id) + '">' + esc(d.name) + "</a></li>"; }).join("") +
+          "<div><h4>Countries</h4><ul>" +
+            S.COUNTRIES.map(function (d) { return '<li><a href="countries.html#' + esc(d.id) + '">' + esc(d.name) + "</a></li>"; }).join("") +
+            '<li><a href="parks.html">All parks &amp; reserves</a></li>' +
           "</ul></div>" +
           "<div><h4>" + esc(C.brand) + "</h4><ul>" +
             '<li><a href="about.html">Our story</a></li>' +
@@ -193,6 +197,148 @@
     : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16v11H8l-4 4z"/></svg>';
   document.body.insertAdjacentHTML("beforeend",
     '<a class="chat-fab" href="' + chatHref + '"' + (C.whatsapp ? ' target="_blank" rel="noopener"' : "") + ">" + chatIcon + "<span>Chat to us</span></a>");
+
+  /* ---------- Trip builder: shared state, cards and tray ---------- */
+  S.trip = {
+    get: function () {
+      try { var v = JSON.parse(localStorage.getItem("sgt-trip") || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; }
+    },
+    set: function (items) {
+      try { localStorage.setItem("sgt-trip", JSON.stringify(items)); } catch (e) { /* storage unavailable */ }
+      S.updateTray();
+      window.dispatchEvent(new CustomEvent("sgt-trip-change"));
+    },
+    has: function (type, id) { return S.trip.get().some(function (i) { return i.type === type && i.id === id; }); },
+    toggle: function (type, id) {
+      var items = S.trip.get();
+      var idx = -1;
+      items.forEach(function (i, k) { if (i.type === type && i.id === id) idx = k; });
+      if (idx >= 0) items.splice(idx, 1); else items.push({ type: type, id: id, nights: type === "park" ? 3 : 1 });
+      S.trip.set(items);
+    }
+  };
+
+  S.addBtn = function (type, id) {
+    return '<button type="button" class="btn btn-outline btn-sm add-btn" data-trip-type="' + esc(type) + '" data-trip-id="' + esc(id) + '">Add to trip</button>';
+  };
+
+  S.refreshTripButtons = function () {
+    document.querySelectorAll(".add-btn").forEach(function (b) {
+      var on = S.trip.has(b.getAttribute("data-trip-type"), b.getAttribute("data-trip-id"));
+      b.classList.toggle("is-added", on);
+      b.textContent = on ? "✓ In your trip" : "Add to trip";
+    });
+    S.updateTray();
+  };
+
+  S.updateTray = function () {
+    var fab = document.getElementById("trip-fab");
+    if (!fab) return;
+    var n = S.trip.get().length;
+    fab.querySelector("b").textContent = String(n);
+    fab.hidden = n === 0 || page === "build.html";
+  };
+
+  S.courseCard = function (c) {
+    var js = (S.JOURNEYS || []).filter(function (j) {
+      return j.courses.some(function (x) { var m = S.courseByName(x.name); return m && m.id === c.id; });
+    });
+    var cn = S.countryByName ? S.countryByName(c.country) : null;
+    return (
+      '<article class="jcard reveal" id="' + esc(c.id) + '">' +
+        '<div class="jcard-media"><img src="' + S.img(c.photo, 900, 560) + '" alt="' + esc(c.name) + '" width="900" height="560" /></div>' +
+        '<div class="jcard-body">' +
+          '<p class="eyebrow">' + (cn ? '<a href="countries.html#' + esc(cn.id) + '" style="color:inherit;text-decoration:none">' + esc(c.country) + "</a>" : esc(c.country)) + " · Par " + c.par + " · " + c.holes + " holes</p>" +
+          "<h3>" + esc(c.name) + "</h3>" +
+          '<p class="muted" style="font-size:0.85rem">' + esc(c.designer) + "</p>" +
+          "<p>" + esc(c.note) + "</p>" +
+          (js.length ? '<ul class="chips" style="margin-top:6px">' + js.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:inherit">' + esc(j.name) + "</a></li>"; }).join("") + "</ul>" : "") +
+          '<div class="jcard-foot">' + S.addBtn("course", c.id) + "</div>" +
+        "</div>" +
+      "</article>"
+    );
+  };
+
+  S.parkCard = function (p) {
+    var near = S.course ? S.course(p.nearest.course) : null;
+    return (
+      '<article class="jcard reveal" id="' + esc(p.id) + '">' +
+        '<div class="jcard-media"><img src="' + S.img(p.photo, 900, 560) + '" alt="' + esc(p.name) + '" width="900" height="560" /><span class="tag">' + esc(p.type) + "</span></div>" +
+        '<div class="jcard-body">' +
+          '<p class="eyebrow"><a href="countries.html#' + esc(p.countryId) + '" style="color:inherit;text-decoration:none">' + esc(p.country) + "</a> · " + esc(p.bestMonths) + "</p>" +
+          "<h3>" + esc(p.name) + "</h3>" +
+          '<p class="muted" style="font-family:var(--serif);font-style:italic;font-size:1.1rem">' + esc(p.signature) + "</p>" +
+          "<p>" + esc(p.note) + "</p>" +
+          '<ul class="chips" style="margin-top:6px">' + p.wildlife.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("") + "</ul>" +
+          (near ? '<p class="nearest"><span>Nearest golf</span><a href="courses.html#' + esc(near.id) + '">' + esc(near.name) + "</a> · " + esc(p.nearest.how) + "</p>" : "") +
+          '<div class="jcard-foot">' + S.addBtn("park", p.id) + "</div>" +
+        "</div>" +
+      "</article>"
+    );
+  };
+
+  S.countryTile = function (c, i) {
+    var courses = S.coursesIn(c.id).length, parks = S.parksIn(c.id).length;
+    return (
+      '<a class="dest reveal' + (i % 3 ? " reveal-delay-" + (i % 3) : "") + '" href="countries.html#' + esc(c.id) + '">' +
+        '<img src="' + S.img(c.photo, 800, 1000) + '" alt="' + esc(c.name) + '" width="800" height="1000" />' +
+        '<div class="dest-text"><p class="eyebrow">' + courses + (courses === 1 ? " course · " : " courses · ") + parks + " parks</p><h3>" + esc(c.name) + "</h3><p>" + esc(c.strap) + "</p></div>" +
+      "</a>"
+    );
+  };
+
+  /* Map a journey to builder stops: its courses, plus the parks its route names. */
+  S.journeyStops = function (j) {
+    var stops = [];
+    j.courses.forEach(function (c) {
+      var m = S.courseByName(c.name);
+      if (m && !/optional/i.test(c.name)) stops.push({ type: "course", id: m.id, nights: 1 });
+    });
+    var routeText = j.route.join(" ").toLowerCase();
+    (S.PARKS || []).forEach(function (p) {
+      var key = p.name.toLowerCase().split(/[:&(]/)[0].replace(/national park|game reserve|private reserve|impenetrable forest|conservancies/g, "").trim();
+      if (key && routeText.indexOf(key) !== -1) stops.push({ type: "park", id: p.id, nights: 3 });
+    });
+    return stops;
+  };
+
+  /* Group stops by country (Southern Africa first, then Indian Ocean, then East Africa), golf before safari within each country. */
+  S.orderStops = function (items) {
+    var regionOrder = ["Southern Africa", "Indian Ocean", "East Africa"];
+    function countryOf(i) {
+      if (i.type === "park") { var p = S.park(i.id); return p ? p.countryId : ""; }
+      var c = S.course(i.id); var cn = c && S.countryByName(c.country); return cn ? cn.id : "";
+    }
+    var groups = {}, order = [];
+    items.forEach(function (i) { var k = countryOf(i); if (!groups[k]) { groups[k] = []; order.push(k); } groups[k].push(i); });
+    order.sort(function (a, b) {
+      var ra = regionOrder.indexOf((S.country(a) || {}).region), rb = regionOrder.indexOf((S.country(b) || {}).region);
+      return ra - rb || a.localeCompare(b);
+    });
+    var out = [];
+    order.forEach(function (k) {
+      groups[k].filter(function (i) { return i.type === "course"; }).forEach(function (i) { out.push(i); });
+      groups[k].filter(function (i) { return i.type === "park"; }).forEach(function (i) { out.push(i); });
+    });
+    return out;
+  };
+
+  document.body.insertAdjacentHTML("beforeend",
+    '<a class="trip-fab" id="trip-fab" href="build.html" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-7-7 16-2-7z"/></svg>Your trip · <b>0</b></a>');
+
+  document.addEventListener("click", function (e) {
+    var add = e.target.closest(".add-btn");
+    if (add) { e.preventDefault(); S.trip.toggle(add.getAttribute("data-trip-type"), add.getAttribute("data-trip-id")); S.refreshTripButtons(); return; }
+    var load = e.target.closest("[data-load-journey]");
+    if (load) {
+      var j = S.journey(load.getAttribute("data-load-journey"));
+      if (!j) return;
+      S.trip.set(S.orderStops(S.journeyStops(j)));
+      if (page !== "build.html") location.href = "build.html";
+    }
+  });
+  window.addEventListener("storage", function (ev) { if (ev.key === "sgt-trip") S.refreshTripButtons(); });
+  S.updateTray();
 
   /* ---------- Enquiry forms ---------- */
   S.populateJourneySelect = function (select) {

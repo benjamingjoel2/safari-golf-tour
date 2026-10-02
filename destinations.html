@@ -3,52 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Destinations — Safari Golf Tour</title>
-  <meta name="description" content="Six golf and safari destinations, curated not collected: Kenya, Tanzania, South Africa, Victoria Falls and Chobe, Mauritius and Uganda, with the courses and reserves we use in each." />
-  <meta name="theme-color" content="#0e1f18" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.unsplash.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <title>Countries — Safari Golf Tour</title>
+  <meta name="robots" content="noindex" />
+  <script>
+    (function () {
+      var map = { "victoria-falls": "zimbabwe" };
+      var h = location.hash.replace("#", "");
+      location.replace("countries.html" + (h ? "#" + (map[h] || h) : ""));
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=countries.html" />
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <main id="main">
-    <section class="hero hero-short">
-      <div class="hero-media"><img src="https://images.unsplash.com/photo-1677138055562-483b824b6348?auto=format&fit=crop&w=2000&q=78" alt="A golf course with mountains behind" fetchpriority="high" /></div>
-      <div class="container hero-inner">
-        <p class="eyebrow">Destinations</p>
-        <h1>Six destinations. Curated, not collected.</h1>
-        <p class="lead">We only sell countries we know on foot. Each one below lists the courses we play, the reserves we use, and the journeys that visit.</p>
-      </div>
-    </section>
-
-    <section class="section-tight section-cream">
-      <div class="container">
-        <ul class="chips" id="dest-nav" aria-label="Jump to destination"></ul>
-      </div>
-    </section>
-
-    <div id="dest-sections"></div>
-
-    <section class="bleed center">
-      <div class="bleed-media"><img src="https://images.unsplash.com/photo-1526095179574-86e545346ae6?auto=format&fit=crop&w=2000&q=78" alt="A zebra in long grass" /></div>
-      <div class="container">
-        <div class="bleed-inner reveal">
-          <p class="eyebrow">Two countries, or five</p>
-          <h2>Crossing borders is our job, not yours.</h2>
-          <p class="lead">Most journeys combine two or three of these. We handle the visas, the flight connections and the clubs, so a three-country crossing feels like a single trip.</p>
-          <a class="btn btn-gold" href="contact.html">Design your safari</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script src="js/packages.js"></script>
-  <script src="js/content.js"></script>
-  <script src="js/site.js"></script>
-  <script src="js/pages/destinations.js"></script>
-</body>
+<body><p>Moved to <a href="countries.html">countries</a>.</p></body>
 </html>

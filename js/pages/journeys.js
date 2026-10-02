@@ -88,7 +88,7 @@
               "</ul></div>" +
               '<div class="aside-block"><h4>Best months</h4><p style="margin:0">' + esc(j.bestMonths) + "</p></div>" +
               '<div class="aside-block"><h4>Included</h4><p style="margin:0;font-size:0.95rem;color:var(--text-dark-muted)">Accommodation, most meals, green fees and caddies where customary, park and conservancy fees, game drives, internal flights and all transfers. International flights, visas, insurance and gratuities are excluded.</p></div>' +
-              '<div class="actions"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '">Enquire about this journey</a></div>' +
+              '<div class="actions" style="flex-direction:column;align-items:stretch"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '">Enquire about this journey</a><button type="button" class="btn btn-outline btn-sm" data-load-journey="' + esc(j.id) + '">Load into the trip builder</button></div>' +
               (S.DEPARTURES.some(function (d) { return d.journey === j.id; }) ? '<p style="margin:14px 0 0;font-size:0.9rem;color:var(--text-dark-muted)">Also available as a <a href="departures.html" style="color:var(--gold-2)">hosted departure</a>.</p>' : "") +
             "</div>" +
           "</aside>" +
