@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Countries — Safari Golf Tour</title>
+  <meta name="description" content="Browse ten African golf and safari countries. In each one, see the championship courses and the national parks and reserves side by side, and add any of them to your own trip." />
+  <meta name="theme-color" content="#0e1f18" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <div id="list-view">
+      <section class="hero hero-short">
+        <div class="hero-media"><img src="https://images.unsplash.com/photo-1634140255781-e900c47ecf1f?auto=format&fit=crop&w=2000&q=78" alt="A links green in golden grass with mountains beyond" fetchpriority="high" /></div>
+        <div class="container hero-inner">
+          <p class="eyebrow">Browse by country</p>
+          <h1>Ten countries. Every course, every park.</h1>
+          <p class="lead">Pick a country to see its championship courses and its national parks and reserves side by side. Add any of them to your trip and we stitch the golf and the wild into one itinerary.</p>
+        </div>
+      </section>
+
+      <section class="section section-cream">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">How it works</p>
+            <h2>Browse. Pick. Combine.</h2>
+          </div>
+          <ol class="steps">
+            <li class="reveal"><span class="num">01</span><h3>Browse a country</h3><p>Every course we play and every park we use, with the drive or flight time between them.</p></li>
+            <li class="reveal reveal-delay-1"><span class="num">02</span><h3>Add what you want</h3><p>Courses and parks go into your trip with one click. Mix countries freely.</p></li>
+            <li class="reveal reveal-delay-2"><span class="num">03</span><h3>See it as a journey</h3><p>The builder orders your stops, sets the nights, prices it and drafts a day-by-day outline.</p></li>
+            <li class="reveal reveal-delay-3"><span class="num">04</span><h3>Send it to a planner</h3><p>We check flights, permits and tee times and come back with a firm proposal within three days.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">The countries</p>
+            <h2>Where the golf meets the wild.</h2>
+          </div>
+          <div class="dest-grid five" id="country-grid"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="detail-view" hidden></div>
+  </main>
+
+  <script src="js/packages.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/places.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/pages/countries.js"></script>
+</body>
+</html>

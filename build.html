@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trip Builder — Safari Golf Tour</title>
+  <meta name="description" content="Combine any courses and parks across Africa into one golf and safari itinerary. Set the nights, see an indicative price and a day-by-day outline, then send it to a planner." />
+  <meta name="theme-color" content="#0e1f18" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%230e1f18'/%3E%3Cpath d='M17 31V9m0 0 10 3.5L17 16' stroke='%23c9a15c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <section class="hero hero-short">
+      <div class="hero-media"><img src="https://images.unsplash.com/photo-1593282153762-a41e3cceb06c?auto=format&fit=crop&w=2000&q=78" alt="A golfer and caddie on the fairway at sunset" fetchpriority="high" /></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Trip builder</p>
+        <h1>Your courses. Your parks. One journey.</h1>
+        <p class="lead">Everything you've added is below. Order the stops, set the nights, and the builder prices it and drafts the days. A planner then checks every flight, permit and tee time.</p>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container">
+        <div id="builder-empty" hidden>
+          <div class="section-head">
+            <p class="eyebrow">Nothing added yet</p>
+            <h2>Start with a country, a course or a park.</h2>
+            <p class="lead">Add stops from any of these pages and they appear here. Or load one of our journeys as a starting point and change it.</p>
+          </div>
+          <div class="way-grid" style="margin-bottom:48px">
+            <a class="way" href="countries.html"><div class="way-media"><img src="https://images.unsplash.com/photo-1634140255781-e900c47ecf1f?auto=format&fit=crop&w=900&q=78" alt="A links green in golden grass" /></div><p class="eyebrow">Ten countries</p><h3>Browse by country</h3><p>Courses and parks side by side, with travel times between them.</p><span class="btn-link">Countries</span></a>
+            <a class="way" href="courses.html"><div class="way-media"><img src="https://images.unsplash.com/photo-1516705416642-fa4f130a0bb3?auto=format&fit=crop&w=900&q=78" alt="A championship course from the air" /></div><p class="eyebrow">29 courses</p><h3>Browse the courses</h3><p>Every course we play, filterable by country.</p><span class="btn-link">Courses</span></a>
+            <a class="way" href="parks.html"><div class="way-media"><img src="https://images.unsplash.com/photo-1564101160531-4838e8a5f4e7?auto=format&fit=crop&w=900&q=78" alt="Wildebeest crossing a river" /></div><p class="eyebrow">36 parks &amp; reserves</p><h3>Browse the parks</h3><p>Filter by country, type or the animals you most want to see.</p><span class="btn-link">Parks</span></a>
+          </div>
+          <div class="section-head"><p class="eyebrow">Or start from a journey</p><h2>Load one of ours and make it yours.</h2></div>
+          <div class="journey-grid three" id="builder-journeys"></div>
+        </div>
+
+        <div id="builder" hidden>
+          <div class="builder-grid">
+            <div>
+              <div class="section-head" style="margin-bottom:24px">
+                <p class="eyebrow">Your stops</p>
+                <h2>In the order you'll travel.</h2>
+                <p class="muted">Use the arrows to reorder. Parks default to three nights; a course is one round with a night nearby.</p>
+              </div>
+              <ol class="stops" id="stops"></ol>
+              <div class="actions" style="margin-top:20px">
+                <a class="btn btn-outline btn-sm" href="countries.html">Add more</a>
+                <button class="btn btn-outline btn-sm" type="button" id="auto-order">Suggest an order</button>
+                <button class="btn btn-outline btn-sm" type="button" id="clear-trip">Clear the trip</button>
+              </div>
+
+              <div class="section-head" style="margin:64px 0 20px">
+                <p class="eyebrow">Day by day</p>
+                <h2>A first outline.</h2>
+                <p class="muted">Drafted automatically from your stops. Your planner refines it around real flight schedules and tee times.</p>
+              </div>
+              <ol class="itinerary" id="outline"></ol>
+            </div>
+            <aside>
+              <div class="sticky summary" id="summary"></div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-ink">
+      <div class="container narrow">
+        <div class="section-head center reveal">
+          <p class="eyebrow">About the price</p>
+          <h2>Indicative, and honest about it.</h2>
+          <p class="lead">The builder's price uses our average rates per course day and per park night, plus a transfer allowance for each stop and each border. It excludes international flights, visas, insurance and gratuities. Your planner's proposal replaces it with real camp rates for your dates, which usually land within fifteen per cent.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/packages.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/places.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/pages/journeys-cards.js"></script>
+  <script src="js/pages/build.js"></script>
+</body>
+</html>

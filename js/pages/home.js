@@ -7,16 +7,8 @@
   grid.innerHTML = S.JOURNEYS.filter(function (j) { return j.id !== "grand-crossing"; }).slice(0, 4)
     .map(function (j) { return S.jcard(j); }).join("");
 
-  /* Destinations */
-  var dest = document.getElementById("home-destinations");
-  dest.innerHTML = S.DESTINATIONS.map(function (d, i) {
-    return (
-      '<a class="dest reveal' + (i % 3 ? " reveal-delay-" + (i % 3) : "") + '" href="destinations.html#' + S.esc(d.id) + '">' +
-        '<img src="' + S.img(d.photo, 800, 1000) + '" alt="' + S.esc(d.name) + '" width="800" height="1000" />' +
-        '<div class="dest-text"><p class="eyebrow">' + d.courses.length + " courses · " + d.parks.length + ' reserves</p><h3>' + S.esc(d.name) + "</h3><p>" + S.esc(d.strap) + "</p></div>" +
-      "</a>"
-    );
-  }).join("");
+  /* Countries */
+  document.getElementById("home-countries").innerHTML = S.COUNTRIES.map(S.countryTile).join("");
 
   /* Encounters */
   document.getElementById("home-encounters").innerHTML = S.ENCOUNTERS.slice(0, 3).map(function (e, i) {

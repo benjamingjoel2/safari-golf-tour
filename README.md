@@ -10,8 +10,11 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 | --- | --- |
 | `index.html` | Home: hero, trust strip, pillars, flagship journey, three ways to travel, selected journeys, guest words, what we arrange, hosted departures, destinations, philosophy, encounters, journal notes, enquiry form |
 | `journeys.html` | All journeys with region / length / budget filters and sorting. `journeys.html#<id>` opens the full itinerary, with courses and stays linked |
+| `countries.html` | Browse ten countries. `countries.html#<id>` opens a country with its courses and its parks side by side, each with an Add to trip button |
+| `parks.html` | Every national park, reserve and conservancy, filterable by country, type and wildlife, with the nearest course and travel time |
+| `build.html` | Trip builder: ordered stops, nights per park, indicative price, day-by-day outline, load a journey, send the plan to the brief |
 | `departures.html` | Hosted departures by date for 2027 and 2028, with places left and a reserve link |
-| `destinations.html` | Six destinations with courses, reserves and the journeys that visit. `#<id>` jumps to one |
+| `destinations.html` | Redirects to `countries.html` (old links keep working) |
 | `courses.html` | Every course we play, filterable by country. `#<id>` jumps to one |
 | `stays.html` | Camps, lodges, resorts and hotels, filterable by destination and type. `#<id>` jumps to one |
 | `encounters.html` | Seven arranged encounters and the journeys they belong to. `#<id>` jumps to one |
@@ -23,8 +26,9 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 ## Structure
 
 - `js/packages.js` — journeys (with courses, stays and day-by-day itineraries), destinations, guest quotes, photo ids and site config (`SGT.CONFIG`).
-- `js/content.js` — courses, stays, hosted departures, encounters and journal articles, plus lookups. Edit these two files to change content; every page renders from them.
-- `js/site.js` — shared chrome injected on every page: header, overlay menu, footer, floating chat button, reveal-on-scroll, enquiry-form handling.
+- `js/content.js` — courses, stays, hosted departures, encounters and journal articles, plus lookups.
+- `js/places.js` — the ten countries, 39 national parks and reserves (each with its nearest course), extra courses, and the trip builder's indicative rates (`SGT.RATES`). Edit these three files to change content; every page renders from them.
+- `js/site.js` — shared chrome injected on every page: header, overlay menu, footer, floating chat button, reveal-on-scroll, enquiry-form handling, and the trip state (`SGT.trip`, stored in the visitor's `localStorage` under `sgt-trip`) with the course, park and country cards and the floating "Your trip" tray.
 - `js/pages/*.js` — per-page rendering.
 - `css/styles.css` — the design system.
 
@@ -61,3 +65,9 @@ Append an object to `JOURNEYS` in `js/packages.js`. It appears automatically in 
 Hosted departures, courses, stays, encounters and journal articles are plain arrays in `js/content.js` and follow the same pattern.
 
 To use your own photography, add a new key to `PHOTO` or change `SGT.img()` to return your own URLs.
+
+## Trip builder
+
+Visitors add courses and parks from the country, courses and parks pages. The selection lives in the visitor's browser (`localStorage`, key `sgt-trip`). `build.html` orders the stops (Southern Africa, then Indian Ocean, then East Africa; golf before safari within each country), lets them set nights per park, prices the trip from `SGT.RATES` in `js/places.js`, drafts a day-by-day outline, and hands a text summary to the enquiry form via `contact.html?plan=1`. "Load into the builder" on any journey converts its courses and route into stops.
+
+Rates are indicative placeholders: per course day, per park night by tier, a gorilla permit, a transfer allowance per stop and per border. Change them in one place.
