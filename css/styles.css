@@ -633,3 +633,37 @@ details p { margin: 12px 0 0; color: var(--text-muted); max-width: 60ch; }
 .section-ink .jcard .chips li, .section-forest .jcard .chips li { color: var(--text-muted); border-color: var(--line); }
 .summary .btn-outline { color: var(--cream); border-color: rgba(244, 239, 228, 0.45); }
 .summary .btn-outline:hover { border-color: var(--cream); }
+
+/* =========================================================
+   Dark mode: every light surface becomes a dark one.
+   The "dark context" tokens are remapped so existing rules
+   written for cream sections and white cards invert cleanly.
+   ========================================================= */
+:root {
+  --surface: #1a3327;
+  --cream-2: #22402f;
+  --text-dark: #eef0ea;
+  --text-dark-muted: #b1b9b0;
+  --line-dark: rgba(244, 239, 228, 0.12);
+  --gold-2: #c9a15c;
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+.section-cream { background: #122319; color: var(--text); }
+.trust { background: var(--ink); color: var(--text); border-top: 1px solid var(--line); }
+.jcard, .dep, .stop, .section-cream .facts li, .filters { background: var(--surface); border-color: var(--line); }
+.jcard:hover { box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4); }
+.jcard .btn-outline, .section-cream .btn-outline, .stepper, .stop-actions button { color: var(--text); border-color: rgba(244, 239, 228, 0.4); }
+.jcard .btn-outline:hover, .section-cream .btn-outline:hover, .stop-actions button:hover:not([disabled]) { border-color: var(--cream); color: var(--cream); }
+.jcard .chips li, .section-cream .chips li, .chips li { color: var(--text-muted); border-color: var(--line); }
+.filters .field select { background-color: var(--ink); color: var(--text); border-color: var(--line); }
+.field select option { color: #1e2a22; background: #f4efe4; }
+.stepper button { color: var(--text); }
+.stepper button:hover { background: var(--forest-3); }
+.summary { background: var(--ink); }
+.dep-year { color: var(--gold); }
+.prose h2 { color: var(--cream); }
+details { border-color: var(--line); }
+.section-cream details { border-color: var(--line); }
+.hero-plain { background: var(--ink); }
+.form-success, .quote-card { background: var(--ink); }
+.aside-block li, .itinerary li, .note, .steps li { border-color: var(--line); }
