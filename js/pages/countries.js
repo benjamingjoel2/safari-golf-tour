@@ -20,7 +20,7 @@
   function detailHtml(c) {
     var courses = S.coursesIn(c.id), parks = S.parksIn(c.id);
     var journeys = c.journeys.map(S.journey).filter(Boolean);
-    var others = S.COUNTRIES.filter(function (x) { return x.id !== c.id && x.region === c.region; }).slice(0, 3);
+    var others = (c.pairs ? c.pairs.map(S.country).filter(Boolean) : S.COUNTRIES.filter(function (x) { return x.id !== c.id && x.region === c.region; })).slice(0, 3);
     return (
       '<section class="hero hero-short">' +
         '<div class="hero-media"><img src="' + S.img(c.photo, 2000) + '" alt="' + esc(c.name) + '" /></div>' +
