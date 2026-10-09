@@ -384,6 +384,125 @@
         { day: 5, title: "Lake Bunyonyi", text: "Canoe safari and community visit. Return to Bwindi." },
         { day: 6, title: "Depart", text: "Fly back to Entebbe for your onward flight." }
       ]
+    },
+    {
+      id: "morocco-sahara",
+      name: "Marrakech & the Sahara",
+      strap: "Three rounds beneath the Atlas, then a night in the dunes.",
+      tagline: "Marrakech's best courses, the Agafay at sunset, and a camp in Erg Chebbi",
+      countries: ["Morocco"],
+      region: "North Africa",
+      nights: 8,
+      rounds: 3,
+      gameDrives: 3,
+      priceFrom: 4200,
+      tier: "signature",
+      featured: true,
+      bestMonths: "Mar – May, Sep – Nov",
+      photo: "sahara",
+      route: ["Marrakech", "Agafay Desert", "Dadès Gorges", "Erg Chebbi", "Marrakech"],
+      intro: "A desert safari with golf on either side of it. Three days in Marrakech on the courses that made the city a golf destination, dinner in the Agafay, then the road over the Atlas through the gorges and kasbahs to Erg Chebbi, where the camels take you into the dunes for the night.",
+      highlights: [
+        "Assoufid, Royal Golf Marrakech and Al Maaden",
+        "Sunset dinner at a luxury camp in the Agafay stone desert",
+        "The Tizi n'Tichka pass, Aït Benhaddou and the Dadès gorges",
+        "A night in a private tented camp among the dunes of Erg Chebbi"
+      ],
+      courses: [
+        { name: "Assoufid Golf Club", par: 72, note: "Desert golf with Atlas views, the best course in the country." },
+        { name: "Royal Golf Marrakech", par: 72, note: "The 1923 course between the olive and cypress trees." },
+        { name: "Al Maaden Golf Resort", par: 72, note: "Kyle Phillips, ten minutes from the medina." }
+      ],
+      stays: ["La Mamounia", "Scarabeo Camp, Agafay", "Dar Ahlam, Skoura (or similar)", "Merzouga luxury desert camp"],
+      itinerary: [
+        { day: 1, title: "Arrive Marrakech", text: "Private transfer to La Mamounia. Evening in the medina with your host." },
+        { day: 2, title: "Assoufid", text: "Morning round at Assoufid. Afternoon in the Majorelle gardens or the souks." },
+        { day: 3, title: "Royal Golf Marrakech · Agafay", text: "Round at the Royal, then out to the Agafay for camels at sunset and dinner under the stars at Scarabeo Camp." },
+        { day: 4, title: "Al Maaden", text: "Return to the city for a round at Al Maaden. Hammam and dinner at the hotel." },
+        { day: 5, title: "Over the Atlas", text: "Drive the Tizi n'Tichka pass to the kasbah of Aït Benhaddou and on to Skoura's palm grove for the night." },
+        { day: 6, title: "Dadès and Todra gorges", text: "Through the gorges and the Tafilalt oases to Merzouga. Camel trek into the dunes at sunset; camp in Erg Chebbi." },
+        { day: 7, title: "Erg Chebbi", text: "Sunrise from the dune tops, 4x4 to the nomad camps and the fossil beds, sandboarding. Second night in the camp, or a desert kasbah." },
+        { day: 8, title: "Back to Marrakech", text: "Fly from Errachidia, or take the long road back. Farewell dinner." },
+        { day: 9, title: "Depart", text: "Transfer to Marrakech airport." }
+      ]
+    },
+    {
+      id: "madagascar-lemurs",
+      name: "Lemurs & the Highlands",
+      strap: "Indri at dawn, baobabs at dusk, and a round above Antananarivo.",
+      tagline: "Golf du Rova, the rainforest at Andasibe, the baobab avenue, and the islands of Nosy Be",
+      countries: ["Madagascar"],
+      region: "Indian Ocean",
+      nights: 9,
+      rounds: 1,
+      gameDrives: 7,
+      priceFrom: 5200,
+      tier: "signature",
+      featured: false,
+      bestMonths: "Apr – Nov",
+      photo: "indri",
+      route: ["Antananarivo", "Andasibe-Mantadia", "Kirindy Forest", "Nosy Be"],
+      intro: "Madagascar is a safari like no other: no big five, but a cast of animals found nowhere else, met on foot in the forest. One round in the hills outside the capital opens the trip; the indri, the fossa and the baobabs follow, and the beach at Nosy Be ends it.",
+      highlights: [
+        "International Golf du Rova, the country's only eighteen",
+        "The indri's dawn chorus at Andasibe, with night walks for chameleons",
+        "Fossa tracking in Kirindy and the Avenue of the Baobabs at sunset",
+        "Black lemurs, reefs and a private-island lodge off Nosy Be"
+      ],
+      courses: [
+        { name: "International Golf du Rova", par: 72, note: "Rolling hill course at Andakana, with a hotel at the clubhouse." }
+      ],
+      stays: ["Golf du Rova Hotel", "Mantadia Lodge, Andasibe", "Kirindy Forest camp", "Constance Tsarabanjina"],
+      itinerary: [
+        { day: 1, title: "Arrive Antananarivo", text: "Transfer to the Golf du Rova hotel in the hills, twenty kilometres from the city." },
+        { day: 2, title: "Golf du Rova", text: "Morning round, then the drive east through the highlands to Andasibe." },
+        { day: 3, title: "Andasibe", text: "Dawn in Analamazaotra for the indri, afternoon in Mantadia, night walk for chameleons and mouse lemurs." },
+        { day: 4, title: "Andasibe", text: "A full day in the rainforest with your guide: sifaka, bamboo lemurs and the orchid trail." },
+        { day: 5, title: "Fly to Morondava", text: "Return to Antananarivo and fly west. Sunset at the Avenue of the Baobabs." },
+        { day: 6, title: "Kirindy", text: "Dry-forest walks for Verreaux's sifaka and the fossa; night walk for the giant jumping rat." },
+        { day: 7, title: "Fly to Nosy Be", text: "Via Antananarivo to Nosy Be and by boat to Tsarabanjina." },
+        { day: 8, title: "Lokobe", text: "Pirogue to the Lokobe reserve for black lemurs and boas, afternoon on the reef." },
+        { day: 9, title: "Island day", text: "Snorkelling, sailing, or whale sharks in season." },
+        { day: 10, title: "Depart", text: "Boat and flight to Antananarivo for your onward connection." }
+      ]
+    },
+    {
+      id: "benin-pendjari",
+      name: "Pendjari & the Lagoon",
+      strap: "West Africa's wildest park, and a round on its newest course.",
+      tagline: "Cotonou, Ganvié by pirogue, Ouidah, and four nights in Pendjari",
+      countries: ["Benin"],
+      region: "West Africa",
+      nights: 7,
+      rounds: 1,
+      gameDrives: 7,
+      priceFrom: 4600,
+      tier: "signature",
+      featured: false,
+      bestMonths: "Dec – Apr",
+      photo: "eleRoad",
+      route: ["Cotonou", "Lake Nokoué", "Ouidah", "Pendjari"],
+      intro: "Benin pairs the strongest big-game safari in West Africa with a coast of lagoons, stilt villages and history, and now a championship course between the two. Dry-season game drives in Pendjari, run by African Parks, find elephant, lion and buffalo at the waterholes.",
+      highlights: [
+        "Ouidah Golf Club at Avlékété, Benin's first eighteen",
+        "Ganvié, the stilt city on Lake Nokoué, by pirogue",
+        "Ouidah's slave route and the Door of No Return",
+        "Four nights in Pendjari with a private guide and vehicle"
+      ],
+      courses: [
+        { name: "Ouidah Golf Club, Avlékété", par: 72, note: "Jeremy Pern's course between the lagoon and the Atlantic." }
+      ],
+      stays: ["Sofitel Cotonou Marina", "Pendjari Lodge"],
+      itinerary: [
+        { day: 1, title: "Arrive Cotonou", text: "Met on arrival and transferred to the Sofitel on the marina." },
+        { day: 2, title: "Ganvié", text: "Morning by pirogue through the stilt city on Lake Nokoué. Afternoon in Cotonou's Dantokpa market." },
+        { day: 3, title: "Avlékété", text: "Round at Ouidah Golf Club, then the slave route to the Door of No Return and the python temple in Ouidah." },
+        { day: 4, title: "Fly north", text: "Flight to Natitingou and transfer into Pendjari. Afternoon drive to the Mare Bali waterhole." },
+        { day: 5, title: "Pendjari", text: "Dawn and dusk game drives along the Pendjari river: elephant, buffalo, hippo and lion." },
+        { day: 6, title: "Pendjari", text: "Full day with your guide into the Atakora foothills and the Tanougou falls." },
+        { day: 7, title: "Pendjari", text: "Final drives, a walk with the rangers, and a last sundowner at the waterhole." },
+        { day: 8, title: "Depart", text: "Fly back to Cotonou for your onward flight." }
+      ]
     }
   ];
 
@@ -447,6 +566,36 @@
       courses: ["Entebbe Golf Club", "Uganda Golf Club"],
       parks: ["Bwindi Impenetrable Forest", "Queen Elizabeth", "Lake Bunyonyi", "Murchison Falls"],
       journeys: ["uganda-short-break"]
+    },
+    {
+      id: "morocco",
+      name: "Morocco",
+      strap: "The finest golf north of the Cape, and a desert safari by camel and 4x4.",
+      photo: "sahara",
+      text: "Marrakech has three courses worth crossing a continent for, with the Atlas behind every green, and the Sahara begins a day's drive away.",
+      courses: ["Assoufid", "Royal Golf Marrakech", "Al Maaden", "Royal Golf Dar Es Salam", "Tazegzout"],
+      parks: ["Agafay", "Erg Chebbi", "Erg Chigaga", "Toubkal"],
+      journeys: ["morocco-sahara"]
+    },
+    {
+      id: "madagascar",
+      name: "Madagascar",
+      strap: "Lemurs, baobabs and limestone tsingy, with a round above the capital.",
+      photo: "indri",
+      text: "A safari on foot among animals found nowhere else, one mature course outside Antananarivo, and the islands of Nosy Be to finish.",
+      courses: ["International Golf du Rova"],
+      parks: ["Andasibe-Mantadia", "Kirindy", "Isalo", "Nosy Be"],
+      journeys: ["madagascar-lemurs"]
+    },
+    {
+      id: "benin",
+      name: "Benin",
+      strap: "West Africa's best savanna safari and a brand-new championship course.",
+      photo: "ganvie",
+      text: "Pendjari's elephant and lion in the dry season, Ganvié on the lagoon, and the first eighteen-hole course in the country at Avlékété.",
+      courses: ["Ouidah Golf Club"],
+      parks: ["Pendjari", "W National Park", "Lake Nokoué"],
+      journeys: ["benin-pendjari"]
     }
   ];
 

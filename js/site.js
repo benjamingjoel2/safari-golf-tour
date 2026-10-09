@@ -150,7 +150,7 @@
         '<div class="footer-grid five">' +
           '<div class="footer-brand">' +
             '<a class="brand" href="index.html">' + mark + '<span><span class="brand-name">' + esc(C.brand) + '</span><span class="brand-sub">Golf &amp; Safari · Africa</span></span></a>' +
-            '<p style="margin-top:18px">Safari first, golf woven through. Golf and safari journeys across seven African countries, built one guest at a time by people who have played and slept their way across all of it.</p>' +
+            '<p style="margin-top:18px">Safari first, golf woven through. Golf and safari journeys across thirteen African countries, built one guest at a time by people who have played and slept their way across all of it.</p>' +
             (socialHtml ? '<div class="socials">' + socialHtml + "</div>" : "") +
           "</div>" +
           "<div><h4>The experience</h4><ul>" +
@@ -302,9 +302,9 @@
     return stops;
   };
 
-  /* Group stops by country (Southern Africa first, then Indian Ocean, then East Africa), golf before safari within each country. */
+  /* Group stops by country (North and West Africa first, then Southern Africa, Indian Ocean, East Africa), golf before safari within each country. */
   S.orderStops = function (items) {
-    var regionOrder = ["Southern Africa", "Indian Ocean", "East Africa"];
+    var regionOrder = ["North Africa", "West Africa", "Southern Africa", "Indian Ocean", "East Africa"];
     function countryOf(i) {
       if (i.type === "park") { var p = S.park(i.id); return p ? p.countryId : ""; }
       var c = S.course(i.id); var cn = c && S.countryByName(c.country); return cn ? cn.id : "";

@@ -10,7 +10,7 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 | --- | --- |
 | `index.html` | Home: hero, trust strip, pillars, flagship journey, three ways to travel, selected journeys, guest words, what we arrange, hosted departures, destinations, philosophy, encounters, journal notes, enquiry form |
 | `journeys.html` | All journeys with region / length / budget filters and sorting. `journeys.html#<id>` opens the full itinerary, with courses and stays linked |
-| `countries.html` | Browse ten countries. `countries.html#<id>` opens a country with its courses and its parks side by side, each with an Add to trip button |
+| `countries.html` | Browse thirteen countries. `countries.html#<id>` opens a country with its courses and its parks side by side, each with an Add to trip button |
 | `parks.html` | Every national park, reserve and conservancy, filterable by country, type and wildlife, with the nearest course and travel time |
 | `build.html` | Trip builder: ordered stops, nights per park, indicative price, day-by-day outline, load a journey, send the plan to the brief |
 | `departures.html` | Hosted departures by date for 2027 and 2028, with places left and a reserve link |
@@ -27,7 +27,7 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 
 - `js/packages.js` — journeys (with courses, stays and day-by-day itineraries), destinations, guest quotes, photo ids and site config (`SGT.CONFIG`).
 - `js/content.js` — courses, stays, hosted departures, encounters and journal articles, plus lookups.
-- `js/places.js` — the ten countries, 39 national parks and reserves (each with its nearest course), extra courses, and the trip builder's indicative rates (`SGT.RATES`). Edit these three files to change content; every page renders from them.
+- `js/places.js` — the thirteen countries (East, Southern, North and West Africa and the Indian Ocean), 55 national parks, reserves and deserts (each with its nearest course), extra courses, and the trip builder's indicative rates (`SGT.RATES`). Edit these three files to change content; every page renders from them.
 - `js/site.js` — shared chrome injected on every page: header, overlay menu, footer, floating chat button, reveal-on-scroll, enquiry-form handling, and the trip state (`SGT.trip`, stored in the visitor's `localStorage` under `sgt-trip`) with the course, park and country cards and the floating "Your trip" tray.
 - `js/pages/*.js` — per-page rendering.
 - `css/styles.css` — the design system.
