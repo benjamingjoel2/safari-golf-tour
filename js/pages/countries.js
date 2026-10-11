@@ -12,7 +12,7 @@
     var journeys = c.journeys.map(S.journey).filter(Boolean);
     var others = (c.pairs ? c.pairs.map(S.country).filter(Boolean) : S.COUNTRIES.filter(function (x) { return x.id !== c.id && x.region === c.region; })).slice(0, 3);
     return (
-      '<section class="course-film-hero">' + S.poster({ title: c.name, sub: c.region, photo: c.photo, hero: true, sky: true, w: 3200, h: 1800, alt: c.name }) + "</section>" +
+      '<section class="course-film-hero">' + S.poster({ kind: "country", title: c.name, sub: c.region, photo: c.photo, hero: true, sky: true, w: 3200, h: 1800, alt: c.name }) + "</section>" +
       '<section class="hero hero-plain course-hero">' +
         '<div class="container hero-inner">' +
           '<a class="back" href="countries.html#all">All countries</a>' +

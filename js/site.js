@@ -240,10 +240,31 @@
   };
 
   /* Poster: a photograph cropped to the ground with a hand-lettered title and a smaller line beneath. */
+  /* Poster titles share one size per set: every title in a set is sized to fit the longest
+   * name in that set (courses, parks, countries), so a short name never outgrows a long one. */
+  var PARK_SHORT = { "ngorongoro": "Ngorongoro", "makgadikgadi": "Makgadikgadi", "kalahari": "Kalahari", "black-river": "Black River", "andasibe": "Andasibe", "tsingy": "Tsingy", "bwindi": "Bwindi", "timbavati": "Timbavati", "sossusvlei-np": "Sossusvlei", "laikipia": "Laikipia", "maasai-mara": "Maasai Mara", "kirindy": "Kirindy", "nosy-be": "Nosy Be", "lake-nokoue": "Ganvi\u00e9", "w-benin": "W Park", "erg-chebbi": "Erg Chebbi", "erg-chigaga": "Erg Chigaga", "souss-massa": "Souss-Massa", "damaraland": "Damaraland", "nyerere": "Nyerere", "nyungwe": "Nyungwe", "phinda": "Phinda", "addo": "Addo" };
+  S.parkShort = function (p) {
+    if (PARK_SHORT[p.id]) return PARK_SHORT[p.id];
+    return p.name.split(/[:&(]/)[0].replace(/ (Private Nature Reserve|National Reserve|National Park|National park|Game Reserve|Private Reserve|Community Reserve|Conservancy|Forest|Desert)$/i, "").trim();
+  };
+  function longest(list) { return list.reduce(function (m, t) { return Math.max(m, t.length); }, 6); }
+  S.posterLen = function (kind) {
+    if (!S._posterLen) S._posterLen = {};
+    if (!S._posterLen[kind]) {
+      var names = kind === "park" ? (S.PARKS || []).map(S.parkShort)
+        : kind === "country" ? (S.COUNTRIES || []).map(function (c) { return c.name; })
+        : (S.COURSES || []).map(function (c) { return c.short || c.name; });
+      S._posterLen[kind] = longest(names);
+    }
+    return S._posterLen[kind];
+  };
+
+  /* Poster: a photograph cropped to the ground with an uppercase title and a smaller line beneath. */
   S.poster = function (o) {
     var t = o.title, sub = o.sub || "";
+    var len = o.kind ? S.posterLen(o.kind) : Math.max(t.length, 6);
     return (
-      '<span class="film' + (o.hero ? " film-hero" : "") + (o.sky ? " film-sky" : "") + '" style="--len:' + Math.max(t.length, 6) + (o.focus ? ";--focus:" + o.focus : "") + '">' +
+      '<span class="film' + (o.hero ? " film-hero" : "") + (o.sky ? " film-sky" : "") + '" style="--len:' + len + (o.focus ? ";--focus:" + o.focus : "") + '">' +
         '<img src="' + S.img(o.photo, o.w || 1800, o.h || 1013) + '" alt="' + esc(o.alt || t) + '"' + (o.hero ? ' fetchpriority="high"' : "") + " />" +
         '<span class="film-title" aria-hidden="true"><span class="film-name">' + esc(t) + "</span>" + (sub ? '<span class="film-sub">' + esc(sub) + "</span>" : "") + "</span>" +
       "</span>"
@@ -251,7 +272,7 @@
   };
   S.courseFilm = function (c, opts) {
     opts = opts || {};
-    return S.poster({ title: c.short || c.name, sub: c.country, photo: c.cover || c.photo, focus: c.focus, sky: c.sky, hero: opts.hero, w: opts.w, h: opts.h, alt: c.name + ", " + c.country });
+    return S.poster({ kind: "course", title: c.short || c.name, sub: c.country, photo: c.cover || c.photo, focus: c.focus, sky: c.sky, hero: opts.hero, w: opts.w, h: opts.h, alt: c.name + ", " + c.country });
   };
 
   S.courseCard = function (c) {
@@ -278,7 +299,7 @@
     var near = S.course ? S.course(p.nearest.course) : null;
     return (
       '<article class="jcard reveal" id="' + esc(p.id) + '">' +
-        '<div class="jcard-media film-link">' + S.poster({ title: p.name.split(/[:&(]/)[0].replace(/ (National park|National Park|Game Reserve|Conservancy|Community Reserve|Forest)$/i, "").trim(), sub: p.country, photo: p.photo, alt: p.name + ", " + p.country }) + '<span class="tag">' + esc(p.type) + "</span></div>" +
+        '<div class="jcard-media film-link">' + S.poster({ kind: "park", title: S.parkShort(p), sub: p.country, photo: p.photo, alt: p.name + ", " + p.country }) + '<span class="tag">' + esc(p.type) + "</span></div>" +
         '<div class="jcard-body">' +
           '<p class="eyebrow"><a href="countries.html#' + esc(p.countryId) + '" style="color:inherit;text-decoration:none">' + esc(p.country) + "</a> · " + esc(p.bestMonths) + "</p>" +
           "<h3>" + esc(p.name) + "</h3>" +
@@ -296,7 +317,7 @@
     var courses = S.coursesIn(c.id).length, parks = S.parksIn(c.id).length;
     return (
       '<a class="dest reveal' + (i % 3 ? " reveal-delay-" + (i % 3) : "") + '" href="countries.html#' + esc(c.id) + '">' +
-        S.poster({ title: c.name, sub: c.region, photo: c.photo, alt: c.name }) +
+        S.poster({ kind: "country", title: c.name, sub: c.region, photo: c.photo, alt: c.name }) +
         '<span class="dest-meta">' + courses + (courses === 1 ? " course · " : " courses · ") + parks + " parks</span>" +
       "</a>"
     );
