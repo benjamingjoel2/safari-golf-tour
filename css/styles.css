@@ -1079,7 +1079,6 @@ a.film-link { display: block; border: 0; position: relative; }
   .film-hero .film-title { padding-bottom: 28px; }
   .film-hero .film-sub { font-size: max(11px, calc(var(--fs) * 0.38)); }
 }
-.course-card .credit { margin: -4px 0 10px; font-size: 0.85rem; color: var(--mid); }
 .course-hero .hero-inner .back + .lead, .course-hero .hero-inner .back + .eyebrow { margin-top: 18px; }
 
 /* Split heroes: golf left, safari right; scroll slides the separator left */
@@ -1176,3 +1175,29 @@ a.film-link { display: block; border: 0; position: relative; }
 /* Hero stats: keep each figure on one line on narrow phones */
 .hero-stats strong { white-space: nowrap; }
 @media (max-width: 420px) { .hero-home .hero-stats { gap: 18px; padding: 14px 16px; } .hero-home .hero-stats strong { font-size: 1.2rem; } }
+
+/* Course credit (designer or founding year) as a label on the picture */
+.course-film-hero { position: relative; }
+.film-tag { position: absolute; z-index: 3; top: 76px; left: max(var(--gutter), calc((100% - var(--w)) / 2)); }
+@media (max-width: 560px) { .film-tag { top: 68px; } }
+.tag, .jcard-media .tag { display: inline-block; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; color: var(--white); background: rgba(18, 22, 18, 0.55); border: 1px solid rgba(255, 255, 255, 0.24); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .tag, .jcard-media .tag { background: var(--glass-sheen), rgba(18, 22, 18, 0.32); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+}
+
+/* =========================================================
+   Corners: a light, Tesla-like rounding. 4px on controls
+   (buttons, fields, tags, chips), 8px on cards, pictures
+   and panels. Full-bleed heroes and bars stay square.
+   ========================================================= */
+:root { --r-sm: 4px; --r-md: 8px; }
+.btn, .btn-sm, .add-btn, .header-cta, .skip-link, .chat-fab, .trip-fab,
+.tag, .jcard-media .tag, .chips li, .jcard .chips li, .section-cream .chips li, .section-ink .jcard .chips li,
+.field input, .field select, .field textarea, .filters .field select,
+.stepper, .stop-actions button, .hero-knob, .menu-side .btn { border-radius: var(--r-sm); }
+.stepper button { border-radius: 0; }
+.jcard-media, .way-media, .split-media, .mosaic figure, .mosaic img, .dest .film, .dest img, .stop img, .stop-film,
+.facts li, .section-cream .facts li, .summary .facts li, .quote-card, .form-success, .dep, .aside-block, .note, .dest-lists > div,
+.plan-banner, .filters, .stop, .summary, .hero-home .hero-stats, .modal-card, .split-media .frame { border-radius: var(--r-md); }
+.jcard-media, .dest .film, .split-media, .mosaic figure, .stop-film { overflow: hidden; isolation: isolate; }
+.bleed-media img, .hero-media, .film-hero { border-radius: 0; }

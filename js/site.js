@@ -300,7 +300,6 @@
     "skukuza": "Inside Kruger National Park",
     "heritage-chateau": "DP World Tour venue"
   };
-  S.courseNotable = function (c) { return NOTABLE[c.id] || ""; };
   S.courseCredit = function (c) {
     var d = c.designer || "";
     var names = FAMOUS.filter(function (n) { return d.indexOf(n) !== -1; });
@@ -308,7 +307,6 @@
     var year = c.founded ? (c.founded >= 2020 ? "Opened " : "Founded ") + c.founded : "";
     return [year, NOTABLE[c.id]].filter(Boolean).join(" · ");
   };
-  S.courseFamous = function (c) { return FAMOUS.some(function (n) { return (c.designer || "").indexOf(n) !== -1; }); };
 
   S.courseCard = function (c) {
     var js = (S.JOURNEYS || []).filter(function (j) {
@@ -316,10 +314,9 @@
     });
     return (
       '<article class="jcard course-card reveal" id="' + esc(c.id) + '">' +
-        '<a class="jcard-media film-link" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name + ", " + c.country) + '">' + S.courseFilm(c) + "</a>" +
+        '<a class="jcard-media film-link" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name + ", " + c.country) + '">' + S.courseFilm(c) + '<span class="tag">' + esc(S.courseCredit(c)) + "</span></a>" +
         '<div class="jcard-body">' +
           '<p class="eyebrow">Par ' + c.par + " · " + c.holes + " holes</p>" +
-          '<p class="credit">' + esc(S.courseCredit(c)) + "</p>" +
           "<p>" + esc(c.note) + "</p>" +
           (js.length ? '<ul class="chips" style="margin-top:6px">' + js.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:inherit">' + esc(j.name) + "</a></li>"; }).join("") + "</ul>" : "") +
           '<div class="jcard-foot"><a class="btn-link" href="courses.html#' + esc(c.id) + '">The course</a>' + S.addBtn("course", c.id) + "</div>" +
