@@ -1082,12 +1082,14 @@ a.film-link { display: block; border: 0; position: relative; }
 .course-card .credit { margin: -4px 0 10px; font-size: 0.85rem; color: var(--mid); }
 .course-hero .hero-inner .back + .lead, .course-hero .hero-inner .back + .eyebrow { margin-top: 18px; }
 
-/* Home hero: golf on the left, safari on the right, split down the middle */
-.hero-split { display: grid; grid-template-columns: 1fr 1fr; }
-.hero-half { position: relative; display: block; min-width: 0; overflow: hidden; }
-.hero-split img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-.hero-half + .hero-half img { object-position: 45% 60%; }
-.hero-split::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; z-index: 1; width: 1px; background: rgba(243, 231, 166, 0.35); }
+/* Home hero: golf first; on the first scroll a separator sweeps left to right and wipes in the safari */
+.hero-wipe { --p: 0%; }
+.hero-layer { position: absolute; inset: 0; display: block; overflow: hidden; }
+.hero-layer img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero-layer-safari { clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+.hero-layer-safari img { object-position: 45% 60%; }
+.hero-sep { position: absolute; top: 0; bottom: 0; left: var(--p); z-index: 2; width: 2px; margin-left: -1px; background: var(--poster-ink); box-shadow: 0 0 24px rgba(243, 231, 166, 0.55); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+.hero-wipe.is-moving .hero-sep { opacity: 1; }
 
 /* Wider side margins: content sits in a 1320px column with a generous gutter */
 :root { --w: 1320px; --gutter: clamp(20px, 6vw, 112px); }
