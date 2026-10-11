@@ -1036,3 +1036,26 @@ a.film-link { display: block; border: 0; position: relative; }
 @media (max-width: 900px) { .dest-grid, .dest-grid.five { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .dest-grid, .dest-grid.five { grid-template-columns: 1fr; } }
 .jcard-media.film-link .tag { position: absolute; top: 14px; left: 14px; }
+
+/* =========================================================
+   Poster titles: uppercase, one shared size per set, pastel
+   yellow over darkened photographs. Wide uppercase Archivo
+   runs ~0.92em per character, so the size is the width
+   budget divided by the longest name in the set (--len).
+   ========================================================= */
+:root { --poster-ink: #f3e7a6; }
+.film img { filter: brightness(0.72) saturate(0.95) contrast(1.08); }
+.film::before { background: linear-gradient(180deg, rgba(10, 14, 10, 0.28) 0%, rgba(10, 14, 10, 0.12) 45%, rgba(10, 14, 10, 0.45) 100%); }
+.film::after { background: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.42) 100%); }
+.film-title { color: var(--poster-ink); text-transform: uppercase; letter-spacing: 0.04em; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 34px rgba(0, 0, 0, 0.45); }
+.film-name { font-size: 26px; font-size: calc(84cqw / (var(--len, 8) * 0.92)); }
+.film-sub { font-size: 12px; font-size: calc(84cqw / (var(--len, 8) * 0.92) * 0.36); margin-top: 0.5em; letter-spacing: 0.14em; opacity: 0.95; }
+.film-hero .film-name { font-size: min(calc(76cqw / (var(--len, 8) * 0.92)), 140px); }
+.film-hero .film-sub { font-size: min(calc(76cqw / (var(--len, 8) * 0.92) * 0.32), 44px); }
+@media (max-width: 560px) { .film-hero .film-name { font-size: calc(88cqw / (var(--len, 8) * 0.92)); } .film-hero .film-sub { font-size: calc(88cqw / (var(--len, 8) * 0.92) * 0.38); } }
+.brand-name { text-transform: uppercase; letter-spacing: 0.06em; font-size: 15px; }
+.site-footer .brand-name { font-size: 19px; }
+@media (max-width: 560px) { .brand-name { font-size: 13px; } }
+
+.trust-inner { grid-template-columns: repeat(3, 1fr); padding: 24px var(--gutter); }
+@media (max-width: 760px) { .trust-inner { grid-template-columns: 1fr; } }
