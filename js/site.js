@@ -239,16 +239,19 @@
     fab.hidden = n === 0 || page === "build.html";
   };
 
-  /* Cinematic course cover: a zoomed-in aerial shot with the short name as a script film title. */
-  S.courseFilm = function (c, opts) {
-    opts = opts || {};
-    var t = c.short || c.name;
+  /* Poster: a photograph cropped to the ground with a hand-lettered title and a smaller line beneath. */
+  S.poster = function (o) {
+    var t = o.title, sub = o.sub || "";
     return (
-      '<span class="film' + (opts.hero ? " film-hero" : "") + '" style="--len:' + Math.max(t.length, 6) + '">' +
-        '<img src="' + S.img(c.cover || c.photo, opts.w || 1800, opts.h || 1013) + '" alt="' + esc(c.name + ", from the air") + '"' + (opts.hero ? ' fetchpriority="high"' : "") + " />" +
-        '<span class="film-title" aria-hidden="true">' + esc(t) + "</span>" +
+      '<span class="film' + (o.hero ? " film-hero" : "") + (o.sky ? " film-sky" : "") + '" style="--len:' + Math.max(t.length, 6) + (o.focus ? ";--focus:" + o.focus : "") + '">' +
+        '<img src="' + S.img(o.photo, o.w || 1800, o.h || 1013) + '" alt="' + esc(o.alt || t) + '"' + (o.hero ? ' fetchpriority="high"' : "") + " />" +
+        '<span class="film-title" aria-hidden="true"><span class="film-name">' + esc(t) + "</span>" + (sub ? '<span class="film-sub">' + esc(sub) + "</span>" : "") + "</span>" +
       "</span>"
     );
+  };
+  S.courseFilm = function (c, opts) {
+    opts = opts || {};
+    return S.poster({ title: c.short || c.name, sub: c.country, photo: c.cover || c.photo, focus: c.focus, sky: c.sky, hero: opts.hero, w: opts.w, h: opts.h, alt: c.name + ", " + c.country });
   };
 
   S.courseCard = function (c) {
@@ -275,7 +278,7 @@
     var near = S.course ? S.course(p.nearest.course) : null;
     return (
       '<article class="jcard reveal" id="' + esc(p.id) + '">' +
-        '<div class="jcard-media"><img src="' + S.img(p.photo, 900, 560) + '" alt="' + esc(p.name) + '" width="900" height="560" /><span class="tag">' + esc(p.type) + "</span></div>" +
+        '<div class="jcard-media film-link">' + S.poster({ title: p.name.split(/[:&(]/)[0].replace(/ (National park|National Park|Game Reserve|Conservancy|Community Reserve|Forest)$/i, "").trim(), sub: p.country, photo: p.photo, alt: p.name + ", " + p.country }) + '<span class="tag">' + esc(p.type) + "</span></div>" +
         '<div class="jcard-body">' +
           '<p class="eyebrow"><a href="countries.html#' + esc(p.countryId) + '" style="color:inherit;text-decoration:none">' + esc(p.country) + "</a> · " + esc(p.bestMonths) + "</p>" +
           "<h3>" + esc(p.name) + "</h3>" +
@@ -293,8 +296,8 @@
     var courses = S.coursesIn(c.id).length, parks = S.parksIn(c.id).length;
     return (
       '<a class="dest reveal' + (i % 3 ? " reveal-delay-" + (i % 3) : "") + '" href="countries.html#' + esc(c.id) + '">' +
-        '<img src="' + S.img(c.photo, 800, 1000) + '" alt="' + esc(c.name) + '" width="800" height="1000" />' +
-        '<div class="dest-text"><p class="eyebrow">' + courses + (courses === 1 ? " course · " : " courses · ") + parks + " parks</p><h3>" + esc(c.name) + "</h3><p>" + esc(c.strap) + "</p></div>" +
+        S.poster({ title: c.name, sub: c.region, photo: c.photo, alt: c.name }) +
+        '<span class="dest-meta">' + courses + (courses === 1 ? " course · " : " courses · ") + parks + " parks</span>" +
       "</a>"
     );
   };

@@ -84,6 +84,10 @@
 
   function img(key, w, h) {
     var id = PHOTO[key] || key;
+    if (/^px:/.test(id)) { /* Pexels photo id */
+      var pid = id.slice(3);
+      return "https://images.pexels.com/photos/" + pid + "/pexels-photo-" + pid + ".jpeg?auto=compress&cs=tinysrgb&w=" + (w || 1200) + (h ? "&h=" + h + "&fit=crop" : "");
+    }
     var q = "?auto=format&fit=crop&q=78&w=" + (w || 1200);
     if (h) q += "&h=" + h;
     return "https://images.unsplash.com/photo-" + id + q;
