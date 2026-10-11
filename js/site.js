@@ -245,7 +245,7 @@
     var t = c.short || c.name;
     return (
       '<span class="film' + (opts.hero ? " film-hero" : "") + '" style="--len:' + Math.max(t.length, 6) + '">' +
-        '<img src="' + S.img(c.cover || c.photo, opts.w || 1200, opts.h || 675) + '" alt="' + esc(c.name + ", from the air") + '"' + (opts.hero ? ' fetchpriority="high"' : "") + " />" +
+        '<img src="' + S.img(c.cover || c.photo, opts.w || 1800, opts.h || 1013) + '" alt="' + esc(c.name + ", from the air") + '"' + (opts.hero ? ' fetchpriority="high"' : "") + " />" +
         '<span class="film-title" aria-hidden="true">' + esc(t) + "</span>" +
       "</span>"
     );

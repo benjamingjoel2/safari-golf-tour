@@ -45,7 +45,7 @@
     var others = S.COURSES.filter(function (x) { return x.id !== c.id && x.country === c.country; }).slice(0, 3);
     var lengthText = c.length ? c.length.toLocaleString("en-US") + " yd" : "—";
     return (
-      '<section class="course-film-hero">' + S.courseFilm(c, { hero: true, w: 2400, h: 1350 }) + "</section>" +
+      '<section class="course-film-hero">' + S.courseFilm(c, { hero: true, w: 3200, h: 1800 }) + "</section>" +
 
       '<section class="hero hero-plain course-hero">' +
         '<div class="container hero-inner">' +
