@@ -275,18 +275,36 @@
     return S.poster({ kind: "course", title: c.short || c.name, sub: c.country, photo: c.cover || c.photo, focus: c.focus, sky: c.sky, hero: opts.hero, w: opts.w, h: opts.h, alt: c.name + ", " + c.country });
   };
 
+  /* One line of provenance under a course: the designer when the name carries weight, otherwise the founding year. */
+  var FAMOUS = ["Gary Player", "Jack Nicklaus", "Ernie Els", "Bernhard Langer", "Robert Trent Jones Sr.", "Louis Oosthuizen"];
+  var NOTABLE = {
+    "muthaiga": "Kenya Open host",
+    "entebbe": "East Africa's oldest course",
+    "uganda-gc": "Uganda Open host",
+    "royal-marrakech": "27 holes",
+    "skukuza": "Inside Kruger National Park",
+    "heritage-chateau": "DP World Tour venue"
+  };
+  S.courseNotable = function (c) { return NOTABLE[c.id] || ""; };
+  S.courseCredit = function (c) {
+    var d = c.designer || "";
+    var names = FAMOUS.filter(function (n) { return d.indexOf(n) !== -1; });
+    if (names.length) return (names.length < d.split("&").length ? "Co-designed by " : "Designed by ") + names.join(" & ");
+    var year = c.founded ? (c.founded >= 2020 ? "Opened " : "Founded ") + c.founded : "";
+    return [year, NOTABLE[c.id]].filter(Boolean).join(" · ");
+  };
+  S.courseFamous = function (c) { return FAMOUS.some(function (n) { return (c.designer || "").indexOf(n) !== -1; }); };
+
   S.courseCard = function (c) {
     var js = (S.JOURNEYS || []).filter(function (j) {
       return j.courses.some(function (x) { var m = S.courseByName(x.name); return m && m.id === c.id; });
     });
-    var cn = S.countryByName ? S.countryByName(c.country) : null;
     return (
       '<article class="jcard course-card reveal" id="' + esc(c.id) + '">' +
-        '<a class="jcard-media film-link" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name) + '">' + S.courseFilm(c) + "</a>" +
+        '<a class="jcard-media film-link" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name + ", " + c.country) + '">' + S.courseFilm(c) + "</a>" +
         '<div class="jcard-body">' +
-          '<p class="eyebrow">' + (cn ? '<a href="countries.html#' + esc(cn.id) + '" style="color:inherit;text-decoration:none">' + esc(c.country) + "</a>" : esc(c.country)) + " · Par " + c.par + " · " + c.holes + " holes</p>" +
-          '<h3><a href="courses.html#' + esc(c.id) + '" style="color:inherit;text-decoration:none">' + esc(c.name) + "</a></h3>" +
-          '<p class="muted" style="font-size:0.85rem">' + esc(c.designer) + "</p>" +
+          '<p class="eyebrow">Par ' + c.par + " · " + c.holes + " holes</p>" +
+          '<p class="credit">' + esc(S.courseCredit(c)) + "</p>" +
           "<p>" + esc(c.note) + "</p>" +
           (js.length ? '<ul class="chips" style="margin-top:6px">' + js.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:inherit">' + esc(j.name) + "</a></li>"; }).join("") + "</ul>" : "") +
           '<div class="jcard-foot"><a class="btn-link" href="courses.html#' + esc(c.id) + '">The course</a>' + S.addBtn("course", c.id) + "</div>" +
@@ -301,8 +319,8 @@
       '<article class="jcard reveal" id="' + esc(p.id) + '">' +
         '<div class="jcard-media film-link">' + S.poster({ kind: "park", title: S.parkShort(p), sub: p.country, photo: p.photo, alt: p.name + ", " + p.country }) + '<span class="tag">' + esc(p.type) + "</span></div>" +
         '<div class="jcard-body">' +
-          '<p class="eyebrow"><a href="countries.html#' + esc(p.countryId) + '" style="color:inherit;text-decoration:none">' + esc(p.country) + "</a> · " + esc(p.bestMonths) + "</p>" +
-          "<h3>" + esc(p.name) + "</h3>" +
+          '<p class="eyebrow">Best ' + esc(p.bestMonths) + "</p>" +
+          '<h3 class="sr-only">' + esc(p.name) + "</h3>" +
           '<p class="muted" style="font-family:var(--serif);font-style:italic;font-size:1.1rem">' + esc(p.signature) + "</p>" +
           "<p>" + esc(p.note) + "</p>" +
           '<ul class="chips" style="margin-top:6px">' + p.wildlife.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("") + "</ul>" +

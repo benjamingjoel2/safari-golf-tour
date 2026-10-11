@@ -43,6 +43,7 @@
     var journeys = S.JOURNEYS.filter(function (j) { return j.courses.some(function (x) { var m = S.courseByName(x.name); return m && m.id === c.id; }); });
     var stays = S.STAYS.filter(function (s) { return s.destination === c.destination; }).slice(0, 4);
     var others = S.COURSES.filter(function (x) { return x.id !== c.id && x.country === c.country; }).slice(0, 3);
+    var credit = S.courseFamous(c) ? S.courseCredit(c) : S.courseNotable(c);
     var lengthText = c.length ? c.length.toLocaleString("en-US") + " yd" : "—";
     return (
       '<section class="course-film-hero">' + S.courseFilm(c, { hero: true, w: 3200, h: 1800 }) + "</section>" +
@@ -50,8 +51,8 @@
       '<section class="hero hero-plain course-hero">' +
         '<div class="container hero-inner">' +
           '<a class="back" href="courses.html#all">All courses</a>' +
-          '<p class="eyebrow">' + (cn ? '<a href="countries.html#' + esc(cn.id) + '" style="color:inherit;text-decoration:none">' + esc(c.country) + "</a> · " + esc(cn.region) : esc(c.country)) + " · " + esc(c.designer) + "</p>" +
-          "<h1>" + esc(c.name) + "</h1>" +
+          (credit ? '<p class="eyebrow">' + esc(credit) + "</p>" : "") +
+          '<h1 class="sr-only">' + esc(c.name) + ", " + esc(c.country) + "</h1>" +
           '<p class="lead">' + esc(c.note) + "</p>" +
           '<div class="hero-actions">' + S.addBtn("course", c.id) + '<a class="btn btn-outline" href="contact.html">Enquire about this course</a></div>' +
         "</div>" +

@@ -16,8 +16,7 @@
       '<section class="hero hero-plain course-hero">' +
         '<div class="container hero-inner">' +
           '<a class="back" href="countries.html#all">All countries</a>' +
-          '<p class="eyebrow">' + esc(c.region) + "</p>" +
-          "<h1>" + esc(c.name) + "</h1>" +
+          '<h1 class="sr-only">' + esc(c.name) + "</h1>" +
           '<p class="lead" style="font-family:var(--serif);font-style:italic;font-size:1.4rem">' + esc(c.strap) + "</p>" +
         "</div>" +
       "</section>" +
