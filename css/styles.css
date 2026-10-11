@@ -1087,7 +1087,6 @@ a.film-link { display: block; border: 0; position: relative; }
 .hero-wipe .hero-layer img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); transform: scale(var(--z, 1)) scaleX(var(--flip, 1)); transform-origin: var(--o, 50% 50%); filter: brightness(0.66) contrast(1.06) saturate(0.95); animation: none; }
 .hero-layer-safari { clip-path: inset(0 0 0 var(--p)); }
 .hero-sep { position: absolute; top: 0; bottom: 0; left: var(--p); z-index: 2; width: 2px; margin-left: -1px; background: var(--poster-ink); box-shadow: 0 0 22px rgba(243, 231, 166, 0.45); pointer-events: none; transition: opacity 0.3s; }
-.hero-wipe.is-done .hero-sep { opacity: 0; }
 .hero-knob { position: absolute; left: 50%; bottom: 28px; width: 44px; height: 44px; transform: translateX(-50%); display: grid; place-items: center; }
 .hero-knob::before { content: "\2039\00a0\203A"; font: 500 18px/1 var(--sans); color: var(--white); letter-spacing: 0.02em; }
 .hero-wipe ~ .scroll-cue, .hero-track .scroll-cue { display: none; }
@@ -1201,3 +1200,15 @@ a.film-link { display: block; border: 0; position: relative; }
 .plan-banner, .filters, .stop, .summary, .hero-home .hero-stats, .modal-card, .split-media .frame { border-radius: var(--r-md); }
 .jcard-media, .dest .film, .split-media, .mosaic figure, .stop-film { overflow: hidden; isolation: isolate; }
 .bleed-media img, .hero-media, .film-hero { border-radius: 0; }
+
+/* Draggable separator: the line has a wide invisible grip, the knob is a slider */
+.has-wipe .hero-inner { pointer-events: none; }
+.has-wipe .hero-inner a, .has-wipe .hero-inner button, .has-wipe .hero-inner input, .has-wipe .hero-inner select { pointer-events: auto; }
+.hero-sep { pointer-events: none; }
+.hero-sep::before { content: ""; position: absolute; top: 0; bottom: 0; left: -15px; width: 32px; pointer-events: auto; cursor: ew-resize; touch-action: pan-y; }
+.hero-knob { pointer-events: auto; cursor: grab; touch-action: none; transform: translateX(calc(-50% + var(--shift, 0px))); transition: box-shadow 0.2s, background 0.2s; z-index: 1; }
+.hero-wipe.is-dragging .hero-knob { cursor: grabbing; }
+.hero-wipe.is-dragging { cursor: grabbing; }
+.hero-knob:hover, .hero-wipe.is-dragging .hero-knob { box-shadow: var(--glass-shadow), 0 0 0 4px rgba(243, 231, 166, 0.18); }
+.hero-knob:focus-visible { outline: 2px solid var(--poster-ink); outline-offset: 3px; }
+@media (max-width: 640px) { .hero-knob { width: 44px; height: 44px; } }
