@@ -1082,14 +1082,27 @@ a.film-link { display: block; border: 0; position: relative; }
 .course-card .credit { margin: -4px 0 10px; font-size: 0.85rem; color: var(--mid); }
 .course-hero .hero-inner .back + .lead, .course-hero .hero-inner .back + .eyebrow { margin-top: 18px; }
 
-/* Home hero: golf first; on the first scroll a separator sweeps left to right and wipes in the safari */
-.hero-wipe { --p: 0%; }
+/* Split heroes: golf left, safari right; scroll slides the separator left */
+.hero-wipe { --p: 50%; }
 .hero-layer { position: absolute; inset: 0; display: block; overflow: hidden; }
-.hero-layer img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-.hero-layer-safari { clip-path: inset(0 calc(100% - var(--p)) 0 0); }
-.hero-layer-safari img { object-position: 45% 60%; }
-.hero-sep { position: absolute; top: 0; bottom: 0; left: var(--p); z-index: 2; width: 2px; margin-left: -1px; background: var(--poster-ink); box-shadow: 0 0 24px rgba(243, 231, 166, 0.55); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
-.hero-wipe.is-moving .hero-sep { opacity: 1; }
+.hero-wipe .hero-layer img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); transform: scale(var(--z, 1)) scaleX(var(--flip, 1)); transform-origin: var(--o, 50% 50%); filter: brightness(0.66) contrast(1.06) saturate(0.95); animation: none; }
+.hero-layer-safari { clip-path: inset(0 0 0 var(--p)); }
+.hero-sep { position: absolute; top: 0; bottom: 0; left: var(--p); z-index: 2; width: 2px; margin-left: -1px; background: var(--poster-ink); box-shadow: 0 0 22px rgba(243, 231, 166, 0.45); pointer-events: none; transition: opacity 0.3s; }
+.hero-wipe.is-done .hero-sep { opacity: 0; }
+.hero-knob { position: absolute; left: 50%; bottom: 28px; width: 44px; height: 44px; transform: translateX(-50%); display: grid; place-items: center; }
+.hero-knob::before { content: "\2039\00a0\203A"; font: 500 18px/1 var(--sans); color: var(--white); letter-spacing: 0.02em; }
+.hero-wipe ~ .scroll-cue, .hero-track .scroll-cue { display: none; }
+/* Home: the hero holds still while the separator travels, then the page moves on */
+.hero-track { position: relative; height: 190vh; height: 190svh; }
+.hero-track > .hero-home { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-track { height: auto; }
+  .hero-track > .hero-home { position: relative; height: auto; min-height: 100svh; }
+}
+@media (max-width: 640px) {
+  .hero-wipe .hero-layer img { object-position: var(--pos-m, var(--pos, 50% 50%)); transform: scale(var(--z-m, var(--z, 1))) scaleX(var(--flip-m, var(--flip, 1))); transform-origin: var(--o-m, var(--o, 50% 50%)); }
+  .hero-knob { bottom: 18px; width: 40px; height: 40px; }
+}
 
 /* Wider side margins: content sits in a 1320px column with a generous gutter */
 :root { --w: 1320px; --gutter: clamp(20px, 6vw, 112px); }
@@ -1098,3 +1111,64 @@ a.film-link { display: block; border: 0; position: relative; }
 .container.narrow { max-width: calc(880px + 2 * var(--gutter)); }
 .prose p, .prose li { max-width: 68ch; }
 .film-hero .film-title { padding-left: max(var(--gutter), calc((100cqw - var(--w)) / 2)); }
+
+/* =========================================================
+   Liquid glass: translucent panels that blur and brighten
+   what sits behind them, with a lit top edge and a soft
+   sheen. Used on the header, menu, hero controls, card
+   tags, the chat button and the hero separator knob.
+   Browsers without backdrop-filter keep the solid styles.
+   ========================================================= */
+:root {
+  --glass-blur: blur(20px) saturate(175%);
+  --glass-edge: rgba(255, 255, 255, 0.26);
+  --glass-sheen: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0.1) 100%);
+  --glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header, .site-header.scrolled { background: rgba(16, 16, 16, 0.56); -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%); box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1); }
+  .menu { background: rgba(12, 12, 12, 0.78); -webkit-backdrop-filter: blur(28px) saturate(150%); backdrop-filter: blur(28px) saturate(150%); }
+
+  .hero:not(.hero-plain) .btn-gold,
+  .hero:not(.hero-plain) .btn-outline,
+  .chat-fab,
+  .jcard-media .tag,
+  .hero-knob,
+  .hero-home .hero-stats {
+    -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-edge); box-shadow: var(--glass-shadow);
+  }
+  .hero:not(.hero-plain) .btn-gold { background: var(--glass-sheen), rgba(94, 125, 99, 0.5); color: var(--white); }
+  .hero:not(.hero-plain) .btn-gold:hover { background: var(--glass-sheen), rgba(94, 125, 99, 0.72); }
+  .hero:not(.hero-plain) .btn-outline { background: var(--glass-sheen), rgba(255, 255, 255, 0.08); color: var(--white); }
+  .hero:not(.hero-plain) .btn-outline:hover { background: var(--glass-sheen), rgba(255, 255, 255, 0.18); }
+  .chat-fab { background: var(--glass-sheen), rgba(94, 125, 99, 0.58); }
+  .chat-fab:hover { background: var(--glass-sheen), rgba(94, 125, 99, 0.8); }
+  .jcard-media .tag { background: var(--glass-sheen), rgba(18, 22, 18, 0.32); color: var(--white); }
+  .hero-knob { background: var(--glass-sheen), rgba(255, 255, 255, 0.1); }
+  .hero-home .hero-stats { background: var(--glass-sheen), rgba(255, 255, 255, 0.06); padding: 16px clamp(20px, 3vw, 36px); }
+}
+
+/* Mobile menu: the planner sits on top in a compact sticky glass bar, links scroll beneath */
+@media (max-width: 800px) {
+  .menu { padding: 56px var(--gutter) 40px; }
+  .menu-inner { display: flex; flex-direction: column; gap: 8px; }
+  .menu-side { order: -1; position: sticky; top: 0; z-index: 2; align-self: stretch; margin: 0 calc(-1 * var(--gutter)); padding: 12px var(--gutter); display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 14px; row-gap: 2px; align-items: center; background: rgba(20, 20, 20, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+  .menu-side h4 { grid-column: 1; margin: 0 0 2px; font-size: 11px; }
+  .menu-side .menu-contact { grid-column: 1; margin: 0; font-size: 13px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .menu-side .menu-note { display: none; }
+  .menu-side .btn { grid-column: 2; grid-row: 1 / span 3; margin: 0; padding: 10px 14px; font-size: 11px; white-space: nowrap; }
+  .menu-links a { padding: 13px 0; font-size: 20px; }
+}
+@media (max-width: 800px) and (prefers-reduced-transparency: no-preference) {
+  @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .menu-side { background: var(--glass-sheen), rgba(28, 28, 28, 0.55); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(255, 255, 255, 0.08); }
+  }
+}
+
+/* Transparent header over dark photo heroes, until the page scrolls */
+.site-header { transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease), -webkit-backdrop-filter 0.35s, backdrop-filter 0.35s; }
+.site-header.over-hero { background: linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 100%); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+.course-film-hero, .course-film-hero:first-child { padding-top: 0; }
+.course-film-hero .film-hero { height: 100vh; height: 100svh; }
+@media (max-width: 560px) { .course-film-hero { padding-top: 0; } .course-film-hero .film-hero { height: 72svh; } }
