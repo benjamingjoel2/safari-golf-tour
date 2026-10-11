@@ -510,24 +510,88 @@
 
   /* Split heroes: golf on the left, safari on the right. Scrolling slides the
      separator left so the safari takes over; scrolling back slides it home.
-     The home hero is pinned inside .hero-track for the length of the move. */
+     The home hero is pinned inside .hero-track for the length of the move.
+     The separator can also be dragged (line or knob) or nudged with the arrow
+     keys; a drag shifts it relative to where scrolling has put it. */
   var wipes = [].slice.call(document.querySelectorAll(".hero-wipe"));
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (wipes.length && !calm) {
-    var wipeTicking = false;
-    var updateWipes = function () {
-      wipeTicking = false;
-      wipes.forEach(function (w) {
-        var hero = w.closest(".hero"), track = hero.parentElement.classList.contains("hero-track") ? hero.parentElement : null, p;
-        if (track) p = -track.getBoundingClientRect().top / Math.max(1, track.offsetHeight - hero.offsetHeight);
-        else p = -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight * 0.6);
-        p = Math.min(1, Math.max(0, p));
-        w.style.setProperty("--p", (50 * (1 - p)).toFixed(2) + "%");
-        w.classList.toggle("is-done", p >= 1);
-      });
+  var clamp = function (v, lo, hi) { return Math.min(hi, Math.max(lo, v)); };
+  var scrollPos = function (w) {
+    if (calm) return 50;
+    var hero = w.closest(".hero"), track = hero.parentElement.classList.contains("hero-track") ? hero.parentElement : null, p;
+    if (track) p = -track.getBoundingClientRect().top / Math.max(1, track.offsetHeight - hero.offsetHeight);
+    else p = -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight * 0.6);
+    return 50 * (1 - clamp(p, 0, 1));
+  };
+  var renderWipe = function (w) {
+    var v = clamp(scrollPos(w) + (w._offset || 0), 0, 100);
+    w.style.setProperty("--p", v.toFixed(2) + "%");
+    var knob = w.querySelector(".hero-knob");
+    if (knob) {
+      /* keep the knob on screen when the line reaches an edge */
+      var px = v / 100 * w.offsetWidth, half = knob.offsetWidth / 2 + 8;
+      var shift = px < half ? half - px : (w.offsetWidth - px < half ? -(half - (w.offsetWidth - px)) : 0);
+      knob.style.setProperty("--shift", shift.toFixed(1) + "px");
+      knob.setAttribute("aria-valuenow", String(Math.round(100 - v)));
+    }
+  };
+  wipes.forEach(function (w) {
+    var hero = w.closest(".hero"), sep = w.querySelector(".hero-sep"), knob = w.querySelector(".hero-knob");
+    if (!sep || !knob) return;
+    w._offset = 0;
+    hero.classList.add("has-wipe");
+    sep.removeAttribute("aria-hidden");
+    knob.setAttribute("role", "slider");
+    knob.setAttribute("tabindex", "0");
+    knob.setAttribute("aria-label", "Golf and safari divider: drag, or use the arrow keys");
+    knob.setAttribute("aria-valuemin", "0");
+    knob.setAttribute("aria-valuemax", "100");
+    knob.setAttribute("aria-valuetext", "Share of the picture showing safari");
+    var dragging = null;
+    var moveTo = function (clientX) {
+      var r = w.getBoundingClientRect();
+      var want = clamp((clientX - r.left) / r.width * 100, 0, 100);
+      w._offset = want - scrollPos(w);
+      renderWipe(w);
     };
+    var start = function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      dragging = { id: e.pointerId };
+      try { e.target.setPointerCapture(e.pointerId); } catch (err) { /* older browsers */ }
+      w.classList.add("is-dragging");
+      if (e.target === knob) e.preventDefault();
+      moveTo(e.clientX);
+    };
+    var move = function (e) { if (dragging && e.pointerId === dragging.id) moveTo(e.clientX); };
+    var end = function (e) {
+      if (!dragging || e.pointerId !== dragging.id) return;
+      dragging = null;
+      w.classList.remove("is-dragging");
+    };
+    [sep, knob].forEach(function (el) {
+      el.addEventListener("pointerdown", function (e) { e.stopPropagation(); start(e); });
+      el.addEventListener("pointermove", move);
+      el.addEventListener("pointerup", end);
+      el.addEventListener("pointercancel", end);
+      el.addEventListener("lostpointercapture", end);
+    });
+    knob.addEventListener("keydown", function (e) {
+      var step = e.shiftKey ? 20 : 5, cur = scrollPos(w) + w._offset, next = null;
+      if (e.key === "ArrowLeft" || e.key === "ArrowDown") next = cur - step;
+      else if (e.key === "ArrowRight" || e.key === "ArrowUp") next = cur + step;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = 100;
+      if (next === null) return;
+      e.preventDefault();
+      w._offset = clamp(next, 0, 100) - scrollPos(w);
+      renderWipe(w);
+    });
+  });
+  if (wipes.length) {
+    var wipeTicking = false;
+    var updateWipes = function () { wipeTicking = false; wipes.forEach(renderWipe); };
     var onWipeScroll = function () { if (!wipeTicking) { wipeTicking = true; requestAnimationFrame(updateWipes); } };
-    window.addEventListener("scroll", onWipeScroll, { passive: true });
+    if (!calm) window.addEventListener("scroll", onWipeScroll, { passive: true });
     window.addEventListener("resize", onWipeScroll);
     updateWipes();
   }
