@@ -1172,3 +1172,7 @@ a.film-link { display: block; border: 0; position: relative; }
 .course-film-hero, .course-film-hero:first-child { padding-top: 0; }
 .course-film-hero .film-hero { height: 100vh; height: 100svh; }
 @media (max-width: 560px) { .course-film-hero { padding-top: 0; } .course-film-hero .film-hero { height: 72svh; } }
+
+/* Hero stats: keep each figure on one line on narrow phones */
+.hero-stats strong { white-space: nowrap; }
+@media (max-width: 420px) { .hero-home .hero-stats { gap: 18px; padding: 14px 16px; } .hero-home .hero-stats strong { font-size: 1.2rem; } }
