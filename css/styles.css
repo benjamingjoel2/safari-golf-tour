@@ -689,7 +689,7 @@ html, body { background: var(--white); }
 body { font-family: var(--sans); font-weight: 400; font-size: 14px; line-height: 1.5; letter-spacing: 0.2px; color: var(--black); }
 .container { max-width: none; padding: 0 var(--gutter); }
 .container.narrow { max-width: 960px; }
-h1, h2, h3, h4 { font-family: var(--sans); font-weight: 500; font-stretch: 110%; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; color: var(--black); }
+h1, h2, h3, h4 { font-family: var(--sans); font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; color: var(--black); }
 h1 { font-size: clamp(28px, 3.6vw, 48px); }
 h2 { font-size: clamp(22px, 2.3vw, 32px); }
 h3 { font-size: 16px; line-height: 1.3; }
@@ -753,7 +753,7 @@ p { margin: 0 0 1em; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 48px; }
 .brand { color: var(--white); gap: 10px; }
 .brand-mark { color: var(--white); width: 26px; height: 26px; }
-.brand-name { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-stretch: 110%; }
+.brand-name { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-stretch: 125%; }
 .brand-sub { font-family: var(--sans); font-weight: 400; font-size: 8px; letter-spacing: 0.22em; color: rgba(255, 255, 255, 0.6); margin-top: 3px; }
 .header-nav { display: flex; gap: 4px; margin-right: 12px; }
 .header-actions { gap: 10px; }
@@ -770,7 +770,7 @@ p { margin: 0 0 1em; }
 /* Overlay menu: black, uppercase */
 .menu { background: var(--black); color: var(--white); }
 .menu-links li { border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
-.menu-links a { font-family: var(--sans); font-weight: 500; font-stretch: 110%; text-transform: uppercase; font-size: clamp(20px, 2.2vw, 28px); letter-spacing: 0.04em; color: var(--white); padding: 14px 0; }
+.menu-links a { font-family: var(--sans); font-weight: 500; font-stretch: 125%; text-transform: uppercase; font-size: clamp(20px, 2.2vw, 28px); letter-spacing: 0.04em; color: var(--white); padding: 14px 0; }
 .menu-links a:hover, .menu-links a[aria-current="page"] { color: var(--red); }
 .menu-links a small { color: rgba(255, 255, 255, 0.5); margin-right: 16px; }
 .menu-side { color: rgba(255, 255, 255, 0.7); font-family: var(--sans); font-size: 13px; }
@@ -796,7 +796,7 @@ p { margin: 0 0 1em; }
 .hero-link.btn-link:hover { background: transparent; }
 .hero-stats { border: 0; padding: 0; margin: 36px 0 0; gap: clamp(28px, 5vw, 64px); justify-content: center; }
 .hero-stats li { align-items: center; text-align: center; }
-.hero-stats strong { font-family: var(--sans); font-weight: 500; font-stretch: 110%; font-size: 30px; letter-spacing: 0.02em; color: var(--white); }
+.hero-stats strong { font-family: var(--sans); font-weight: 500; font-stretch: 125%; font-size: 30px; letter-spacing: 0.02em; color: var(--white); }
 .hero-stats span { margin-top: 6px; color: rgba(255, 255, 255, 0.75); }
 .hero-short { min-height: 68svh; padding: 110px 0 70px; }
 .hero-short .hero-inner { text-align: center; }
@@ -822,10 +822,10 @@ p { margin: 0 0 1em; }
 .jcard-media, .way-media, .split-media, .mosaic figure, .dest img, .stop img, .bleed-media img { border-radius: 0; overflow: hidden; }
 .jcard:hover .jcard-media img, .way:hover .way-media img, .split-media:hover img, .mosaic figure:hover img, .dest:hover img { transform: scale(1.03); }
 .jcard-body { padding: 16px 0 6px; gap: 6px; }
-.jcard h3, .way h3, .dep-main h3, .stop h3, .dest-text h3, .dest-grid.five .dest-text h3 { font-family: var(--sans); font-size: 16px; font-weight: 500; font-stretch: 110%; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.25; margin: 0; }
+.jcard h3, .way h3, .dep-main h3, .stop h3, .dest-text h3, .dest-grid.five .dest-text h3 { font-family: var(--sans); font-size: 16px; font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.25; margin: 0; }
 .jcard-media .tag { background: var(--red); color: var(--white); border-radius: 0; font-family: var(--sans); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 5px 9px; font-weight: 700; }
 .jcard .price, .dep-side .price, .price-line { font-family: var(--sans); font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--mid); }
-.jcard .price strong, .dep-side .price strong, .price-line strong, .section-cream .price-line strong, .section-ink .jcard .price strong, .summary .price-line strong { font-family: var(--sans); font-weight: 500; font-stretch: 110%; font-size: 16px; letter-spacing: 0.02em; color: var(--black); }
+.jcard .price strong, .dep-side .price strong, .price-line strong, .section-cream .price-line strong, .section-ink .jcard .price strong, .summary .price-line strong { font-family: var(--sans); font-weight: 500; font-stretch: 125%; font-size: 16px; letter-spacing: 0.02em; color: var(--black); }
 .section-ink .jcard, .section-ink .jcard h3, .section-ink .jcard .price strong { color: var(--white); }
 .section-ink .jcard p, .section-ink .jcard .eyebrow, .section-ink .jcard .price, .section-ink .muted { color: rgba(255, 255, 255, 0.72); }
 .section-ink .jcard .btn-outline, .section-ink .add-btn { color: var(--white); border-color: var(--white); }
@@ -839,8 +839,8 @@ p { margin: 0 0 1em; }
 .pillar h3, .feature h3, .steps h3 { font-size: 16px; }
 .pillar .num { margin-bottom: 10px; color: var(--red); }
 .steps li, .section-cream .steps li { border-top: 1px solid var(--light); }
-.steps .num { font-family: var(--sans); font-size: 28px; font-weight: 500; font-stretch: 110%; color: var(--red); }
-.stats strong, .facts strong, .summary .facts strong { font-family: var(--sans); font-weight: 500; font-stretch: 110%; font-size: 30px; letter-spacing: 0.02em; color: var(--black); }
+.steps .num { font-family: var(--sans); font-size: 28px; font-weight: 500; font-stretch: 125%; color: var(--red); }
+.stats strong, .facts strong, .summary .facts strong { font-family: var(--sans); font-weight: 500; font-stretch: 125%; font-size: 30px; letter-spacing: 0.02em; color: var(--black); }
 .facts li, .section-cream .facts li, .summary .facts li { background: var(--white); border: 1px solid var(--light); border-radius: 0; padding: 18px 20px; }
 .facts.six { grid-template-columns: repeat(6, 1fr); }
 @media (max-width: 1000px) { .facts.six { grid-template-columns: repeat(3, 1fr); } }
@@ -856,9 +856,9 @@ p { margin: 0 0 1em; }
 .quote-card footer strong { color: var(--white); font-weight: 500; }
 .stars { color: var(--red); letter-spacing: 0.15em; }
 .form-success { background: var(--white); border: 1px solid var(--light); border-radius: 0; }
-.dep-year { font-family: var(--sans); color: var(--black); font-size: 28px; font-weight: 500; font-stretch: 110%; text-transform: uppercase; }
+.dep-year { font-family: var(--sans); color: var(--black); font-size: 28px; font-weight: 500; font-stretch: 125%; text-transform: uppercase; }
 .dep { background: var(--white); border: 1px solid var(--light); border-radius: 0; padding: 22px 24px; margin-bottom: 10px; }
-.dep-date strong { font-family: var(--sans); font-weight: 500; font-stretch: 110%; font-size: 20px; text-transform: uppercase; }
+.dep-date strong { font-family: var(--sans); font-weight: 500; font-stretch: 125%; font-size: 20px; text-transform: uppercase; }
 .dep-side .places { color: var(--red); }
 .dep-main h3 a:hover { color: var(--red); }
 .itinerary .day { padding-top: 5px; color: var(--red); }
@@ -957,45 +957,53 @@ details, .section-cream details { border-color: var(--light); }
    Course film covers
    A zoomed-in aerial shot graded warm, with the course's short
    name set as a hand-lettered film title in the middle
-   (Rock Salt, a raw, abstract marker hand). The image
+   (the wide Archivo heading face, mixed case). The image
    drifts slowly on the course page and pushes in on hover.
    ========================================================= */
-.film { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #1a1a1a; container-type: inline-size; isolation: isolate; }
-.film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.6); transform-origin: 50% 55%; filter: saturate(1.12) contrast(1.06) brightness(0.96); transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1); }
-.film::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(255, 196, 120, 0.12) 0%, rgba(255, 170, 90, 0.04) 45%, rgba(0, 0, 0, 0.22) 100%); mix-blend-mode: soft-light; pointer-events: none; }
-.film::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 75% 70% at 50% 52%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.38) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.18) 100%); pointer-events: none; }
-.film-title { position: absolute; inset: 0; z-index: 2; padding-bottom: 0; display: flex; align-items: center; justify-content: center; padding: 0 6%; text-align: center; font-family: "Rock Salt", "Marker Felt", cursive; font-weight: 400; font-style: normal; text-transform: none; letter-spacing: 0; line-height: 1.6; color: #fff; font-size: 44px; font-size: min(12cqw, calc(96cqw / var(--len, 8))); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 4px 30px rgba(0, 0, 0, 0.35); white-space: nowrap; pointer-events: none; }
-a.film-link { display: block; border: 0; }
-.course-card:hover .film img, a.film-link:focus-visible .film img { transform: scale(1.72); }
+.film { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #1a1a1a; container-type: inline-size; isolation: isolate; --focus: 50% 72%; }
+.film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus); transform: scale(1.45); transform-origin: var(--focus); filter: saturate(1.04) contrast(1.04); transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.film.film-sky img { transform: scale(1.18); }
+.film::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.3) 100%); pointer-events: none; }
+.film::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 70% 65% at 50% 50%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.3) 100%); pointer-events: none; }
+.film-title { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 6%; text-align: center; font-family: var(--sans); font-weight: 500; font-stretch: 125%; font-style: normal; text-transform: none; letter-spacing: 0.02em; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 30px rgba(0, 0, 0, 0.4); white-space: nowrap; pointer-events: none; }
+.film-name { display: block; font-size: 40px; font-size: min(13cqw, calc(105cqw / var(--len, 8))); }
+.film-sub { display: block; margin-top: 0.35em; font-size: 16px; font-size: min(4.2cqw, calc(36cqw / var(--len, 8))); font-weight: 400; opacity: 0.92; letter-spacing: 0.08em; }
+a.film-link { display: block; border: 0; position: relative; }
+.course-card:hover .film img, a.film-link:focus-visible .film img, .dest:hover .film img { transform: scale(1.55); }
+.course-card:hover .film-sky img, .dest:hover .film-sky img { transform: scale(1.26); }
 .jcard-media.film-link { aspect-ratio: 16 / 9; }
+.jcard-media .film + .tag { z-index: 3; }
 
 /* Course page: the film fills the screen under the header */
 .course-film-hero { position: relative; padding-top: 48px; background: var(--black); }
 .film-hero { aspect-ratio: auto; height: calc(100svh - 48px); min-height: 460px; max-height: 1100px; }
 .film-hero img { animation: filmDrift 26s ease-in-out infinite alternate; }
-.film-hero .film-title { font-size: min(11cqw, calc(88cqw / var(--len, 8)), 170px); }
-@keyframes filmDrift { from { transform: scale(1.55) translate3d(-1.5%, -1%, 0); } to { transform: scale(1.72) translate3d(1.5%, 1.2%, 0); } }
+.film-hero.film-sky img { animation: filmDriftSky 26s ease-in-out infinite alternate; }
+@keyframes filmDriftSky { from { transform: scale(1.14) translate3d(-1%, -0.6%, 0); } to { transform: scale(1.24) translate3d(1%, 0.8%, 0); } }
+.film-hero .film-name { font-size: min(10cqw, calc(84cqw / var(--len, 8)), 150px); }
+.film-hero .film-sub { font-size: min(3.2cqw, calc(26cqw / var(--len, 8)), 40px); }
+@keyframes filmDrift { from { transform: scale(1.4) translate3d(-1.5%, -1%, 0); } to { transform: scale(1.56) translate3d(1.5%, 1.2%, 0); } }
 .course-hero { padding-top: 48px; }
 @media (max-width: 560px) { .film-hero { height: 62svh; min-height: 340px; } }
 @media (prefers-reduced-motion: reduce) { .film img, .film-hero img { animation: none; transition: none; } }
 .course-hero h1 { margin-left: auto; margin-right: auto; text-align: center; }
 .course-hero .hero-actions { justify-content: center; }
-@media (max-width: 560px) { .film-hero .film-title { font-size: min(13cqw, calc(110cqw / var(--len, 8))); } }
+@media (max-width: 560px) { .film-hero .film-name { font-size: min(14cqw, calc(112cqw / var(--len, 8))); } .film-hero .film-sub { font-size: min(5cqw, calc(40cqw / var(--len, 8))); } }
 
 /* =========================================================
    Brand: zebra-on-Africa icon + script wordmark
-   The wordmark uses the same Rock Salt marker hand as the course
+   The wordmark uses the same wide Archivo as the course
    film titles. The icon gets a hairline light halo so its
    black outline still reads on the black header and footer.
    ========================================================= */
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; }
 .brand-mark { display: block; width: auto; height: 40px; flex: none; filter: drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.9)); }
-.brand-name { display: block; font-family: "Rock Salt", "Marker Felt", cursive; font-weight: 400; font-style: normal; font-stretch: 100%; font-size: 17px; line-height: 1.5; letter-spacing: 0; text-transform: none; color: var(--white); padding-top: 2px; white-space: nowrap; }
+.brand-name { display: block; font-family: var(--sans); font-weight: 500; font-style: normal; font-stretch: 125%; font-size: 17px; line-height: 1; letter-spacing: 0.03em; text-transform: none; color: var(--white); padding-top: 2px; white-space: nowrap; }
 .brand-sub { display: none; }
 .header-inner { height: 56px; }
 .site-footer .brand-mark { height: 64px; }
 .site-footer .brand-name { font-size: 22px; }
-@media (max-width: 560px) { .header-inner { height: 52px; } .brand-mark { height: 34px; } .brand-name { font-size: 14px; } .course-film-hero, .course-hero { padding-top: 52px; } .film-hero { height: 62svh; } }
+@media (max-width: 560px) { .header-inner { height: 52px; } .brand-mark { height: 34px; } .brand-name { font-size: 15px; } .course-film-hero, .course-hero { padding-top: 52px; } .film-hero { height: 62svh; } }
 .course-film-hero { padding-top: 56px; }
 .film-hero { height: calc(100svh - 56px); }
 .course-hero { padding-top: 56px; }
@@ -1018,3 +1026,13 @@ a.film-link { display: block; border: 0; }
 .section-ink .route li + li::before { color: var(--green); }
 .route { color: var(--mid); }
 .route li + li::before { color: var(--red); }
+
+/* Country tiles and park cards as posters */
+.dest, .dest-grid.five .dest { position: relative; aspect-ratio: auto; display: block; overflow: hidden; color: var(--black); }
+.dest::after { display: none; }
+.dest .film { aspect-ratio: 16 / 10; }
+.dest-meta { display: block; padding: 10px 0 0; font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); }
+.dest-grid, .dest-grid.five { grid-template-columns: repeat(3, 1fr); gap: 24px 16px; }
+@media (max-width: 900px) { .dest-grid, .dest-grid.five { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .dest-grid, .dest-grid.five { grid-template-columns: 1fr; } }
+.jcard-media.film-link .tag { position: absolute; top: 14px; left: 14px; }

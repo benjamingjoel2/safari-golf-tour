@@ -1,5 +1,5 @@
 /* Safari Golf Tour — full course information.
- * `short` is the film-title name on the cover; `cover` is the aerial photograph (Unsplash id).
+ * `short` is the film-title name on the cover; `cover` is the photograph (Unsplash id or px:Pexels id).
  * Lengths are back-tee approximations for planning, confirmed with the club at booking.
  * Loaded after js/places.js, before js/site.js.
  */
@@ -48,46 +48,51 @@
     avlekete: { length: 7300, founded: 2026, altitude: "Sea level", greens: "Paspalum", signature: "The 16th, a par 5 between the lagoon and the Atlantic with the sacred grove on the left.", story: "Benin's first eighteen-hole course, routed by Jeremy Pern between the lagoon and the Atlantic west of Cotonou around protected trees and a sacred grove. Long and open, with four par 3s, four par 5s and the ocean wind. We confirm tee times at booking while it settles in." , caddies: "Caddies available", carts: "Carts included", handicap: "None", dress: "Collared shirts", best: "Nov – Apr" }
   };
 
-  /* Film-title name and aerial cover for every course. */
+  /* Film-title name, cover photograph and crop for every course.
+   * [short name, photo (Unsplash id or px:Pexels id), focus (object-position), sky]
+   * Photographs are real courses (Pexels): South Africa (George coast, Cathkin Park), Eswatini
+   * and Cameroon where available, otherwise a real course of the same terrain. `sky` keeps the
+   * backdrop in frame only where it depicts the place (ocean, Atlas, Drakensberg...); every
+   * other cover crops to the turf. */
   var COVER = {
-    karen: ["Karen", "1742498626135-67a7d3501eff"],
-    muthaiga: ["Muthaiga", "1700667315229-070498867aea"],
-    windsor: ["Windsor", "1700667315267-6565aaca50c1"],
-    vipingo: ["Vipingo", "1716389089405-9109acb30533"],
-    "rift-valley": ["Rift Valley", "1610944864046-4f0de0e667d0"],
-    kili: ["Kilimanjaro", "1677137867878-a2b527e4c7fc"],
-    "sea-cliff": ["Sea Cliff", "1786398536809-a3956f453523"],
-    "fancourt-links": ["The Links", "1626512296443-2dbcaa240c49"],
-    "fancourt-montagu": ["Montagu", "1593331228867-e2a635f4b1cc"],
-    "fancourt-outeniqua": ["Outeniqua", "1720446548662-6845735ba69d"],
-    "pearl-valley": ["Pearl Valley", "1613754627343-622ea791af6e"],
-    "leopard-creek": ["Leopard Creek", "1605144156683-5ebde77feed5"],
-    skukuza: ["Skukuza", "1605147863013-dea22add791e"],
-    arabella: ["Arabella", "1605144156698-804de50de0ca"],
-    erinvale: ["Erinvale", "1627742259845-912f536ef00a"],
-    "elephant-hills": ["Elephant Hills", "1605147861225-7bcd55f8e513"],
-    borrowdale: ["Borrowdale", "1776723670848-adf761b4bbcc"],
-    "heritage-chateau": ["Le Château", "1769442871876-a370ee075a54"],
-    "heritage-reserve": ["La Réserve", "1591468309810-02eace4bf2f0"],
-    "ile-aux-cerfs": ["Ile aux Cerfs", "1692087224072-83f25202ca4a"],
-    anahita: ["Anahita", "1646204221936-35451c74e3de"],
-    entebbe: ["Entebbe", "1605144884914-64023214bdca"],
-    "uganda-gc": ["Kampala", "1776802405398-a52677e55aa2"],
-    kigali: ["Kigali", "1516705416642-fa4f130a0bb3"],
-    phakalane: ["Phakalane", "1689592607829-43321b3fcc55"],
-    livingstone: ["Livingstone", "1776723670814-6f786c205117"],
-    lusaka: ["Lusaka", "1776717163995-7807586c229b"],
-    windhoek: ["Windhoek", "1585839985872-b26117e60ea2"],
-    rossmund: ["Rossmund", "1694636507260-8b2428e3b738"],
-    "royal-marrakech": ["Marrakech", "1580758852857-a243f4de9cc7"],
-    assoufid: ["Assoufid", "1605144156546-91acf5e4cffd"],
-    "al-maaden": ["Al Maaden", "1605144884374-ecbb643615f6"],
-    "dar-es-salam": ["Dar Es Salam", "1700667315345-e0c51587b2fd"],
-    mazagan: ["Mazagan", "1700667315305-ef2a027f9078"],
-    tazegzout: ["Tazegzout", "1687730824562-bcee4645bd15"],
-    michlifen: ["Michlifen", "1677138055562-483b824b6348"],
-    "golf-du-rova": ["Rova", "1788244160501-b4830945f988"],
-    avlekete: ["Ouidah", "1775686318424-9987122d8402"]
+    karen: ["Karen", "px:19334919", "50% 60%", false],
+    muthaiga: ["Muthaiga", "px:11890225", "50% 55%", false],
+    windsor: ["Windsor", "px:32000024", "50% 55%", false],
+    vipingo: ["Vipingo", "px:4226146", "50% 60%", true],
+    "rift-valley": ["Rift Valley", "px:12389370", "50% 55%", true],
+    kili: ["Kilimanjaro", "px:914682", "50% 60%", true],
+    "sea-cliff": ["Sea Cliff", "px:4226145", "50% 55%", true],
+    "fancourt-links": ["The Links", "px:37727304", "50% 75%", true],
+    "fancourt-montagu": ["Montagu", "px:37727302", "50% 80%", false],
+    "fancourt-outeniqua": ["Outeniqua", "px:32215865", "50% 70%", true],
+    "pearl-valley": ["Pearl Valley", "px:11363153", "50% 60%", true],
+    "leopard-creek": ["Leopard Creek", "px:13133055", "50% 50%", false],
+    skukuza: ["Skukuza", "px:1260762", "50% 50%", false],
+    arabella: ["Arabella", "px:13655869", "50% 65%", false],
+    erinvale: ["Erinvale", "px:32988401", "50% 65%", true],
+    "elephant-hills": ["Elephant Hills", "px:12389375", "50% 55%", false],
+    borrowdale: ["Borrowdale", "px:39493253", "50% 65%", false],
+    "heritage-chateau": ["Le Ch\u00e2teau", "px:4226150", "50% 50%", true],
+    "heritage-reserve": ["La R\u00e9serve", "px:12389378", "50% 55%", true],
+    "ile-aux-cerfs": ["Ile aux Cerfs", "px:8332582", "50% 50%", true],
+    anahita: ["Anahita", "px:12597298", "50% 65%", true],
+    entebbe: ["Entebbe", "px:33554196", "50% 60%", false],
+    "uganda-gc": ["Kampala", "px:33591646", "50% 80%", false],
+    kigali: ["Kigali", "px:12389371", "50% 55%", false],
+    phakalane: ["Phakalane", "px:32386690", "50% 70%", false],
+    livingstone: ["Livingstone", "px:39493241", "50% 75%", false],
+    lusaka: ["Lusaka", "px:2220273", "50% 60%", false],
+    windhoek: ["Windhoek", "px:14869682", "50% 50%", false],
+    rossmund: ["Rossmund", "px:14869686", "50% 50%", false],
+    "royal-marrakech": ["Marrakech", "px:8334036", "50% 70%", false],
+    assoufid: ["Assoufid", "px:14869687", "50% 50%", false],
+    "al-maaden": ["Al Maaden", "px:14869685", "50% 50%", false],
+    "dar-es-salam": ["Dar Es Salam", "px:9736758", "50% 50%", false],
+    mazagan: ["Mazagan", "px:35918456", "50% 70%", true],
+    tazegzout: ["Tazegzout", "px:35918458", "50% 65%", true],
+    michlifen: ["Michlifen", "px:4185124", "50% 50%", false],
+    "golf-du-rova": ["Rova", "px:32401756", "50% 60%", false],
+    avlekete: ["Ouidah", "px:37727309", "50% 70%", true]
   };
 
   S.COURSES.forEach(function (c) {
@@ -95,7 +100,7 @@
     if (i) Object.keys(i).forEach(function (k) { c[k] = i[k]; });
     var v = COVER[c.id];
     c.short = v ? v[0] : c.name.replace(/ (Golf|Country|Club|Resort|Estate|&).*$/, "");
-    if (v) { c.cover = v[1]; c.photo = v[1]; }
+    if (v) { c.cover = v[1]; c.photo = v[1]; c.focus = v[2]; c.sky = v[3]; }
   });
   S.COURSE_INFO = INFO;
 })();

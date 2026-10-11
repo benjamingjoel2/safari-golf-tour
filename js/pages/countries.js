@@ -5,16 +5,6 @@
   var listView = document.getElementById("list-view");
   var detailView = document.getElementById("detail-view");
 
-  S.countryTile = function (c, i) {
-    var courses = S.coursesIn(c.id).length, parks = S.parksIn(c.id).length;
-    return (
-      '<a class="dest reveal' + (i % 3 ? " reveal-delay-" + (i % 3) : "") + '" href="countries.html#' + esc(c.id) + '">' +
-        '<img src="' + S.img(c.photo, 800, 1000) + '" alt="' + esc(c.name) + '" width="800" height="1000" />' +
-        '<div class="dest-text"><p class="eyebrow">' + courses + (courses === 1 ? " course · " : " courses · ") + parks + " parks</p><h3>" + esc(c.name) + "</h3><p>" + esc(c.strap) + "</p></div>" +
-      "</a>"
-    );
-  };
-
   document.getElementById("country-grid").innerHTML = S.COUNTRIES.map(S.countryTile).join("");
 
   function detailHtml(c) {
@@ -22,8 +12,8 @@
     var journeys = c.journeys.map(S.journey).filter(Boolean);
     var others = (c.pairs ? c.pairs.map(S.country).filter(Boolean) : S.COUNTRIES.filter(function (x) { return x.id !== c.id && x.region === c.region; })).slice(0, 3);
     return (
-      '<section class="hero hero-short">' +
-        '<div class="hero-media"><img src="' + S.img(c.photo, 2000) + '" alt="' + esc(c.name) + '" /></div>' +
+      '<section class="course-film-hero">' + S.poster({ title: c.name, sub: c.region, photo: c.photo, hero: true, sky: true, w: 3200, h: 1800, alt: c.name }) + "</section>" +
+      '<section class="hero hero-plain course-hero">' +
         '<div class="container hero-inner">' +
           '<a class="back" href="countries.html#all">All countries</a>' +
           '<p class="eyebrow">' + esc(c.region) + "</p>" +

@@ -40,7 +40,7 @@
 
   /* ---------- Countries ---------- */
   S.COUNTRIES = [
-    { id: "kenya", name: "Kenya", region: "East Africa", gateway: "Nairobi (NBO)", bestMonths: "Jul – Oct, Jan – Feb", photo: "g_caddie",
+    { id: "kenya", name: "Kenya", region: "East Africa", gateway: "Nairobi (NBO)", bestMonths: "Jul – Oct, Jan – Feb", photo: "crossing",
       strap: "The original safari country, with golf that goes back a century.",
       intro: "Three championship courses inside forty minutes of each other in Nairobi, and the Mara conservancies an hour's flight away. The easiest place in Africa to alternate a round and a game drive without wasting a day.",
       journeys: ["kenya-classic", "grand-crossing"] },
