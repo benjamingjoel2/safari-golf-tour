@@ -92,9 +92,9 @@
         "</ul></nav>" +
         '<div class="menu-side">' +
           "<h4>Speak to a planner</h4>" +
-          (C.email ? '<p><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a></p>" : "") +
-          (C.phone ? '<p><a href="tel:' + esc(C.phone.replace(/\s+/g, "")) + '">' + esc(C.phone) + "</a></p>" : "") +
-          "<p>Offices in " + esc(C.offices.join(" and ")) + ". Replies within one working day.</p>" +
+          (C.email ? '<p class="menu-contact"><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a></p>" : "") +
+          (C.phone ? '<p class="menu-contact"><a href="tel:' + esc(C.phone.replace(/\s+/g, "")) + '">' + esc(C.phone) + "</a></p>" : "") +
+          '<p class="menu-note">Offices in ' + esc(C.offices.join(" and ")) + ". Replies within one working day.</p>" +
           '<a class="btn btn-gold" href="contact.html">Design your safari</a>' +
         "</div>" +
       "</div>" +
@@ -106,10 +106,25 @@
   var menu = document.getElementById("site-menu");
   var menuBtn = header.querySelector(".menu-btn");
 
+  /* Over a dark photo hero the header starts transparent; once scrolled it turns to glass. */
+  function startsDark() {
+    var y = header.offsetHeight + 8;
+    var stack = document.elementsFromPoint ? document.elementsFromPoint(window.innerWidth / 2, y) : [];
+    for (var i = 0; i < stack.length; i++) {
+      if (header.contains(stack[i]) || stack[i].closest(".menu, .chat-fab")) continue;
+      return !!stack[i].closest(".hero:not(.hero-plain), .course-film-hero");
+    }
+    return false;
+  }
   function onScroll() {
-    header.classList.toggle("scrolled", window.scrollY > 40);
+    var scrolled = window.scrollY > 40;
+    header.classList.toggle("scrolled", scrolled);
+    header.classList.toggle("over-hero", !scrolled && startsDark());
   }
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  window.addEventListener("hashchange", function () { setTimeout(onScroll, 0); });
+  window.addEventListener("load", onScroll);
   onScroll();
 
   function setMenu(open) {
@@ -495,4 +510,28 @@
   setTimeout(function () { if (!ioReported) revealAll(); }, 1500);
   setTimeout(revealByPosition, 300);
   S.observeReveals();
+
+  /* Split heroes: golf on the left, safari on the right. Scrolling slides the
+     separator left so the safari takes over; scrolling back slides it home.
+     The home hero is pinned inside .hero-track for the length of the move. */
+  var wipes = [].slice.call(document.querySelectorAll(".hero-wipe"));
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (wipes.length && !calm) {
+    var wipeTicking = false;
+    var updateWipes = function () {
+      wipeTicking = false;
+      wipes.forEach(function (w) {
+        var hero = w.closest(".hero"), track = hero.parentElement.classList.contains("hero-track") ? hero.parentElement : null, p;
+        if (track) p = -track.getBoundingClientRect().top / Math.max(1, track.offsetHeight - hero.offsetHeight);
+        else p = -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight * 0.6);
+        p = Math.min(1, Math.max(0, p));
+        w.style.setProperty("--p", (50 * (1 - p)).toFixed(2) + "%");
+        w.classList.toggle("is-done", p >= 1);
+      });
+    };
+    var onWipeScroll = function () { if (!wipeTicking) { wipeTicking = true; requestAnimationFrame(updateWipes); } };
+    window.addEventListener("scroll", onWipeScroll, { passive: true });
+    window.addEventListener("resize", onWipeScroll);
+    updateWipes();
+  }
 })();
