@@ -64,13 +64,13 @@
   if (page === "") page = "index.html";
 
   /* ---------- Header ---------- */
-  var mark = '<svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1"/><path d="M17 31V9m0 0 10 3.5L17 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 31c3-2.5 6-2.5 9 0s6 2.5 9 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>';
+  var mark = '<img class="brand-mark" src="img/logo-96.png" srcset="img/logo-96.png 2x, img/logo-240.png 5x" alt="" width="42" height="40" />';
 
   var headerHtml =
     '<header class="site-header" id="site-header">' +
       '<div class="container header-inner">' +
         '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ' home">' + mark +
-          '<span><span class="brand-name">' + esc(C.brand) + '</span><span class="brand-sub">Golf &amp; Safari · Africa</span></span>' +
+          '<span class="brand-name">' + esc(C.brand) + "</span>" +
         "</a>" +
         '<div class="header-actions">' +
           '<nav class="header-nav" aria-label="Primary">' +
@@ -149,7 +149,7 @@
       '<div class="container">' +
         '<div class="footer-grid five">' +
           '<div class="footer-brand">' +
-            '<a class="brand" href="index.html">' + mark + '<span><span class="brand-name">' + esc(C.brand) + '</span><span class="brand-sub">Golf &amp; Safari · Africa</span></span></a>' +
+            '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ' home">' + mark + '<span class="brand-name">' + esc(C.brand) + "</span></a>" +
             '<p style="margin-top:18px">Safari first, golf woven through. Golf and safari journeys across thirteen African countries, built one guest at a time by people who have played and slept their way across all of it.</p>' +
             (socialHtml ? '<div class="socials">' + socialHtml + "</div>" : "") +
           "</div>" +

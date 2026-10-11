@@ -642,7 +642,7 @@ details p { margin: 12px 0 0; color: var(--text-muted); max-width: 60ch; }
 /* =========================================================
    Ferrari system (ferrari.com)
    White ground, #181818 header and footer, #222 dark panels,
-   #ddd hairlines, one red #eb2323 for the primary action.
+   #ddd hairlines, one green (from the logo) for the primary action.
    Ferrari Sans → Archivo (free, Google Fonts): wide (110%)
    uppercase 500 headings, 12px uppercase tracked labels and
    nav, 13–14px body. Square buttons, circled chevron links,
@@ -657,8 +657,11 @@ details p { margin: 12px 0 0; color: var(--text-muted); max-width: 60ch; }
   --grey: #666666;
   --light: #dddddd;
   --pale: #f2f2f2;
-  --red: #eb2323;
-  --red-2: #c81717;
+  --red: #008a17;
+  --red-2: #006b12;
+  --green: #00a018;
+  --green-light: #80e820;
+  --green-deep: #005800;
   --white: #ffffff;
   --paper: #f4f1ea;
   --ink: #181818;
@@ -678,7 +681,7 @@ details p { margin: 12px 0 0; color: var(--text-muted); max-width: 60ch; }
   --line: #dddddd;
   --line-dark: #dddddd;
   --surface: #ffffff;
-  --danger: #eb2323;
+  --danger: #d1301f;
   --w: none;
   --gutter: clamp(20px, 3vw, 48px);
 }
@@ -903,10 +906,10 @@ details, .section-cream details { border-color: var(--light); }
 .field input, .field select, .field textarea, .filters .field select { border-radius: 0; border: 1px solid var(--light); background: var(--white); color: var(--black); font-family: var(--sans); font-size: 14px; padding: 12px 12px; transition: border-color .2s; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--black); box-shadow: none; outline: none; background: var(--white); }
 .field input::placeholder, .field textarea::placeholder { color: #999; }
-.field.invalid input { border-color: var(--red); box-shadow: none; }
+.field.invalid input { border-color: var(--danger); box-shadow: none; }
 .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23181818' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px 8px; padding-right: 36px; }
 .field select option { color: var(--black); background: var(--white); }
-.form-error { font-family: var(--sans); font-size: 12px; color: var(--red); }
+.form-error { font-family: var(--sans); font-size: 12px; color: var(--danger); }
 .section-ink .field > span { color: rgba(255, 255, 255, 0.7); }
 .section-ink .field input, .section-ink .field select, .section-ink .field textarea { background: var(--white); border-color: var(--white); }
 .section-ink .form-note { color: rgba(255, 255, 255, 0.6); }
@@ -953,15 +956,15 @@ details, .section-cream details { border-color: var(--light); }
 /* =========================================================
    Course film covers
    A zoomed-in aerial shot graded warm, with the course's short
-   name set as a script film title in the middle (Sacramento,
-   the free stand-in for Malbon's monoline script). The image
+   name set as a brush-script film title in the middle
+   (Yesteryear, a thick, elegant hand-lettered brush script). The image
    drifts slowly on the course page and pushes in on hover.
    ========================================================= */
 .film { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #1a1a1a; container-type: inline-size; isolation: isolate; }
 .film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.22); transform-origin: 50% 55%; filter: saturate(1.12) contrast(1.06) brightness(0.96); transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1); }
 .film::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(255, 196, 120, 0.12) 0%, rgba(255, 170, 90, 0.04) 45%, rgba(0, 0, 0, 0.22) 100%); mix-blend-mode: soft-light; pointer-events: none; }
 .film::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 75% 70% at 50% 52%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.38) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.18) 100%); pointer-events: none; }
-.film-title { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 0 6%; text-align: center; font-family: "Sacramento", "Brush Script MT", cursive; font-weight: 400; font-style: normal; text-transform: none; letter-spacing: 0; line-height: 1; color: #fff; font-size: 64px; font-size: min(19cqw, calc(170cqw / var(--len, 8))); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 4px 30px rgba(0, 0, 0, 0.35); white-space: nowrap; pointer-events: none; }
+.film-title { position: absolute; inset: 0; z-index: 2; padding-bottom: 0.08em; display: flex; align-items: center; justify-content: center; padding: 0 6%; text-align: center; font-family: "Yesteryear", "Brush Script MT", cursive; font-weight: 400; font-style: normal; text-transform: none; letter-spacing: 0; line-height: 1; color: #fff; font-size: 64px; font-size: min(18cqw, calc(160cqw / var(--len, 8))); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 4px 30px rgba(0, 0, 0, 0.35); white-space: nowrap; pointer-events: none; }
 a.film-link { display: block; border: 0; }
 .course-card:hover .film img, a.film-link:focus-visible .film img { transform: scale(1.3); }
 .jcard-media.film-link { aspect-ratio: 16 / 9; }
@@ -978,3 +981,64 @@ a.film-link { display: block; border: 0; }
 .course-hero h1 { margin-left: auto; margin-right: auto; text-align: center; }
 .course-hero .hero-actions { justify-content: center; }
 @media (max-width: 560px) { .film-hero .film-title { font-size: min(19cqw, calc(200cqw / var(--len, 8))); } }
+
+/* =========================================================
+   Brand: zebra-on-Africa icon + script wordmark
+   The wordmark uses the same Yesteryear brush script as the course
+   film titles. The icon gets a hairline light halo so its
+   black outline still reads on the black header and footer.
+   ========================================================= */
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; }
+.brand-mark { display: block; width: auto; height: 40px; flex: none; filter: drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.9)); }
+.brand-name { display: block; font-family: "Yesteryear", "Brush Script MT", cursive; font-weight: 400; font-style: normal; font-stretch: 100%; font-size: 27px; line-height: 1; letter-spacing: 0.01em; text-transform: none; color: var(--white); padding-top: 2px; white-space: nowrap; }
+.brand-sub { display: none; }
+.header-inner { height: 56px; }
+.site-footer .brand-mark { height: 64px; }
+.site-footer .brand-name { font-size: 34px; }
+@media (max-width: 560px) { .header-inner { height: 52px; } .brand-mark { height: 34px; } .brand-name { font-size: 23px; } .course-film-hero, .course-hero { padding-top: 52px; } .film-hero { height: 62svh; } }
+.course-film-hero { padding-top: 56px; }
+.film-hero { height: calc(100svh - 56px); }
+.course-hero { padding-top: 56px; }
+
+/* =========================================================
+   Green accent and rounded corners
+   --red now carries the logo green (deepened for 4.5:1 white
+   text); --green is the logo's own bright green, used where
+   it sits on dark grounds. Corners: 16px cards and images,
+   12px panels and fields, pill buttons, chips and floating
+   buttons. Full-bleed heroes and sections stay edge to edge.
+   ========================================================= */
+:root { --r-lg: 16px; --r-md: 12px; --r-sm: 8px; --pill: 999px; }
+.site-nav a:not(.btn):hover, .header-nav a:hover, .header-nav a[aria-current="page"] { border-bottom-color: var(--green); }
+.menu-links a:hover, .menu-links a[aria-current="page"], .menu-side a:hover { color: var(--green); }
+::selection { background: var(--green); color: var(--white); }
+:focus-visible { outline-color: var(--green); }
+
+/* buttons, chips, floating buttons: pills */
+.btn, .btn-sm, .add-btn, .header-cta, .chat-fab, .trip-fab, .skip-link { border-radius: var(--pill); }
+.btn { padding-left: 34px; padding-right: 34px; }
+.chips li, .jcard .chips li, .section-cream .chips li, .section-ink .jcard .chips li, .section-ink .chips li { border-radius: var(--pill); padding: 5px 12px; }
+.jcard-media .tag { border-radius: var(--pill); padding: 5px 11px; }
+.menu-btn { border-radius: var(--pill); }
+
+/* cards and images */
+.jcard-media, .way-media, .split-media, .mosaic figure, .dest, .dest img, .jcard-media.film-link, .film-link .film { border-radius: var(--r-lg); overflow: hidden; }
+.dest-grid .dest img { border-radius: 0; }
+.film-link .film { -webkit-mask-image: -webkit-radial-gradient(white, black); }
+.stop img, .stop-film { border-radius: var(--r-sm); overflow: hidden; }
+
+/* panels and fields */
+.facts li, .section-cream .facts li, .summary .facts li, .dep, .aside-block, .note, .dest-lists > div, .filters, .stop, .summary, .form-success, .plan-banner { border-radius: var(--r-md); }
+.quote-card { border-radius: var(--r-lg); }
+.field input, .field select, .field textarea, .filters .field select { border-radius: var(--r-sm); }
+.stepper { border-radius: var(--pill); overflow: hidden; }
+.stepper button { border-radius: var(--pill); }
+.stop-actions button { border-radius: 50%; }
+.socials a { border-radius: 50%; }
+details { border-radius: 0; }
+/* Light text on the dark ink panels */
+.section-ink .price-line, .section-ink .price-line strong { color: var(--white); }
+.section-ink .route { color: rgba(255, 255, 255, 0.75); }
+.section-ink .route li + li::before { color: var(--green); }
+.route { color: var(--mid); }
+.route li + li::before { color: var(--red); }
