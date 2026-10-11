@@ -72,7 +72,7 @@
     stopsEl.innerHTML = list.map(function (s, i) {
       return (
         '<li class="stop" data-i="' + i + '">' +
-          (s.type === "course" ? '<a class="stop-ink" href="courses.html#' + esc(s.id) + '">' + S.inkCover(S.course(s.id), { attrs: ' preserveAspectRatio="xMidYMid slice"' }) + "</a>" : '<img src="' + S.img(s.photo, 300, 300) + '" alt="" width="300" height="300" />') +
+          (s.type === "course" ? '<a class="stop-film" href="courses.html#' + esc(s.id) + '"><img src="' + S.img(s.photo, 300, 300) + '" alt="" width="300" height="300" /></a>' : '<img src="' + S.img(s.photo, 300, 300) + '" alt="" width="300" height="300" />') +
           '<div class="stop-main">' +
             '<p class="eyebrow">' + (s.type === "course" ? "Golf" : "Safari") + " · " + esc(s.country) + "</p>" +
             "<h3>" + esc(s.name) + "</h3>" +

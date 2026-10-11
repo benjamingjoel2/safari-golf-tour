@@ -3,7 +3,7 @@
    Ferrari-style visual system (white and near-black, one
    red, uppercase wide-sans headings, square buttons, circled
    chevron links, full-bleed imagery) on the site's existing
-   page structure, with ink-drawn course illustrations.
+   page structure, with cinematic aerial course covers.
    ========================================================= */
 
 :root {
@@ -809,8 +809,6 @@ p { margin: 0 0 1em; }
 .hero-plain .btn-outline:hover { background: var(--black); color: var(--white); }
 .hero-plain .add-btn { color: var(--black); border-color: var(--black); }
 .hero-plain .add-btn.is-added { color: var(--white); }
-.hero-ink img { object-fit: contain; background: var(--paper); object-position: 50% 50%; }
-.hero-ink::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.62) 100%) !important; }
 .scroll-cue { display: block; border-color: rgba(255, 255, 255, 0.7); }
 @media (max-width: 900px) { .hero-stats { border: 0; padding: 0; } .hero-stats strong { font-size: 24px; } }
 @media (max-width: 560px) { .hero { padding: 100px 0 70px; } .hero-media { margin: 0; height: auto; } }
@@ -916,9 +914,9 @@ details, .section-cream details { border-color: var(--light); }
 /* Builder controls */
 .stop { background: var(--white); border: 1px solid var(--light); border-radius: 0; padding: 14px 18px 14px 14px; }
 .stop img { border-radius: 0; }
-.stop-ink { display: block; width: 96px; height: 96px; overflow: hidden; background: var(--paper); }
-.stop-ink svg { width: 100%; height: 100%; display: block; }
-@media (max-width: 640px) { .stop-ink { width: 72px; height: 72px; } }
+.stop-film { display: block; width: 96px; height: 96px; overflow: hidden; }
+.stop-film img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.25); }
+@media (max-width: 640px) { .stop-film { width: 72px; height: 72px; } }
 .stepper { border: 1px solid var(--light); border-radius: 0; background: var(--white); }
 .stepper button { border-radius: 0; background: transparent; color: var(--black); }
 .stepper button:hover { background: var(--pale); }
@@ -950,33 +948,33 @@ details, .section-cream details { border-color: var(--light); }
 .socials a { border-radius: 50%; border-color: rgba(255, 255, 255, 0.3); color: var(--white); }
 .socials a:hover { border-color: var(--white); color: var(--white); }
 
-/* Ink illustrations */
-.ink { display: block; width: 100%; height: auto; background: var(--paper); }
-.jcard-ink { display: block; aspect-ratio: 900 / 560; background: var(--paper); border: 1px solid var(--light); }
-.jcard-ink .ink { height: 100%; }
-.ink-frame { margin: 0; border: 1px solid var(--light); background: var(--paper); }
-.ink-frame .ink { width: 100%; }
-.ink-frame figcaption { padding: 12px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); background: var(--white); border-top: 1px solid var(--light); }
-.course-cover { background: var(--white); padding: 0 0 24px; }
-.course-hero { padding-bottom: 24px; }
-.map-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
-@media (max-width: 960px) { .map-grid { grid-template-columns: 1fr; } }
-.scorecards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-@media (max-width: 480px) { .scorecards { grid-template-columns: 1fr; } }
-.scorecard { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--light); font-size: 13px; }
-.scorecard caption { text-align: left; padding: 10px 12px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); background: var(--white); border: 1px solid var(--light); border-bottom: 0; }
-.scorecard th { text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); padding: 8px 12px; border-bottom: 1px solid var(--light); }
-.scorecard td { padding: 7px 12px; border-bottom: 1px solid var(--pale); font-variant-numeric: tabular-nums; }
-.scorecard tfoot td { font-weight: 700; border-top: 1px solid var(--light); border-bottom: 0; background: var(--pale); }
-.scorecard-total { margin-top: 16px; font-size: 13px; color: var(--mid); }
-.scorecard-total strong { color: var(--black); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
 
-/* Paper hero: ink drawing beneath a dark title block */
-.hero-paper { flex-direction: column; align-items: stretch; min-height: 0; background: var(--paper); color: var(--black); padding: 100px 0 0; overflow: visible; }
-.hero-paper .hero-inner { text-align: center; }
-.hero-paper .hero-media { position: relative; inset: auto; order: 2; height: clamp(240px, 40vw, 540px); margin: 8px 0 0; }
-.hero-paper .hero-media img { object-fit: contain; object-position: 50% 100%; animation: none; background: var(--paper); }
-.hero-paper .hero-media::after { display: none; }
-.hero-paper h1, .hero-paper .lead { color: var(--black); text-shadow: none; }
-.hero-paper .eyebrow { color: var(--mid); text-transform: uppercase; letter-spacing: 1px; font-size: 12px; font-weight: 400; }
-.hero-paper .scroll-cue { display: none; }
+
+/* =========================================================
+   Course film covers
+   A zoomed-in aerial shot graded warm, with the course's short
+   name set as a script film title in the middle (Sacramento,
+   the free stand-in for Malbon's monoline script). The image
+   drifts slowly on the course page and pushes in on hover.
+   ========================================================= */
+.film { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #1a1a1a; container-type: inline-size; isolation: isolate; }
+.film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.22); transform-origin: 50% 55%; filter: saturate(1.12) contrast(1.06) brightness(0.96); transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.film::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(255, 196, 120, 0.12) 0%, rgba(255, 170, 90, 0.04) 45%, rgba(0, 0, 0, 0.22) 100%); mix-blend-mode: soft-light; pointer-events: none; }
+.film::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 75% 70% at 50% 52%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.38) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.18) 100%); pointer-events: none; }
+.film-title { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 0 6%; text-align: center; font-family: "Sacramento", "Brush Script MT", cursive; font-weight: 400; font-style: normal; text-transform: none; letter-spacing: 0; line-height: 1; color: #fff; font-size: 64px; font-size: min(19cqw, calc(170cqw / var(--len, 8))); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 4px 30px rgba(0, 0, 0, 0.35); white-space: nowrap; pointer-events: none; }
+a.film-link { display: block; border: 0; }
+.course-card:hover .film img, a.film-link:focus-visible .film img { transform: scale(1.3); }
+.jcard-media.film-link { aspect-ratio: 16 / 9; }
+
+/* Course page: the film fills the screen under the header */
+.course-film-hero { position: relative; padding-top: 48px; background: var(--black); }
+.film-hero { aspect-ratio: auto; height: calc(100svh - 48px); min-height: 460px; max-height: 1100px; }
+.film-hero img { animation: filmDrift 26s ease-in-out infinite alternate; }
+.film-hero .film-title { font-size: min(17cqw, calc(150cqw / var(--len, 8)), 260px); }
+@keyframes filmDrift { from { transform: scale(1.18) translate3d(-1.2%, -0.8%, 0); } to { transform: scale(1.3) translate3d(1.2%, 1%, 0); } }
+.course-hero { padding-top: 48px; }
+@media (max-width: 560px) { .film-hero { height: 62svh; min-height: 340px; } }
+@media (prefers-reduced-motion: reduce) { .film img, .film-hero img { animation: none; transition: none; } }
+.course-hero h1 { margin-left: auto; margin-right: auto; text-align: center; }
+.course-hero .hero-actions { justify-content: center; }
+@media (max-width: 560px) { .film-hero .film-title { font-size: min(19cqw, calc(200cqw / var(--len, 8))); } }
