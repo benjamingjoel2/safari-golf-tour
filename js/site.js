@@ -239,6 +239,18 @@
     fab.hidden = n === 0 || page === "build.html";
   };
 
+  /* Cinematic course cover: a zoomed-in aerial shot with the short name as a script film title. */
+  S.courseFilm = function (c, opts) {
+    opts = opts || {};
+    var t = c.short || c.name;
+    return (
+      '<span class="film' + (opts.hero ? " film-hero" : "") + '" style="--len:' + Math.max(t.length, 6) + '">' +
+        '<img src="' + S.img(c.cover || c.photo, opts.w || 1200, opts.h || 675) + '" alt="' + esc(c.name + ", from the air") + '"' + (opts.hero ? ' fetchpriority="high"' : "") + " />" +
+        '<span class="film-title" aria-hidden="true">' + esc(t) + "</span>" +
+      "</span>"
+    );
+  };
+
   S.courseCard = function (c) {
     var js = (S.JOURNEYS || []).filter(function (j) {
       return j.courses.some(function (x) { var m = S.courseByName(x.name); return m && m.id === c.id; });
@@ -246,7 +258,7 @@
     var cn = S.countryByName ? S.countryByName(c.country) : null;
     return (
       '<article class="jcard course-card reveal" id="' + esc(c.id) + '">' +
-        '<a class="jcard-media jcard-ink" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name) + '">' + (S.inkCover ? S.inkCover(c) : "") + "</a>" +
+        '<a class="jcard-media film-link" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name) + '">' + S.courseFilm(c) + "</a>" +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + (cn ? '<a href="countries.html#' + esc(cn.id) + '" style="color:inherit;text-decoration:none">' + esc(c.country) + "</a>" : esc(c.country)) + " · Par " + c.par + " · " + c.holes + " holes</p>" +
           '<h3><a href="courses.html#' + esc(c.id) + '" style="color:inherit;text-decoration:none">' + esc(c.name) + "</a></h3>" +

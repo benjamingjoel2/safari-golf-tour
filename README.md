@@ -15,7 +15,7 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 | `build.html` | Trip builder: ordered stops, nights per park, indicative price, day-by-day outline, load a journey, send the plan to the brief |
 | `departures.html` | Hosted departures by date for 2027 and 2028, with places left and a reserve link |
 | `destinations.html` | Redirects to `countries.html` (old links keep working) |
-| `courses.html` | Every course we play, filterable by country, each with an ink-drawn cover. `courses.html#<id>` opens the course page: facts, story, signature hole, an ink course map with a hole-by-hole scorecard, nearby parks, journeys and stays |
+| `courses.html` | Every course we play, filterable by country, each with a cinematic aerial cover and its short name as a script film title. `courses.html#<id>` opens the course page: full-screen film hero, facts, story, signature hole, caddies and dress code, nearby parks, journeys and stays |
 | `stays.html` | Camps, lodges, resorts and hotels, filterable by destination and type. `#<id>` jumps to one |
 | `encounters.html` | Seven arranged encounters and the journeys they belong to. `#<id>` jumps to one |
 | `journal.html` | Field notes. `journal.html#<slug>` opens an article |
@@ -28,8 +28,7 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 - `js/packages.js` — journeys (with courses, stays and day-by-day itineraries), destinations, guest quotes, photo ids and site config (`SGT.CONFIG`).
 - `js/content.js` — courses, stays, hosted departures, encounters and journal articles, plus lookups.
 - `js/places.js` — the thirteen countries (East, Southern, North and West Africa and the Indian Ocean), 55 national parks, reserves and deserts (each with its nearest course), extra courses, and the trip builder's indicative rates (`SGT.RATES`). Edit these three files to change content; every page renders from them.
-- `js/course-info.js` — full information for every course (length, founding, turf, signature hole, caddies, dress code, best months) and the `scene` key that drives its illustration.
-- `js/ink.js` — the ink illustration engine: `SGT.inkCover(course)` draws a brush-style cover scene and `SGT.inkMap(course)` a hole-by-hole course map as inline SVG, seeded by the course id. `SGT.courseHoles(course)` gives the par and yardage per hole used by the scorecard. No image files are involved; the four hand-drawn pieces in `img/ink/` are used as page art.
+- `js/course-info.js` — full information for every course (length, founding, turf, signature hole, caddies, dress code, best months), plus `short` (the film-title name, e.g. Muthaiga) and `cover` (the aerial photograph). `SGT.courseFilm(course)` in `js/site.js` renders the cover; titles are set in Sacramento, a free stand-in for Malbon's monoline script.
 - `js/site.js` — shared chrome injected on every page: header, overlay menu, footer, floating chat button, reveal-on-scroll, enquiry-form handling, and the trip state (`SGT.trip`, stored in the visitor's `localStorage` under `sgt-trip`) with the course, park and country cards and the floating "Your trip" tray.
 - `js/pages/*.js` — per-page rendering.
 - `css/styles.css` — the design system.
