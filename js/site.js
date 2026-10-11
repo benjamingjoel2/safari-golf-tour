@@ -245,15 +245,15 @@
     });
     var cn = S.countryByName ? S.countryByName(c.country) : null;
     return (
-      '<article class="jcard reveal" id="' + esc(c.id) + '">' +
-        '<div class="jcard-media"><img src="' + S.img(c.photo, 900, 560) + '" alt="' + esc(c.name) + '" width="900" height="560" /></div>' +
+      '<article class="jcard course-card reveal" id="' + esc(c.id) + '">' +
+        '<a class="jcard-media jcard-ink" href="courses.html#' + esc(c.id) + '" aria-label="' + esc(c.name) + '">' + (S.inkCover ? S.inkCover(c) : "") + "</a>" +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + (cn ? '<a href="countries.html#' + esc(cn.id) + '" style="color:inherit;text-decoration:none">' + esc(c.country) + "</a>" : esc(c.country)) + " · Par " + c.par + " · " + c.holes + " holes</p>" +
-          "<h3>" + esc(c.name) + "</h3>" +
+          '<h3><a href="courses.html#' + esc(c.id) + '" style="color:inherit;text-decoration:none">' + esc(c.name) + "</a></h3>" +
           '<p class="muted" style="font-size:0.85rem">' + esc(c.designer) + "</p>" +
           "<p>" + esc(c.note) + "</p>" +
           (js.length ? '<ul class="chips" style="margin-top:6px">' + js.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:inherit">' + esc(j.name) + "</a></li>"; }).join("") + "</ul>" : "") +
-          '<div class="jcard-foot">' + S.addBtn("course", c.id) + "</div>" +
+          '<div class="jcard-foot"><a class="btn-link" href="courses.html#' + esc(c.id) + '">The course</a>' + S.addBtn("course", c.id) + "</div>" +
         "</div>" +
       "</article>"
     );
