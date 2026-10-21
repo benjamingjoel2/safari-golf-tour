@@ -6,7 +6,7 @@
   S.loadableJourneyCard = function (j) {
     return (
       '<article class="jcard reveal">' +
-        '<div class="jcard-media"><img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" width="900" height="560" /></div>' +
+        '<div class="jcard-media"><img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" width="900" height="560" loading="lazy" decoding="async" /></div>' +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + esc(j.countries.join(" · ")) + " · " + j.nights + " nights</p>" +
           "<h3>" + esc(j.name) + "</h3>" +

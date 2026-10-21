@@ -14,7 +14,7 @@
   document.getElementById("home-encounters").innerHTML = S.ENCOUNTERS.slice(0, 3).map(function (e, i) {
     return (
       '<a class="dest reveal' + (i ? " reveal-delay-" + i : "") + '" href="encounters.html#' + S.esc(e.id) + '">' +
-        '<img src="' + S.img(e.photo, 800, 1000) + '" alt="' + S.esc(e.name) + '" width="800" height="1000" />' +
+        '<img src="' + S.img(e.photo, 800, 1000) + '" alt="' + S.esc(e.name) + '" width="800" height="1000" loading="lazy" decoding="async" />' +
         '<div class="dest-text"><p class="eyebrow">' + S.esc(e.where) + '</p><h3 style="font-size:1.5rem">' + S.esc(e.name) + "</h3></div>" +
       "</a>"
     );
