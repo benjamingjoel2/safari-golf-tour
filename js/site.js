@@ -44,7 +44,7 @@
     return (
       '<a class="jcard reveal" href="journeys.html#' + esc(j.id) + '">' +
         '<div class="jcard-media">' +
-          '<img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" width="900" height="560" />' +
+          '<img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" width="900" height="560" loading="lazy" decoding="async" />' +
           (j.tier === "flagship" ? '<span class="tag">Flagship</span>' : "") +
         "</div>" +
         '<div class="jcard-body">' +
@@ -274,13 +274,23 @@
     return S._posterLen[kind];
   };
 
+  /* Card posters render at most ~410px wide with a 1.45-1.55x zoom, so offer smaller crops of the same
+     photo (same aspect) and let the browser pick; 1800px stays available for high-density screens. */
+  function posterSrcset(o) {
+    var w = o.w || 1800, h = o.h || 1013;
+    var set = [600, 900, 1200].filter(function (x) { return x < w; }).map(function (x) {
+      return S.img(o.photo, x, Math.round(h * x / w)) + " " + x + "w";
+    }).concat(S.img(o.photo, w, h) + " " + w + "w");
+    return ' srcset="' + set.join(", ") + '" sizes="(max-width: 560px) 160vw, 720px"';
+  }
+
   /* Poster: a photograph cropped to the ground with an uppercase title and a smaller line beneath. */
   S.poster = function (o) {
     var t = o.title, sub = o.sub || "";
     var len = o.kind ? S.posterLen(o.kind) : Math.max(t.length, 6);
     return (
       '<span class="film' + (o.hero ? " film-hero" : "") + (o.sky ? " film-sky" : "") + '" style="--len:' + len + (o.focus ? ";--focus:" + o.focus : "") + '">' +
-        '<img src="' + S.img(o.photo, o.w || 1800, o.h || 1013) + '" alt="' + esc(o.alt || t) + '"' + (o.hero ? ' fetchpriority="high"' : "") + " />" +
+        '<img src="' + S.img(o.photo, o.w || 1800, o.h || 1013) + '"' + (o.hero ? "" : posterSrcset(o)) + ' alt="' + esc(o.alt || t) + '"' + (o.hero ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') + " />" +
         '<span class="film-title" aria-hidden="true"><span class="film-name">' + esc(t) + "</span>" + (sub ? '<span class="film-sub">' + esc(sub) + "</span>" : "") + "</span>" +
       "</span>"
     );
