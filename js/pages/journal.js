@@ -8,7 +8,7 @@
   S.articleCard = function (a) {
     return (
       '<a class="jcard reveal" href="journal.html#' + esc(a.slug) + '">' +
-        '<div class="jcard-media"><img src="' + S.img(a.photo, 900, 560) + '" alt="' + esc(a.title) + '" width="900" height="560" /></div>' +
+        '<div class="jcard-media">' + S.pic(a.photo, { w: 800, h: 498, alt: a.title }) + '</div>' +
         '<div class="jcard-body">' +
           '<p class="eyebrow">' + esc(a.category) + " · " + esc(a.date) + "</p>" +
           "<h3>" + esc(a.title) + "</h3>" +
@@ -25,7 +25,7 @@
     var more = S.JOURNAL.filter(function (x) { return x.slug !== a.slug; }).slice(0, 3);
     return (
       '<section class="hero hero-short">' +
-        '<div class="hero-media"><img src="' + S.img(a.photo, 2000) + '" alt="' + esc(a.title) + '" /></div>' +
+        '<div class="hero-media">' + S.pic(a.photo, { w: 1600, widths: [800, 1200, 1800, 2400], sizes: S.SIZES.full, alt: a.title, priority: true }) + '</div>' +
         '<div class="container hero-inner">' +
           '<a class="back" href="journal.html#all">The Journal</a>' +
           '<p class="eyebrow">' + esc(a.category) + " · " + esc(a.date) + "</p>" +

@@ -44,7 +44,7 @@
     return (
       '<a class="jcard reveal" href="journeys.html#' + esc(j.id) + '">' +
         '<div class="jcard-media">' +
-          '<img src="' + S.img(j.photo, 900, 560) + '" alt="' + esc(j.name) + '" width="900" height="560" />' +
+          S.pic(j.photo, { w: 800, h: 498, alt: j.name }) +
           (j.tier === "flagship" ? '<span class="tag">Flagship</span>' : "") +
         "</div>" +
         '<div class="jcard-body">' +
@@ -274,13 +274,29 @@
     return S._posterLen[kind];
   };
 
+  /* Responsive photo: a srcset so phones fetch small files, lazy unless it is a hero. */
+  S.SIZES = {
+    card: "(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 440px",
+    half: "(max-width: 800px) 100vw, 50vw",
+    full: "100vw",
+    thumb: "96px"
+  };
+  S.pic = function (key, o) {
+    var w = o.w || 800, h = o.h || 0, ratio = h ? h / w : 0;
+    return '<img src="' + S.img(key, w, h) + '" srcset="' + S.srcset(key, o.widths || [480, 800, 1200], ratio) + '" sizes="' + (o.sizes || S.SIZES.card) + '"' +
+      ' alt="' + esc(o.alt || "") + '" width="' + w + '" height="' + (h || Math.round(w * 0.66)) + '"' +
+      (o.priority ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"') + " />";
+  };
+
   /* Poster: a photograph cropped to the ground with an uppercase title and a smaller line beneath. */
   S.poster = function (o) {
     var t = o.title, sub = o.sub || "";
     var len = o.kind ? S.posterLen(o.kind) : Math.max(t.length, 6);
     return (
       '<span class="film' + (o.hero ? " film-hero" : "") + (o.sky ? " film-sky" : "") + '" style="--len:' + len + (o.focus ? ";--focus:" + o.focus : "") + '">' +
-        '<img src="' + S.img(o.photo, o.w || 1800, o.h || 1013) + '" alt="' + esc(o.alt || t) + '"' + (o.hero ? ' fetchpriority="high"' : "") + " />" +
+        (o.hero
+          ? S.pic(o.photo, { w: 1800, h: 1013, widths: [800, 1200, 1800, 2400], sizes: S.SIZES.full, alt: o.alt || t, priority: true })
+          : S.pic(o.photo, { w: 960, h: 540, widths: [480, 720, 960, 1280], sizes: S.SIZES.card, alt: o.alt || t })) +
         '<span class="film-title" aria-hidden="true"><span class="film-name">' + esc(t) + "</span>" + (sub ? '<span class="film-sub">' + esc(sub) + "</span>" : "") + "</span>" +
       "</span>"
     );

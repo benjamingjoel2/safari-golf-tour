@@ -8,7 +8,7 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Home: hero, trust strip, pillars, flagship journey, three ways to travel, selected journeys, guest words, what we arrange, hosted departures, destinations, philosophy, encounters, journal notes, enquiry form |
+| `index.html` | Home: split golf/safari hero with stats, how it works, flagship journey, three ways to travel, selected journeys, guest words, what we arrange, hosted departures, destinations, philosophy, encounters, journal notes, enquiry form |
 | `journeys.html` | All journeys with region / length / budget filters and sorting. `journeys.html#<id>` opens the full itinerary, with courses and stays linked |
 | `countries.html` | Browse thirteen countries. `countries.html#<id>` opens a country with its courses and its parks side by side, each with an Add to trip button |
 | `parks.html` | Every national park, reserve and conservancy, filterable by country, type and wildlife, with the nearest course and travel time |
@@ -53,7 +53,43 @@ python3 -m http.server 8000
 
 ## Deploy
 
-`.github/workflows/pages.yml` publishes the repository root to GitHub Pages on every push to `main` (and on manual dispatch). The first run enables Pages automatically; the site URL appears in the workflow summary. Any static host (Netlify, Cloudflare Pages, Vercel) also works: point it at the repo root with no build command.
+The live site is **https://safarigolftour.tourground.com**, hosted on Vercel as a subdomain of `tourground.com` (registered at GoDaddy). Brand sites follow the pattern `{brand}.tourground.com`.
+
+### 1. Vercel project
+
+1. In Vercel, **Add New → Project**, import `benjamingjoel2/safari-golf-tour`.
+2. Framework preset **Other**, no build command, output directory = repo root.
+3. Set the production branch to the branch you deploy from.
+
+`vercel.json` sets caching: photos in `img/` are cached for a year (`immutable`), CSS and JS for an hour in the browser and until the next deploy at Vercel's edge, HTML is always revalidated.
+
+### 2. Domain
+
+In the project: **Settings → Domains → Add** `safarigolftour.tourground.com`. Then the DNS record, depending on who runs DNS for `tourground.com` (check the nameservers on the domain in GoDaddy, or `dig NS tourground.com`):
+
+- **Nameservers are Vercel's** (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`): nothing to do in GoDaddy. Vercel creates the record and the certificate itself.
+- **Nameservers are GoDaddy's**: in GoDaddy, **My Products → tourground.com → DNS → Add record**:
+
+  | Type | Name | Value | TTL |
+  |---|---|---|---|
+  | A | `safarigolftour` | the A-record IP Vercel shows for the domain (currently `76.76.21.21`) | 1 hour |
+
+  Use an **A record, not a CNAME**: a name with a CNAME cannot also carry the MX and TXT records the brand email needs (step 3). Vercel accepts either and issues the HTTPS certificate once the record resolves (usually minutes).
+
+### 3. Email: `hello@safarigolftour.tourground.com`
+
+Vercel does not host email, so the address needs a mail provider (Google Workspace, Zoho Mail, Microsoft 365, or a forwarder such as ImprovMX). Add `safarigolftour.tourground.com` in the provider, then put the records it gives you on the same name, `safarigolftour`, wherever DNS lives (GoDaddy DNS, or Vercel → Domains → tourground.com → DNS Records):
+
+| Type | Name | Value |
+|---|---|---|
+| MX | `safarigolftour` | the provider's mail servers and priorities |
+| TXT | `safarigolftour` | SPF, e.g. `v=spf1 include:_spf.google.com ~all` for Google |
+| TXT | as given | DKIM key from the provider |
+| TXT | `_dmarc.safarigolftour` | `v=DMARC1; p=none; rua=mailto:hello@safarigolftour.tourground.com` |
+
+The address shown on the site comes from `CONFIG.email` in `js/packages.js`.
+
+The old `.github/workflows/pages.yml` (GitHub Pages) still works for a preview copy; any static host works with no build step.
 
 ## Enquiry forms
 

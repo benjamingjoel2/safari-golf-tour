@@ -88,9 +88,14 @@
       var pid = id.slice(3);
       return "https://images.pexels.com/photos/" + pid + "/pexels-photo-" + pid + ".jpeg?auto=compress&cs=tinysrgb&w=" + (w || 1200) + (h ? "&h=" + h + "&fit=crop" : "");
     }
-    var q = "?auto=format&fit=crop&q=78&w=" + (w || 1200);
+    var q = "?auto=format&fit=crop&q=70&w=" + (w || 1200);
     if (h) q += "&h=" + h;
     return "https://images.unsplash.com/photo-" + id + q;
+  }
+
+  /* A srcset at several widths, keeping the crop ratio (h / w) when one is given. */
+  function srcset(key, widths, ratio) {
+    return widths.map(function (w) { return img(key, w, ratio ? Math.round(w * ratio) : 0) + " " + w + "w"; }).join(", ");
   }
 
   var JOURNEYS = [
@@ -629,12 +634,13 @@
   window.SGT = {
     PHOTO: PHOTO,
     img: img,
+    srcset: srcset,
     JOURNEYS: JOURNEYS,
     DESTINATIONS: DESTINATIONS,
     GUESTS: GUESTS,
     CONFIG: {
       brand: "Safari Golf Tour",
-      email: "hello@safarigolftour.com",
+      email: "hello@safarigolftour.tourground.com",
       phone: "",          // e.g. "+254 700 000 000"
       whatsapp: "",       // digits only, e.g. "254700000000" — enables the floating chat button
       offices: ["Nairobi", "Cape Town"],

@@ -44,7 +44,7 @@
     var others = S.JOURNEYS.filter(function (x) { return x.id !== j.id; }).slice(0, 3);
     return (
       '<section class="hero detail-hero">' +
-        '<div class="hero-media"><img src="' + S.img(j.photo, 2000) + '" alt="' + esc(j.name) + '" /></div>' +
+        '<div class="hero-media">' + S.pic(j.photo, { w: 1600, widths: [800, 1200, 1800, 2400], sizes: S.SIZES.full, alt: j.name, priority: true }) + '</div>' +
         '<div class="container hero-inner">' +
           '<a class="back" href="journeys.html#all">All journeys</a>' +
           '<p class="eyebrow">' + esc(j.countries.join(" · ")) + " · " + j.nights + " nights" + (j.tier === "flagship" ? " · Flagship" : "") + "</p>" +
