@@ -1,0 +1,131 @@
+(function () {
+  "use strict";
+  var S = window.SGT, esc = S.esc;
+
+  var listView = document.getElementById("list-view");
+  var detailView = document.getElementById("detail-view");
+  var grid = document.getElementById("course-grid");
+  var filters = document.getElementById("filters");
+  var count = document.getElementById("results-count");
+  var countrySel = document.getElementById("country-filter");
+
+  /* ---------- List ---------- */
+  var countries = [];
+  S.COURSES.forEach(function (c) { if (countries.indexOf(c.country) === -1) countries.push(c.country); });
+  countries.forEach(function (c) {
+    var o = document.createElement("option"); o.value = c; o.textContent = c; countrySel.appendChild(o);
+  });
+
+  function renderList() {
+    var f = new FormData(filters);
+    var country = f.get("country") || "", sort = f.get("sort") || "country";
+    var list = S.COURSES.filter(function (c) { return !country || c.country === country; });
+    if (sort === "name") list = list.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+    if (sort === "par") list = list.slice().sort(function (a, b) { return b.par - a.par; });
+    grid.innerHTML = list.map(S.courseCard).join("");
+    S.refreshTripButtons();
+    count.textContent = list.length === S.COURSES.length ? "Alle anzeigen: " + list.length + " courses" : "Angezeigt: " + list.length + " von " + S.COURSES.length + " courses";
+    S.observeReveals();
+  }
+  filters.addEventListener("change", renderList);
+  filters.addEventListener("reset", function () { setTimeout(renderList, 0); });
+  filters.addEventListener("submit", function (e) { e.preventDefault(); renderList(); });
+  renderList();
+
+  /* ---------- Detail ---------- */
+  function fact(v, l) { return "<li><strong>" + v + "</strong><span>" + l + "</span></li>"; }
+  function factSmall(v, l) { return '<li><strong style="font-size:1.1rem">' + esc(v) + "</strong><span>" + l + "</span></li>"; }
+
+  function detailHtml(c) {
+    var cn = S.countryByName(c.country);
+    var parks = S.PARKS.filter(function (p) { return p.nearest.course === c.id; });
+    if (!parks.length && cn) parks = S.parksIn(cn.id).slice(0, 3);
+    var journeys = S.JOURNEYS.filter(function (j) { return j.courses.some(function (x) { var m = S.courseByName(x.name); return m && m.id === c.id; }); });
+    var stays = S.STAYS.filter(function (s) { return s.destination === c.destination; }).slice(0, 4);
+    var others = S.COURSES.filter(function (x) { return x.id !== c.id && x.country === c.country; }).slice(0, 3);
+    var lengthText = c.length ? c.length.toLocaleString("en-US") + " yd" : "—";
+    return (
+      '<section class="course-film-hero">' + S.courseFilm(c, { hero: true, w: 3200, h: 1800 }) + '<span class="tag film-tag">' + esc(S.courseCredit(c)) + "</span></section>" +
+
+      '<section class="hero hero-plain course-hero">' +
+        '<div class="container hero-inner">' +
+          '<a class="back" href="courses.html#all">Alle Plätze</a>' +
+          '<h1 class="sr-only">' + esc(c.name) + ", " + esc(c.country) + "</h1>" +
+          '<p class="lead">' + esc(c.note) + "</p>" +
+          '<div class="hero-actions">' + S.addBtn("course", c.id) + '<a class="btn btn-outline" href="contact.html">Diesen Platz anfragen</a></div>' +
+        "</div>" +
+      "</section>" +
+
+      '<section class="section-tight section-cream"><div class="container">' +
+        '<ul class="facts six">' +
+          fact(c.par, "Par") + fact(c.holes, "Löcher") + fact(lengthText, "Länge, ca.") +
+          factSmall(c.founded ? String(c.founded) : "—", "Gegründet") + factSmall(c.altitude || "—", "Höhe") + factSmall(c.greens || "—", "Rasen") +
+        "</ul>" +
+      "</div></section>" +
+
+      '<section class="section"><div class="container split">' +
+        '<div class="prose reveal">' +
+          '<p class="eyebrow">Der Platz</p>' +
+          "<h2>" + esc(c.story ? c.story.split(". ")[0] + "." : c.note) + "</h2>" +
+          (c.story ? "<p>" + esc(c.story) + "</p>" : "") +
+          "<h3>Signature-Loch</h3><p>" + esc(c.signature || "Fragen Sie Ihren Gastgeber; jedes Mitglied hat eine andere Antwort.") + "</p>" +
+        "</div>" +
+        '<div class="aside-block reveal reveal-delay-1">' +
+          "<h4>Gut zu wissen</h4>" +
+          "<ul>" +
+            "<li><strong>Caddies</strong><br/>" + esc(c.caddies || "Fragen Sie uns") + "</li>" +
+            "<li><strong>Carts</strong><br/>" + esc(c.carts || "Fragen Sie uns") + "</li>" +
+            "<li><strong>Handicap-Grenze</strong><br/>" + esc(c.handicap || "Keine Angabe") + "</li>" +
+            "<li><strong>Kleidung</strong><br/>" + esc(c.dress || "Hemd mit Kragen, Soft Spikes") + "</li>" +
+            "<li><strong>Beste Monate</strong><br/>" + esc(c.best || (cn ? cn.bestMonths : "Ganzjährig")) + "</li>" +
+            (cn ? "<li><strong>Ankunftsflughafen</strong><br/>" + esc(cn.gateway) + "</li>" : "") +
+          "</ul>" +
+        "</div>" +
+      "</div></section>" +
+
+      (parks.length ? '<section class="section" id="safari"><div class="container">' +
+        '<div class="section-head reveal"><p class="eyebrow">Mit einer Safari kombinieren</p><h2>Wildnis in Reichweite von ' + esc(c.name) + ".</h2></div>" +
+        '<div class="journey-grid three">' + parks.map(S.parkCard).join("") + "</div>" +
+      "</div></section>" : "") +
+
+      (journeys.length ? '<section class="section section-cream"><div class="container">' +
+        '<div class="section-head reveal"><p class="eyebrow">Reisen</p><h2>Reisen, die ihn spielen.</h2></div>' +
+        '<div class="journey-grid three">' + journeys.map(function (j) { return S.jcard(j, { short: true }); }).join("") + "</div>" +
+      "</div></section>" : "") +
+
+      '<section class="section section-ink"><div class="container split">' +
+        "<div>" +
+          '<p class="eyebrow">Wo Sie übernachten</p><h2>Nahe dem ersten Abschlag.</h2>' +
+          (stays.length ? '<ul class="chips">' + stays.map(function (s) { return '<li><a href="stays.html#' + esc(s.id) + '">' + esc(s.name) + "</a></li>"; }).join("") + "</ul>" : '<p class="lead">Die Unterkunft wählen wir passend zu Ihrer Startzeit.</p>') +
+          (others.length ? '<h4 style="margin-top:28px">Ebenfalls in ' + esc(c.country) + '</h4><ul class="chips">' + others.map(function (o) { return '<li><a href="courses.html#' + esc(o.id) + '">' + esc(o.name) + "</a></li>"; }).join("") + "</ul>" : "") +
+        "</div>" +
+        "<div>" +
+          '<p class="eyebrow">Zusammenstellen</p><h2>Fügen Sie ' + esc(c.name) + " Ihrer Reise hinzu.</h2>" +
+          '<p class="lead">Ein Klick fügt die Runde hinzu. Der Planer ordnet sie mit Ihren Parks, kalkuliert die Reise und schickt den Plan an einen Planer, der die Startzeit bestätigt.</p>' +
+          '<div class="actions">' + S.addBtn("course", c.id) + '<a class="btn btn-outline" href="build.html">Reiseplaner öffnen</a></div>' +
+        "</div>" +
+      "</div></section>"
+    );
+  }
+
+  function route() {
+    var c = S.course(location.hash.replace("#", ""));
+    if (c) {
+      detailView.innerHTML = detailHtml(c);
+      detailView.hidden = false;
+      listView.hidden = true;
+      document.title = c.name + " — Safari Golf Tour";
+      window.scrollTo(0, 0);
+    } else {
+      detailView.hidden = true;
+      detailView.innerHTML = "";
+      listView.hidden = false;
+      document.title = "Plätze — Safari Golf Tour";
+      if (location.hash === "#all") window.scrollTo(0, 0);
+    }
+    S.refreshTripButtons();
+    S.observeReveals();
+  }
+  window.addEventListener("hashchange", route);
+  route();
+})();

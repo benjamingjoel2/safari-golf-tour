@@ -6,6 +6,9 @@
 
   var S = window.SGT;
   var C = S.CONFIG;
+  // Site root from this script's URL, so shared images load from the language folders (fr/, de/, es/) too.
+  var ROOT = (document.currentScript && document.currentScript.src || "").replace(/js\/[^\/]*$/, "");
+  var LANG = (document.documentElement.lang || "en").slice(0, 2);
 
   var NAV = [
     { href: "index.html", label: "Home", num: "01" },
@@ -31,7 +34,7 @@
   S.esc = esc;
 
   S.money = function (n) {
-    return "US$" + Number(n).toLocaleString("en-US");
+    return "US$" + Number(n).toLocaleString(LANG === "en" ? "en-US" : LANG);
   };
 
   S.journey = function (id) {
@@ -64,12 +67,21 @@
   if (page === "") page = "index.html";
 
   /* ---------- Header ---------- */
-  var mark = '<img class="brand-mark" src="img/logo-96.png" srcset="img/logo-96.png 2x, img/logo-240.png 5x" alt="" width="42" height="40" />';
+  var mark = '<img class="brand-mark" src="' + ROOT + 'img/logo-96.png" srcset="' + ROOT + 'img/logo-96.png 2x, ' + ROOT + 'img/logo-240.png 5x" alt="" width="42" height="40" />';
+
+  /* Language switch: the same page in English, French, German and Spanish (pages built by scripts/i18n.mjs). */
+  var LANGS = [["en", "EN", "English"], ["fr", "FR", "Français"], ["de", "DE", "Deutsch"], ["es", "ES", "Español"]];
+  function langSwitch(variant) {
+    return '<nav class="lang-switch lang-switch--' + variant + '" aria-label="' + "Language" + '">' + LANGS.map(function (l) {
+      var href = (LANG === "en" ? "" : "../") + (l[0] === "en" ? "" : l[0] + "/") + page + location.hash;
+      return '<a class="lang-switch__link" href="' + href + '" hreflang="' + l[0] + '" lang="' + l[0] + '"' + (l[0] === LANG ? ' aria-current="true"' : "") + '><span aria-hidden="true">' + l[1] + '</span><span class="lang-switch__sr">' + l[2] + "</span></a>";
+    }).join('<span class="lang-switch__sep" aria-hidden="true">·</span>') + "</nav>";
+  }
 
   var headerHtml =
     '<header class="site-header" id="site-header">' +
       '<div class="container header-inner">' +
-        '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ' home">' + mark +
+        '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ", " + "home page" + '">' + mark +
           '<span class="brand-name">' + esc(C.brand) + "</span>" +
         "</a>" +
         '<div class="header-actions">' +
@@ -78,6 +90,7 @@
               return '<a href="' + n.href + '"' + (n.href === page ? ' aria-current="page"' : "") + ">" + esc(n.label) + "</a>";
             }).join("") +
           "</nav>" +
+          langSwitch("bar") +
           '<a class="btn btn-gold btn-sm header-cta" href="build.html">Build your trip</a>' +
           '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span><span></span><span></span></button>' +
         "</div>" +
@@ -95,6 +108,7 @@
           (C.email ? '<p class="menu-contact"><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a></p>" : "") +
           '<p class="menu-note">' + esc(C.address) + ". Replies within one working day.</p>" +
           '<a class="btn btn-gold" href="contact.html">Design your safari</a>' +
+          langSwitch("menu") +
         "</div>" +
       "</div>" +
     "</div>";
@@ -153,7 +167,7 @@
       '<div class="container">' +
         '<div class="footer-grid five">' +
           '<div class="footer-brand">' +
-            '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ' home">' + mark + '<span class="brand-name">' + esc(C.brand) + "</span></a>" +
+            '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ", " + "home page" + '">' + mark + '<span class="brand-name">' + esc(C.brand) + "</span></a>" +
             '<p style="margin-top:18px">Safari first, golf woven through. Golf and safari journeys across thirteen African countries, built one guest at a time by people who have played and slept their way across all of it.</p>' +
           "</div>" +
           "<div><h4>The experience</h4><ul>" +
@@ -576,8 +590,8 @@
       var step = e.shiftKey ? 20 : 5, cur = scrollPos(w) + w._offset, next = null;
       if (e.key === "ArrowLeft" || e.key === "ArrowDown") next = cur - step;
       else if (e.key === "ArrowRight" || e.key === "ArrowUp") next = cur + step;
-      else if (e.key === "Home") next = 0;
-      else if (e.key === "End") next = 100;
+      else if (/^Home$/.test(e.key)) next = 0;
+      else if (/^End$/.test(e.key)) next = 100;
       if (next === null) return;
       e.preventDefault();
       w._offset = clamp(next, 0, 100) - scrollPos(w);

@@ -97,6 +97,19 @@ The old `.github/workflows/pages.yml` (GitHub Pages) still works for a preview c
 
 Both forms validate client-side and, with no backend yet, store submissions in the visitor's `localStorage` under `sgt-enquiries`. To go live, replace the body of `S.bindEnquiryForm` in `js/site.js` with a POST to your form endpoint (Formspree, Netlify Forms, a serverless function).
 
+## Languages
+
+The site is in English (default, at the current URLs), French (`/fr/`), German (`/de/`) and Spanish (`/es/`). Each language is a pre-rendered copy built by `scripts/i18n.mjs` from the English pages and scripts, using the dictionaries in `i18n/{fr,de,es}.json` (`{ "English text": "translation" }`). No translation library runs in the browser.
+
+After changing any English copy (HTML or the data in `js/`), run:
+
+```
+node scripts/i18n.mjs extract   # list every translatable string in i18n/strings.json
+node scripts/i18n.mjs check     # rebuild fr/, de/, es/ and the js/*.fr|de|es.js copies; fails if a string has no translation
+```
+
+Add the missing strings to the three dictionaries, run `check` again and commit the regenerated folders (Vercel serves the repo as is, with no build step). The EN · FR · DE · ES switch in the header and the menu links to the same page in the other language; every page carries `hreflang` alternates (with `x-default` = English) and a canonical, and `sitemap.xml` lists all four languages.
+
 ## Adding a journey
 
 Append an object to `JOURNEYS` in `js/packages.js`. It appears automatically in the journeys grid, the footer, the enquiry selects and the "also consider" list. Fields: `id`, `name`, `strap`, `tagline`, `countries`, `region` (must match a value in the journeys filter), `nights`, `rounds`, `gameDrives`, `priceFrom`, `tier` (`signature` or `flagship`), `bestMonths`, `photo` (a key of `PHOTO`), `route`, `intro`, `highlights`, `courses`, `stays`, `itinerary`. Course and stay names are matched to `COURSES` and `STAYS` in `js/content.js` to link them.

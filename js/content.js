@@ -204,6 +204,7 @@
   S.article = function (slug) { return S.JOURNAL.filter(function (a) { return a.slug === slug; })[0] || null; };
   S.formatDate = function (iso) {
     var d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    var L = (document.documentElement.lang || "en").slice(0, 2);
+    return d.toLocaleDateString(L === "en" ? "en-GB" : L, { day: "numeric", month: "long", year: "numeric" });
   };
 })();
