@@ -93,8 +93,7 @@
         '<div class="menu-side">' +
           "<h4>Speak to a planner</h4>" +
           (C.email ? '<p class="menu-contact"><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a></p>" : "") +
-          (C.phone ? '<p class="menu-contact"><a href="tel:' + esc(C.phone.replace(/\s+/g, "")) + '">' + esc(C.phone) + "</a></p>" : "") +
-          '<p class="menu-note">Offices in ' + esc(C.offices.join(" and ")) + ". Replies within one working day.</p>" +
+          '<p class="menu-note">' + esc(C.address) + ". Replies within one working day.</p>" +
           '<a class="btn btn-gold" href="contact.html">Design your safari</a>' +
         "</div>" +
       "</div>" +
@@ -149,16 +148,6 @@
   });
 
   /* ---------- Footer ---------- */
-  var social = C.social || {};
-  var icons = {
-    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
-    facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8.5c0-.3.2-.5.5-.5H14z"/></svg>',
-    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5h-3V20h3V8.5zM5 4a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 4zm15 9.2c0-3.2-1.7-4.9-4.2-4.9-1.7 0-2.6.9-3 1.6V8.5h-3V20h3v-6.2c0-1.6.6-2.6 2-2.6s1.9 1 1.9 2.6V20h3v-6.8z"/></svg>'
-  };
-  var socialHtml = Object.keys(social).filter(function (k) { return social[k]; }).map(function (k) {
-    return '<a href="' + esc(social[k]) + '" target="_blank" rel="noopener" aria-label="' + k + '">' + icons[k] + "</a>";
-  }).join("");
-
   var footerHtml =
     '<footer class="site-footer">' +
       '<div class="container">' +
@@ -166,7 +155,6 @@
           '<div class="footer-brand">' +
             '<a class="brand" href="index.html" aria-label="' + esc(C.brand) + ' home">' + mark + '<span class="brand-name">' + esc(C.brand) + "</span></a>" +
             '<p style="margin-top:18px">Safari first, golf woven through. Golf and safari journeys across thirteen African countries, built one guest at a time by people who have played and slept their way across all of it.</p>' +
-            (socialHtml ? '<div class="socials">' + socialHtml + "</div>" : "") +
           "</div>" +
           "<div><h4>The experience</h4><ul>" +
             '<li><a href="encounters.html">Encounters</a></li>' +
@@ -191,27 +179,20 @@
             '<li><a href="journal.html">The Journal</a></li>' +
             '<li><a href="contact.html">Design your safari</a></li>' +
             '<li><a href="contact.html#faq">Good to know</a></li>' +
-            '<li><a href="terms.html">Terms &amp; conditions</a></li>' +
             '<li><a href="privacy.html">Privacy policy</a></li>' +
+            '<li><a href="terms.html">Booking terms</a></li>' +
+            '<li><a href="cookies.html">Cookie policy</a></li>' +
             (C.email ? '<li><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a></li>" : "") +
           "</ul></div>" +
         "</div>" +
         '<div class="footer-bottom">' +
           "<span>© " + new Date().getFullYear() + " " + esc(C.brand) + ". Prices are indicative, per person sharing, ground only, and subject to availability.</span>" +
-          "<span>Offices in " + esc(C.offices.join(" · ")) + "</span>" +
+          "<span>" + esc(C.address) + "</span>" +
         "</div>" +
       "</div>" +
     "</footer>";
 
   document.body.insertAdjacentHTML("beforeend", footerHtml);
-
-  /* ---------- Floating chat ---------- */
-  var chatHref = C.whatsapp ? "https://wa.me/" + C.whatsapp : "contact.html";
-  var chatIcon = C.whatsapp
-    ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>'
-    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16v11H8l-4 4z"/></svg>';
-  document.body.insertAdjacentHTML("beforeend",
-    '<a class="chat-fab" href="' + chatHref + '"' + (C.whatsapp ? ' target="_blank" rel="noopener"' : "") + ">" + chatIcon + "<span>Chat to us</span></a>");
 
   /* ---------- Trip builder: shared state, cards and tray ---------- */
   S.trip = {

@@ -113,7 +113,7 @@
         "<li><strong>" + drives + "</strong><span>Game drives</span></li>" +
         "<li><strong>" + countries.length + "</strong><span>" + (countries.length === 1 ? "Country" : "Countries") + "</span></li>" +
       "</ul>" +
-      '<p class="price-line" style="margin:0 0 6px"><strong>' + S.money(total) + "</strong> pp sharing, indicative</p>" +
+      '<p class="price-line" style="margin:0 0 6px">From <strong>' + S.money(total) + "</strong> pp sharing, indicative</p>" +
       '<p class="muted" style="font-size:0.85rem;margin-bottom:18px">Ground only. Excludes international flights. Your planner confirms real rates for your dates.</p>' +
       (months.length ? '<p class="muted" style="font-size:0.85rem"><strong style="color:var(--gold-2);font-family:var(--sans);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase">Best months</strong><br/>' + months.map(esc).join("<br/>") + "</p>" : "") +
       '<div class="actions" style="flex-direction:column;align-items:stretch;margin-top:18px">' +

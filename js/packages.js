@@ -608,43 +608,18 @@
     }
   ];
 
-  var GUESTS = [
-    {
-      quote: "We played The Links on the Tuesday and watched a leopard drag an impala up a tree on the Thursday. Nothing else I have ever booked comes close.",
-      name: "Margaret H.",
-      meta: "14 handicap · South Africa Signature"
-    },
-    {
-      quote: "The logistics were flawless. Our clubs were waiting at every course, and the Mara camp had our tee times pinned on the notice board.",
-      name: "David & Priya",
-      meta: "Kenya Classic"
-    },
-    {
-      quote: "Our society of eight had a private guide and a private vehicle for the whole trip. Elephant Hills with warthogs on the fairway is one for the stories.",
-      name: "Rob T.",
-      meta: "Society captain · Falls & Fairways"
-    },
-    {
-      quote: "They built the itinerary around exactly what my wife and I wanted. Playing with Kilimanjaro behind the green was surreal, and the Crater exceeded everything.",
-      name: "Lukas B.",
-      meta: "Tanzania Grand"
-    }
-  ];
-
   window.SGT = {
     PHOTO: PHOTO,
     img: img,
     srcset: srcset,
     JOURNEYS: JOURNEYS,
     DESTINATIONS: DESTINATIONS,
-    GUESTS: GUESTS,
     CONFIG: {
       brand: "Safari Golf Tour",
-      email: "hello@safarigolftour.tourground.com",
-      phone: "",          // e.g. "+254 700 000 000"
-      whatsapp: "",       // digits only, e.g. "254700000000" — enables the floating chat button
-      offices: ["Nairobi", "Cape Town"],
-      social: { instagram: "", facebook: "", linkedin: "" }
+      email: "safarigolftour@tourground.com",
+      // Business address: Kofisi Riverside, Nairobi (premium coworking; owner-approved arrangement).
+      // Owner's fix list (October 2026): no phone, WhatsApp, social links or licence numbers on the site.
+      address: "Kofisi Riverside, 104 Riverside Drive, Nairobi, Kenya"
     }
   };
 })();
