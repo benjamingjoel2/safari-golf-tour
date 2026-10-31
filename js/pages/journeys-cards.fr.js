@@ -12,7 +12,7 @@
           "<h3>" + esc(j.name) + "</h3>" +
           "<p>" + esc(j.tagline) + ".</p>" +
           '<div class="jcard-foot"><span class="price">À partir de <strong>' + S.money(j.priceFrom) + "</strong></span>" +
-          '<button type="button" class="btn btn-gold btn-sm" data-load-journey="' + esc(j.id) + '"&gt;Charger dans le créateur</button></div>' +
+          '<button type="button" class="btn btn-gold btn-sm" data-load-journey="' + esc(j.id) + '">Charger dans le créateur</button></div>' +
         "</div>" +
       "</article>"
     );

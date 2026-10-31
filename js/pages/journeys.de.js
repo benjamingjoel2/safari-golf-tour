@@ -88,7 +88,7 @@
               "</ul></div>" +
               '<div class="aside-block"><h4>Beste Monate</h4><p style="margin:0">' + esc(j.bestMonths) + "</p></div>" +
               '<div class="aside-block"><h4>Inbegriffen</h4><p style="margin:0;font-size:0.95rem;color:var(--text-dark-muted)">Unterkunft, die meisten Mahlzeiten, Greenfees und Caddies, wo üblich, Park- und Schutzgebietsgebühren, Pirschfahrten, Inlandsflüge und alle Transfers. Internationale Flüge, Visa, Versicherung und Trinkgelder sind nicht enthalten.</p></div>' +
-              '<div class="actions" style="flex-direction:column;align-items:stretch"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '"&gt;Diese Reise anfragen</a><button type="button" class="btn btn-outline btn-sm" data-load-journey="' + esc(j.id) + '"&gt;In den Reiseplaner laden</button></div>' +
+              '<div class="actions" style="flex-direction:column;align-items:stretch"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '">Diese Reise anfragen</a><button type="button" class="btn btn-outline btn-sm" data-load-journey="' + esc(j.id) + '">In den Reiseplaner laden</button></div>' +
               (S.DEPARTURES.some(function (d) { return d.journey === j.id; }) ? '<p style="margin:14px 0 0;font-size:0.9rem;color:var(--text-dark-muted)">Auch erhältlich als <a href="departures.html" style="color:var(--gold-2)">begleitete Reise</a>.</p>' : "") +
             "</div>" +
           "</aside>" +

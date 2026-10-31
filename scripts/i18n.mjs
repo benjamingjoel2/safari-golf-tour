@@ -83,6 +83,15 @@ function htmlPass(src, ctx) {
     if (tok[0] === '<' && tok.length > 1) { out += tagPass(tok, ctx); continue; }
     // text
     if (!hasWords(tok)) { out += tok; continue; }
+    // tail of a tag split by a template expression (`<a href="#${id}">Label`): keep the tag tail, translate the label
+    const tail = tok.match(/^([^<>]*>)([^<>]*)$/);
+    if (tail) {
+      if (!hasWords(tail[2])) { out += tok; continue; }
+      const d2 = decode(tail[2]);
+      const t2 = ctx.T(d2, 'text');
+      out += tail[1] + (t2 === d2 ? tail[2] : encText(t2));
+      continue;
+    }
     const dec = decode(tok);
     const tr = ctx.T(dec, 'text');
     out += tr === dec ? tok : encText(tr);

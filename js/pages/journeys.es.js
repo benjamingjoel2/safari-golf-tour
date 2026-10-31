@@ -88,7 +88,7 @@
               "</ul></div>" +
               '<div class="aside-block"><h4>Mejores meses</h4><p style="margin:0">' + esc(j.bestMonths) + "</p></div>" +
               '<div class="aside-block"><h4>Incluido</h4><p style="margin:0;font-size:0.95rem;color:var(--text-dark-muted)">Alojamiento, la mayoría de las comidas, green fees y caddies donde es costumbre, tasas de parques y reservas, safaris, vuelos internos y todos los traslados. Quedan excluidos los vuelos internacionales, los visados, el seguro y las propinas.</p></div>' +
-              '<div class="actions" style="flex-direction:column;align-items:stretch"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '"&gt;Consultar por este viaje</a><button type="button" class="btn btn-outline btn-sm" data-load-journey="' + esc(j.id) + '"&gt;Cargar en el creador de viajes</button></div>' +
+              '<div class="actions" style="flex-direction:column;align-items:stretch"><a class="btn btn-gold" href="contact.html?journey=' + esc(j.id) + '">Consultar por este viaje</a><button type="button" class="btn btn-outline btn-sm" data-load-journey="' + esc(j.id) + '">Cargar en el creador de viajes</button></div>' +
               (S.DEPARTURES.some(function (d) { return d.journey === j.id; }) ? '<p style="margin:14px 0 0;font-size:0.9rem;color:var(--text-dark-muted)">También disponible como <a href="departures.html" style="color:var(--gold-2)">salida acompañada</a>.</p>' : "") +
             "</div>" +
           "</aside>" +

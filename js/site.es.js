@@ -229,7 +229,7 @@
   };
 
   S.addBtn = function (type, id) {
-    return '<button type="button" class="btn btn-outline btn-sm add-btn" data-trip-type="' + esc(type) + '" data-trip-id="' + esc(id) + '"&gt;Añadir al viaje</button>';
+    return '<button type="button" class="btn btn-outline btn-sm add-btn" data-trip-type="' + esc(type) + '" data-trip-id="' + esc(id) + '">Añadir al viaje</button>';
   };
 
   S.refreshTripButtons = function () {
@@ -330,7 +330,7 @@
           '<p class="eyebrow">Par ' + c.par + " · " + c.holes + " hoyos</p>" +
           "<p>" + esc(c.note) + "</p>" +
           (js.length ? '<ul class="chips" style="margin-top:6px">' + js.map(function (j) { return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:inherit">' + esc(j.name) + "</a></li>"; }).join("") + "</ul>" : "") +
-          '<div class="jcard-foot"><a class="btn-link" href="courses.html#' + esc(c.id) + '"&gt;El campo</a>' + S.addBtn("course", c.id) + "</div>" +
+          '<div class="jcard-foot"><a class="btn-link" href="courses.html#' + esc(c.id) + '">El campo</a>' + S.addBtn("course", c.id) + "</div>" +
         "</div>" +
       "</article>"
     );
