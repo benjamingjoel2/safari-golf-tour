@@ -825,7 +825,7 @@
   "file": "cookies.html"
  },
  {
-  "en": "Photographs load from Unsplash (images.unsplash.com) and Pexels (images.pexels.com), which receive your IP address to deliver each image. No cookies are set through these requests. Our font is served from this site.",
+  "en": "Photographs load from our image delivery providers, which receive your IP address to deliver each image. No cookies are set through these requests. Our font is served from this site.",
   "where": "text",
   "file": "cookies.html"
  },
