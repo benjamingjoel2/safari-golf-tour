@@ -1,0 +1,72 @@
+{
+  "out": ".",
+  "relative": true,
+  "siteUrl": "https://safarigolftour.tourground.com",
+  "locales": [
+    "fr",
+    "de",
+    "es"
+  ],
+  "default": "en",
+  "ogLocale": {
+    "fr": "fr_FR",
+    "de": "de_DE",
+    "es": "es_ES"
+  },
+  "ignore": [
+    "css",
+    "js",
+    "img",
+    "fonts",
+    "scripts",
+    "i18n",
+    ".git",
+    ".github",
+    "README.md",
+    "IMAGES-NEEDED.md",
+    "vercel.json"
+  ],
+  "jsFiles": [
+    "js/content.js",
+    "js/course-info.js",
+    "js/packages.js",
+    "js/pages/build.js",
+    "js/pages/contact.js",
+    "js/pages/countries.js",
+    "js/pages/courses.js",
+    "js/pages/departures.js",
+    "js/pages/destinations.js",
+    "js/pages/encounters.js",
+    "js/pages/home.js",
+    "js/pages/journal.js",
+    "js/pages/journeys-cards.js",
+    "js/pages/journeys.js",
+    "js/pages/parks.js",
+    "js/pages/stays.js",
+    "js/places.js",
+    "js/site.js"
+  ],
+  "keep": [
+    "Safari Golf Tour",
+    "safarigolftour@tourground.com",
+    "EN",
+    "FR",
+    "DE",
+    "ES",
+    "English",
+    "Français",
+    "Deutsch",
+    "Español",
+    "a href=\"journeys.html#",
+    "a href=\"countries.html#",
+    "a href=\"stays.html#",
+    "a href=\"courses.html#",
+    "a href=\"#",
+    "a href=\"journal.html#",
+    "a class=\"btn btn-gold\" href=\"contact.html?journey=",
+    "button type=\"button\" class=\"btn btn-outline btn-sm\" data-load-journey=\"",
+    "a href=\"",
+    "a href=\"mailto:",
+    "a class=\"btn-link\" href=\"courses.html#"
+  ]
+}

@@ -58,7 +58,7 @@
           "<li><strong>" + j.nights + "</strong><span>Nights</span></li>" +
           "<li><strong>" + j.rounds + "</strong><span>" + (j.rounds === 1 ? "Round of golf" : "Rounds of golf") + "</span></li>" +
           "<li><strong>" + j.gameDrives + "</strong><span>Game drives</span></li>" +
-          "<li><strong>" + S.money(j.priceFrom) + "</strong><span>From, pp sharing</span></li>" +
+          "<li><strong>From " + S.money(j.priceFrom) + "</strong><span>Per person sharing</span></li>" +
         "</ul></div>" +
       "</section>" +
 

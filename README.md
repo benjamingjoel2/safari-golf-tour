@@ -33,16 +33,16 @@ Editorial safari look (Cormorant Garamond, forest green, cream and gold, full-bl
 - `js/pages/*.js` — per-page rendering.
 - `css/styles.css` — the design system.
 
-No build step and no dependencies. Fonts load from Google Fonts and photography from Unsplash (free licence, ids listed in `js/packages.js`).
+No build step and no dependencies. Archivo is self-hosted in `fonts/` and photography comes from Unsplash and Pexels (free licence, ids listed in `js/packages.js`).
 
 ## Configure
 
 In `js/packages.js`, `SGT.CONFIG` holds:
 
-- `email`, `phone` — shown in the menu, footer and contact page when set.
-- `whatsapp` — digits only. When set, the floating "Chat to us" button opens WhatsApp; otherwise it links to the contact page.
-- `offices` — listed in the menu and footer.
-- `social.instagram / facebook / linkedin` — footer icons appear only for the ones you fill in.
+- `email` — `safarigolftour@tourground.com`, shown in the menu, footer, contact page and legal pages.
+- `address` — the business address (Kofisi Riverside, Nairobi), shown in the menu, footer, contact page and legal pages.
+
+By owner decision (October 2026) the site has no phone, WhatsApp, chat button, social links, licence numbers or guest quotes.
 
 ## Run locally
 
@@ -76,7 +76,9 @@ In the project: **Settings → Domains → Add** `safarigolftour.tourground.com`
 
   Use an **A record, not a CNAME**: a name with a CNAME cannot also carry the MX and TXT records the brand email needs (step 3). Vercel accepts either and issues the HTTPS certificate once the record resolves (usually minutes).
 
-### 3. Email: `hello@safarigolftour.tourground.com`
+### 3. Email: `safarigolftour@tourground.com`
+
+The brand uses the shared `tourground.com` mailbox format, so no per-subdomain mail setup is needed. The notes below are kept for reference only.
 
 Vercel does not host email, so the address needs a mail provider (Google Workspace, Zoho Mail, Microsoft 365, or a forwarder such as ImprovMX). Add `safarigolftour.tourground.com` in the provider, then put the records it gives you on the same name, `safarigolftour`, wherever DNS lives (GoDaddy DNS, or Vercel → Domains → tourground.com → DNS Records):
 
@@ -85,7 +87,7 @@ Vercel does not host email, so the address needs a mail provider (Google Workspa
 | MX | `safarigolftour` | the provider's mail servers and priorities |
 | TXT | `safarigolftour` | SPF, e.g. `v=spf1 include:_spf.google.com ~all` for Google |
 | TXT | as given | DKIM key from the provider |
-| TXT | `_dmarc.safarigolftour` | `v=DMARC1; p=none; rua=mailto:hello@safarigolftour.tourground.com` |
+| TXT | `_dmarc.safarigolftour` | `v=DMARC1; p=none; rua=mailto:safarigolftour@tourground.com` |
 
 The address shown on the site comes from `CONFIG.email` in `js/packages.js`.
 
@@ -94,6 +96,19 @@ The old `.github/workflows/pages.yml` (GitHub Pages) still works for a preview c
 ## Enquiry forms
 
 Both forms validate client-side and, with no backend yet, store submissions in the visitor's `localStorage` under `sgt-enquiries`. To go live, replace the body of `S.bindEnquiryForm` in `js/site.js` with a POST to your form endpoint (Formspree, Netlify Forms, a serverless function).
+
+## Languages
+
+The site is in English (default, at the current URLs), French (`/fr/`), German (`/de/`) and Spanish (`/es/`). Each language is a pre-rendered copy built by `scripts/i18n.mjs` from the English pages and scripts, using the dictionaries in `i18n/{fr,de,es}.json` (`{ "English text": "translation" }`). No translation library runs in the browser.
+
+After changing any English copy (HTML or the data in `js/`), run:
+
+```
+node scripts/i18n.mjs extract   # list every translatable string in i18n/strings.json
+node scripts/i18n.mjs check     # rebuild fr/, de/, es/ and the js/*.fr|de|es.js copies; fails if a string has no translation
+```
+
+Add the missing strings to the three dictionaries, run `check` again and commit the regenerated folders (Vercel serves the repo as is, with no build step). The EN · FR · DE · ES switch in the header and the menu links to the same page in the other language; every page carries `hreflang` alternates (with `x-default` = English) and a canonical, and `sitemap.xml` lists all four languages.
 
 ## Adding a journey
 

@@ -26,7 +26,7 @@
             "</div>" +
             "<h4 style=\"font-family:var(--sans);font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin:0 0 12px\">Journeys that visit</h4>" +
             '<ul class="chips">' + journeys.map(function (j) {
-              return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:var(--cream)">' + esc(j.name) + " · from " + S.money(j.priceFrom) + "</a></li>";
+              return '<li><a href="journeys.html#' + esc(j.id) + '" style="text-decoration:none;color:var(--cream)">' + esc(j.name) + " · From " + S.money(j.priceFrom) + "</a></li>";
             }).join("") + "</ul>" +
           "</div>" +
         "</div>" +
