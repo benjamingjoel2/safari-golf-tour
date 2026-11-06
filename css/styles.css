@@ -1262,3 +1262,24 @@ a.film-link { display: block; border: 0; position: relative; }
 .prose .legal-table { width: 100%; max-width: 68ch; border-collapse: collapse; margin: 0.5rem 0 1rem; font-size: 0.95rem; color: var(--text-dark-muted); }
 .prose .legal-table th, .prose .legal-table td { text-align: left; vertical-align: top; padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
 @media (max-width: 640px) { .prose .legal-table, .prose .legal-table tbody, .prose .legal-table tr, .prose .legal-table td { display: block; } .prose .legal-table thead { display: none; } .prose .legal-table td { border: 0; padding: 2px 0; } .prose .legal-table tr { padding: 0.6rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.12); } }
+
+/* Design sweep (Nov 2026): heroes sit bottom-left with one button and one text link,
+   the stats are a plain line rather than a glass panel, and text links end in a
+   simple arrow instead of an outlined circle. */
+.hero-home { justify-content: flex-start; align-items: flex-end; padding-bottom: clamp(72px, 12vh, 120px); }
+.hero-home .hero-inner, .hero-short .hero-inner { width: 100%; text-align: left; }
+.hero-home .hero-grid { justify-items: start; }
+.hero-home .hero-copy, .hero-short .hero-copy { align-items: flex-start; }
+.hero-home h1, .hero-short h1 { text-align: left; margin-left: 0; margin-right: 0; }
+.hero-home .lead, .hero-short .lead { margin-left: 0; margin-right: 0; }
+.hero-home .hero-actions, .hero-short .hero-actions { justify-content: flex-start; }
+.hero-short .back { align-self: flex-start; }
+.hero-home .hero-stats,
+.hero-home .hero-stats[aria-label] { justify-content: flex-start; margin-top: 30px; padding: 18px 0 0; background: none; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.32); border-radius: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.hero-home .hero-stats li { align-items: flex-start; text-align: left; }
+@media (max-width: 420px) { .hero-home .hero-stats { padding: 14px 0 0; } }
+.btn-link::after,
+.section-cream .btn-link::after, .section-ink .btn-link::after, .bleed .btn-link::after, .hero .btn-link::after { content: "→"; width: auto; height: auto; padding: 0; border: 0; border-radius: 0; background: none; font-size: 15px; line-height: 1; transition: transform .2s var(--ease); }
+.btn-link:hover::after,
+.section-ink .btn-link:hover::after, .bleed .btn-link:hover::after, .hero .btn-link:hover::after { background: none; color: inherit; transform: translateX(3px); }
+.btn-link { gap: 8px; }
